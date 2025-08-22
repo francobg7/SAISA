@@ -6,7 +6,7 @@ import About from './components/About'
 import Services from './components/Services'
 import Projects from './components/Projects'
 import Alliances from './components/Alliances'
-import Contact from './components/Contact'
+
 import ContactPage from './components/ContactPage'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
