@@ -1,12 +1,13 @@
-import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Mail, MapPin, Phone, ArrowUp } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
+import { useNavigation } from '../contexts/NavigationContext'
 import { companyInfo, navigationItems, socialLinks } from '../data/companyData'
 
 const Footer: React.FC = () => {
   const { language } = useLanguage()
+  const { navigateTo } = useNavigation()
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1
@@ -79,7 +80,12 @@ const Footer: React.FC = () => {
               transition={{ duration: 0.6 }}
               className="lg:col-span-2"
             >
-              <div className="flex items-center space-x-3 mb-6">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => navigateTo('home')}
+                className="flex items-center space-x-3 mb-6 cursor-pointer"
+              >
                 <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-secondary-600 rounded-xl flex items-center justify-center">
                   <span className="text-white font-bold text-xl font-display">S</span>
                 </div>
@@ -89,7 +95,7 @@ const Footer: React.FC = () => {
                     {language === 'es' ? 'Servicios Ambientales' : 'Environmental Services'}
                   </p>
                 </div>
-              </div>
+              </motion.button>
               
               <p className="text-gray-300 mb-6 leading-relaxed max-w-md">
                 {currentContent.description}
@@ -125,7 +131,13 @@ const Footer: React.FC = () => {
                 {navigationItems.slice(1, -1).map((item) => (
                   <li key={item.id}>
                     <button
-                      onClick={() => document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' })}
+                      onClick={() => {
+                        if (item.href === '#contact') {
+                          navigateTo('contact')
+                        } else {
+                          document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' })
+                        }
+                      }}
                       className="text-gray-300 hover:text-primary-400 transition-colors duration-200 text-sm"
                     >
                       {item.label[language]}
