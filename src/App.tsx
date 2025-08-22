@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -7,13 +7,60 @@ import Services from './components/Services'
 import Projects from './components/Projects'
 import Alliances from './components/Alliances'
 import Contact from './components/Contact'
+import ContactPage from './components/ContactPage'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
 import LanguageContext from './contexts/LanguageContext'
+import { NavigationProvider, useNavigation } from './contexts/NavigationContext'
 import { Language } from './types'
 
-function App() {
+function AppContent() {
+  const { currentPage } = useNavigation()
   const [language, setLanguage] = useState<Language>('es')
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'es' ? 'en' : 'es')
+  }
+
+  return (
+    <LanguageContext.Provider value={{ language, toggleLanguage }}>
+      <div className="min-h-screen bg-white">
+        <Header />
+        <AnimatePresence mode="wait">
+          {currentPage === 'home' ? (
+            <motion.main
+              key="home"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+                             <Hero />
+               <About />
+               <Services />
+               <Projects />
+               <Alliances />
+            </motion.main>
+          ) : (
+            <motion.div
+              key="contact"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <ContactPage />
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <Footer />
+        <WhatsAppButton />
+      </div>
+    </LanguageContext.Provider>
+  )
+}
+
+function App() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -24,10 +71,6 @@ function App() {
 
     return () => clearTimeout(timer)
   }, [])
-
-  const toggleLanguage = () => {
-    setLanguage(language === 'es' ? 'en' : 'es')
-  }
 
   if (isLoading) {
     return (
@@ -47,21 +90,9 @@ function App() {
   }
 
   return (
-    <LanguageContext.Provider value={{ language, toggleLanguage }}>
-      <div className="min-h-screen bg-white">
-        <Header />
-        <main>
-          <Hero />
-          <About />
-          <Services />
-          <Projects />
-          <Alliances />
-          <Contact />
-        </main>
-        <Footer />
-        <WhatsAppButton />
-      </div>
-    </LanguageContext.Provider>
+    <NavigationProvider>
+      <AppContent />
+    </NavigationProvider>
   )
 }
 
