@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Globe } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
+import { useNavigation } from '../contexts/NavigationContext'
 import { navigationItems } from '../data/companyData'
 
 const Header: React.FC = () => {
   const { language, toggleLanguage } = useLanguage()
+  const { navigateTo } = useNavigation()
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 
@@ -19,9 +21,13 @@ const Header: React.FC = () => {
   }, [])
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+    if (href === '#contact') {
+      navigateTo('contact')
+    } else {
+      const element = document.querySelector(href)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
     }
     setIsOpen(false)
   }
@@ -39,9 +45,11 @@ const Header: React.FC = () => {
       <div className="container-custom">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <motion.div
+          <motion.button
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-3"
+            whileTap={{ scale: 0.95 }}
+            onClick={() => navigateTo('home')}
+            className="flex items-center space-x-3 cursor-pointer"
           >
             <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-secondary-600 rounded-xl flex items-center justify-center">
               <span className="text-white font-bold text-xl font-display">S</span>
@@ -54,7 +62,7 @@ const Header: React.FC = () => {
                 {language === 'es' ? 'Servicios Ambientales' : 'Environmental Services'}
               </p>
             </div>
-          </motion.div>
+          </motion.button>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
