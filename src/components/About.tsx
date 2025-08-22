@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Target, Zap, Heart, Users, Award, Shield } from 'lucide-react'
+import { Target, Zap, Heart, Users, Award, Shield, CheckCircle, Eye } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
 import { companyInfo } from '../data/companyData'
 
@@ -15,41 +15,41 @@ const About: React.FC = () => {
   const content = {
     es: {
       sectionTitle: 'Sobre Nosotros',
-      sectionSubtitle: 'Conoce la empresa que está transformando el futuro ambiental de Latinoamérica',
+      sectionSubtitle: 'Transformando desafíos ambientales en oportunidades sostenibles',
       founded: 'Fundada',
       location: 'Ubicación',
-      team: 'Equipo',
-      visionTitle: 'Nuestra Visión',
-      missionTitle: 'Nuestra Misión',
-      valuesTitle: 'Nuestros Valores',
+      vision: 'Visión',
+      mission: 'Misión',
+      values: 'Valores',
+      visionText: 'Ser el referente latinoamericano en innovación ambiental y tecnologías sostenibles, liderando el cambio hacia un continente más limpio.',
+      missionText: 'Motor de transformación sostenible en Latinoamérica, creando valor ambiental, social y económico mediante tecnologías limpias e innovadoras.',
       stats: [
         { value: '2022', label: 'Año de Fundación', icon: Award },
-        { value: '4+', label: 'Países de Operación', icon: Users },
-        { value: '15+', label: 'Proyectos Completados', icon: Target },
+        { value: 'Paraguay', label: 'Sede Principal', icon: Target },
+        { value: '15+', label: 'Proyectos Completados', icon: CheckCircle },
         { value: '100%', label: 'Compromiso Ambiental', icon: Heart }
       ]
     },
     en: {
       sectionTitle: 'About Us',
-      sectionSubtitle: 'Meet the company that is transforming the environmental future of Latin America',
+      sectionSubtitle: 'Transforming environmental challenges into sustainable opportunities',
       founded: 'Founded',
       location: 'Location',
-      team: 'Team',
-      visionTitle: 'Our Vision',
-      missionTitle: 'Our Mission',
-      valuesTitle: 'Our Values',
+      vision: 'Vision',
+      mission: 'Mission',
+      values: 'Values',
+      visionText: 'To be the Latin American reference in environmental innovation and sustainable technologies, leading the change towards a cleaner continent.',
+      missionText: 'Engine of sustainable transformation in Latin America, creating environmental, social and economic value through clean and innovative technologies.',
       stats: [
         { value: '2022', label: 'Year Founded', icon: Award },
-        { value: '4+', label: 'Countries of Operation', icon: Users },
-        { value: '15+', label: 'Completed Projects', icon: Target },
+        { value: 'Paraguay', label: 'Main Office', icon: Target },
+        { value: '15+', label: 'Completed Projects', icon: CheckCircle },
         { value: '100%', label: 'Environmental Commitment', icon: Heart }
       ]
     }
   }
 
   const currentContent = content[language]
-
-
 
   const getValueIcon = (value: string) => {
     const iconMap: { [key: string]: any } = {
@@ -70,209 +70,222 @@ const About: React.FC = () => {
   }
 
   return (
-    <section id="about" className="section-padding bg-white">
-      <div className="container-custom">
-        {/* Section Header */}
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            {currentContent.sectionTitle}
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {currentContent.sectionSubtitle}
-          </p>
-        </motion.div>
+    <section id="about" className="relative py-24 overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-primary-50" />
+      
+      {/* Organic Background Shapes */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-full opacity-30 blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-secondary-100 to-accent-100 rounded-full opacity-30 blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-accent-50 to-primary-50 rounded-full opacity-20 blur-3xl" />
+      </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
-          {/* Left Column - Company Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <div className="space-y-8">
-              {/* Company Description */}
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  {companyInfo.name}
-                </h3>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  {companyInfo.description[language]}
-                </p>
-              </div>
-
-              {/* Company Details */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                    <Award className="w-6 h-6 text-primary-600" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500 font-medium">
-                      {currentContent.founded}
-                    </p>
-                    <p className="text-lg font-semibold text-gray-900">
-                      {companyInfo.founded}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-secondary-100 rounded-lg flex items-center justify-center">
-                    <Target className="w-6 h-6 text-secondary-600" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500 font-medium">
-                      {currentContent.location}
-                    </p>
-                    <p className="text-lg font-semibold text-gray-900">
-                      {companyInfo.location}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Right Column - Stats */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="grid grid-cols-2 gap-6"
-          >
-            {currentContent.stats.map((stat, index) => {
-              const IconComponent = stat.icon
-              return (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
-                  className="bg-gradient-to-br from-primary-50 to-secondary-50 rounded-2xl p-6 text-center border border-primary-100"
-                >
-                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                    <IconComponent className="w-8 h-8 text-primary-600" />
-                  </div>
-                  <div className="text-3xl font-bold text-primary-600 mb-2">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-gray-600 font-medium">
-                    {stat.label}
-                  </div>
-                </motion.div>
-              )
-            })}
-          </motion.div>
-        </div>
-
-        {/* Vision & Mission */}
-        <div className="grid lg:grid-cols-2 gap-12 mb-20">
-          {/* Vision */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-3xl p-8 border border-primary-200"
-          >
-            <div className="w-16 h-16 bg-primary-600 rounded-2xl flex items-center justify-center mb-6">
-              <Target className="w-8 h-8 text-white" />
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              {currentContent.visionTitle}
-            </h3>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              {companyInfo.vision[language]}
-            </p>
-          </motion.div>
-
-          {/* Mission */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="bg-gradient-to-br from-secondary-50 to-secondary-100 rounded-3xl p-8 border border-secondary-200"
-          >
-            <div className="w-16 h-16 bg-secondary-600 rounded-2xl flex items-center justify-center mb-6">
-              <Zap className="w-8 h-8 text-white" />
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              {currentContent.missionTitle}
-            </h3>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              {companyInfo.mission[language]}
-            </p>
-          </motion.div>
-        </div>
-
-        {/* Values */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          className="text-center mb-12"
-        >
-          <h3 className="text-3xl font-bold text-gray-900 mb-8">
-            {currentContent.valuesTitle}
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {companyInfo.values[language].map((value, index) => {
-              const IconComponent = getValueIcon(value)
-              return (
-                <motion.div
-                  key={value}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 1.4 + index * 0.1 }}
-                  className="group cursor-pointer"
-                >
-                  <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg border-2 border-gray-100 group-hover:border-primary-300 group-hover:shadow-xl transition-all duration-300">
-                    <IconComponent className="w-10 h-10 text-primary-600 group-hover:scale-110 transition-transform duration-300" />
-                  </div>
-                  <p className="text-sm font-medium text-gray-700 group-hover:text-primary-600 transition-colors duration-300">
-                    {value}
-                  </p>
-                </motion.div>
-              )
-            })}
-          </div>
-        </motion.div>
-
-        {/* Call to Action */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 1.6 }}
-          className="text-center"
-        >
-          <div className="bg-gradient-to-r from-primary-600 to-secondary-600 rounded-3xl p-8 text-white">
-            <h3 className="text-2xl font-bold mb-4">
-              {language === 'es' 
-                ? '¿Listo para transformar tu impacto ambiental?' 
-                : 'Ready to transform your environmental impact?'
-              }
-            </h3>
-            <p className="text-lg mb-6 opacity-90">
-              {language === 'es'
-                ? 'Únete a nosotros en la construcción de un futuro más sostenible'
-                : 'Join us in building a more sustainable future'
-              }
-            </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-white text-primary-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors duration-300"
+      <div className="relative z-10">
+        {/* Section Header - Full Width */}
+        <div className="w-full px-4 sm:px-6 lg:px-8 mb-20">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              ref={ref}
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6 }}
+              className="text-center"
             >
-              {language === 'es' ? 'Contáctanos' : 'Contact Us'}
-            </motion.button>
+              <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8">
+                {currentContent.sectionTitle}
+              </h2>
+              <p className="text-2xl md:text-3xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                {currentContent.sectionSubtitle}
+              </p>
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
+
+        {/* Company Info - Expanded Layout */}
+        <div className="w-full px-4 sm:px-6 lg:px-8 mb-24">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-3 gap-16 items-start">
+              {/* Company Description - Takes 2 columns */}
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="lg:col-span-2"
+              >
+                <div className="space-y-8">
+                  {/* Company Description */}
+                  <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20">
+                    <h3 className="text-3xl font-bold text-gray-900 mb-6">
+                      {companyInfo.name}
+                    </h3>
+                    <p className="text-xl text-gray-600 leading-relaxed">
+                      {companyInfo.description[language]}
+                    </p>
+                  </div>
+
+                  {/* Company Details Grid */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-6 border border-primary-200">
+                      <div className="flex items-center space-x-4">
+                        <div className="w-14 h-14 bg-primary-500 rounded-xl flex items-center justify-center shadow-lg">
+                          <Award className="w-7 h-7 text-white" />
+                        </div>
+                        <div>
+                          <p className="text-sm text-primary-600 font-medium">
+                            {currentContent.founded}
+                          </p>
+                          <p className="text-xl font-bold text-gray-900">
+                            {companyInfo.founded}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-gradient-to-br from-secondary-50 to-secondary-100 rounded-2xl p-6 border border-secondary-200">
+                      <div className="flex items-center space-x-4">
+                        <div className="w-14 h-14 bg-secondary-500 rounded-xl flex items-center justify-center shadow-lg">
+                          <Target className="w-7 h-7 text-white" />
+                        </div>
+                        <div>
+                          <p className="text-sm text-secondary-600 font-medium">
+                            {currentContent.location}
+                          </p>
+                          <p className="text-xl font-bold text-gray-900">
+                            {companyInfo.location}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Stats - Right Column */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="space-y-6"
+              >
+                {currentContent.stats.map((stat, index) => {
+                  const IconComponent = stat.icon
+                  return (
+                    <motion.div
+                      key={stat.label}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={inView ? { opacity: 1, scale: 1 } : {}}
+                      transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                      className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                    >
+                      <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-secondary-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                        <IconComponent className="w-8 h-8 text-white" />
+                      </div>
+                      <div className="text-2xl font-bold text-primary-600 mb-2 text-center">
+                        {stat.value}
+                      </div>
+                      <div className="text-sm text-gray-600 font-medium text-center">
+                        {stat.label}
+                      </div>
+                    </motion.div>
+                  )
+                })}
+              </motion.div>
+            </div>
+          </div>
+        </div>
+
+        {/* Vision & Mission - Full Width Background */}
+        <div className="w-full bg-gradient-to-r from-primary-600 to-secondary-600 py-20 mb-24">
+          <div className="w-full px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto">
+              <div className="grid lg:grid-cols-2 gap-16">
+                {/* Vision */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="text-center lg:text-left"
+                >
+                  <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
+                    <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto lg:mx-0 mb-6">
+                      <Eye className="w-10 h-10 text-white" />
+                    </div>
+                    <h3 className="text-3xl font-bold text-white mb-6">
+                      {currentContent.vision}
+                    </h3>
+                    <p className="text-lg text-white/90 leading-relaxed">
+                      {currentContent.visionText}
+                    </p>
+                  </div>
+                </motion.div>
+
+                {/* Mission */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="text-center lg:text-left"
+                >
+                  <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
+                    <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto lg:mx-0 mb-6">
+                      <Target className="w-10 h-10 text-white" />
+                    </div>
+                    <h3 className="text-3xl font-bold text-white mb-6">
+                      {currentContent.mission}
+                    </h3>
+                    <p className="text-lg text-white/90 leading-relaxed">
+                      {currentContent.missionText}
+                    </p>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Values - Grid Layout */}
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h3 className="text-4xl font-bold text-gray-900 mb-6">
+                {currentContent.values}
+              </h3>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {Object.entries(companyInfo.values[language]).map(([key, value], index) => {
+                const IconComponent = getValueIcon(key)
+                return (
+                  <motion.div
+                    key={key}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
+                    className="group"
+                  >
+                    <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group-hover:border-primary-200">
+                      <div className="w-16 h-16 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <IconComponent className="w-8 h-8 text-primary-600" />
+                      </div>
+                      <h4 className="text-xl font-bold text-gray-900 mb-4 text-center">
+                        {key}
+                      </h4>
+                      <p className="text-gray-600 text-center leading-relaxed">
+                        {value}
+                      </p>
+                    </div>
+                  </motion.div>
+                )
+              })}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )

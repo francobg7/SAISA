@@ -38,6 +38,20 @@ export interface Project {
     en: string
   }
   year: number
+  color: string
+  stats: {
+    impact: string
+    duration: string
+  }
+  objective: {
+    es: string
+    en: string
+  }
+  results: {
+    es: string
+    en: string
+  }
+  technologies: string[]
 }
 
 export interface Alliance {

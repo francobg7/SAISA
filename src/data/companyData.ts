@@ -153,13 +153,13 @@ export const services: Service[] = [
 
 export const projects: Project[] = [
   {
-    id: 'industrial-waste-paraguay',
+    id: 'waste-management-paraguay',
     title: {
-      es: 'Gestión de Residuos Industriales - Paraguay',
-      en: 'Industrial Waste Management - Paraguay'
+      es: 'Gestión Integral de Residuos - Paraguay',
+      en: 'Integrated Waste Management - Paraguay'
     },
     description: {
-      es: 'Proyecto piloto para la gestión integral de residuos industriales en el área metropolitana de Asunción.',
+      es: 'Proyecto piloto para la gestión integrada de residuos industriales en el área metropolitana de Asunción.',
       en: 'Pilot project for integrated industrial waste management in the metropolitan area of Asunción.'
     },
     image: '/images/projects/industrial-waste.jpg',
@@ -171,7 +171,21 @@ export const projects: Project[] = [
       es: 'Reducción del 60% en residuos enviados a vertederos',
       en: '60% reduction in waste sent to landfills'
     },
-    year: 2023
+    year: 2023,
+    color: 'from-green-500 to-green-600',
+    stats: {
+      impact: '60%',
+      duration: '6 meses'
+    },
+    objective: {
+      es: 'Implementar un sistema integral de gestión de residuos industriales para reducir el impacto ambiental',
+      en: 'Implement an integrated industrial waste management system to reduce environmental impact'
+    },
+    results: {
+      es: 'Reducción significativa de residuos enviados a vertederos y mejora en la eficiencia del reciclaje',
+      en: 'Significant reduction in waste sent to landfills and improvement in recycling efficiency'
+    },
+    technologies: ['IoT Sensors', 'AI Analytics', 'Recycling Systems', 'Waste Tracking']
   },
   {
     id: 'water-reuse-argentina',
@@ -192,7 +206,21 @@ export const projects: Project[] = [
       es: 'Ahorro del 40% en consumo de agua potable',
       en: '40% savings in drinking water consumption'
     },
-    year: 2023
+    year: 2023,
+    color: 'from-blue-500 to-blue-600',
+    stats: {
+      impact: '40%',
+      duration: '8 meses'
+    },
+    objective: {
+      es: 'Desarrollar un sistema sostenible de reutilización de aguas para agricultura',
+      en: 'Develop a sustainable water reuse system for agriculture'
+    },
+    results: {
+      es: 'Ahorro significativo de agua potable y mejora en la productividad agrícola',
+      en: 'Significant savings in drinking water and improvement in agricultural productivity'
+    },
+    technologies: ['Water Filtration', 'UV Treatment', 'Smart Irrigation', 'Water Quality Monitoring']
   },
   {
     id: 'air-quality-chile',
@@ -213,7 +241,21 @@ export const projects: Project[] = [
       es: 'Monitoreo en tiempo real de 15 parámetros',
       en: 'Real-time monitoring of 15 parameters'
     },
-    year: 2024
+    year: 2024,
+    color: 'from-purple-500 to-purple-600',
+    stats: {
+      impact: '15+',
+      duration: '12 meses'
+    },
+    objective: {
+      es: 'Crear una red de monitoreo de calidad del aire para mejorar la salud pública',
+      en: 'Create an air quality monitoring network to improve public health'
+    },
+    results: {
+      es: 'Sistema de alertas tempranas y datos en tiempo real para la toma de decisiones',
+      en: 'Early warning system and real-time data for decision making'
+    },
+    technologies: ['Air Quality Sensors', 'Data Analytics', 'Mobile App', 'Cloud Platform']
   }
 ]
 
