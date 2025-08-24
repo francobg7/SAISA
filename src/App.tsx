@@ -6,8 +6,11 @@ import About from './components/About'
 import Services from './components/Services'
 import Projects from './components/Projects'
 import Alliances from './components/Alliances'
-
 import ContactPage from './components/ContactPage'
+import AboutPage from './components/AboutPage'
+import ServicesPage from './components/ServicesPage'
+import ProjectsPage from './components/ProjectsPage'
+import AlliancesPage from './components/AlliancesPage'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
 import LanguageContext from './contexts/LanguageContext'
@@ -22,36 +25,43 @@ function AppContent() {
     setLanguage(language === 'es' ? 'en' : 'es')
   }
 
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'about':
+        return <AboutPage />
+      case 'services':
+        return <ServicesPage />
+      case 'projects':
+        return <ProjectsPage />
+      case 'alliances':
+        return <AlliancesPage />
+      case 'contact':
+        return <ContactPage />
+      default:
+        return (
+          <motion.main
+            key="home"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Hero />
+            <About />
+            <Services />
+            <Projects />
+            <Alliances />
+          </motion.main>
+        )
+    }
+  }
+
   return (
     <LanguageContext.Provider value={{ language, toggleLanguage }}>
       <div className="min-h-screen bg-white">
         <Header />
         <AnimatePresence mode="wait">
-          {currentPage === 'home' ? (
-            <motion.main
-              key="home"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-                             <Hero />
-               <About />
-               <Services />
-               <Projects />
-               <Alliances />
-            </motion.main>
-          ) : (
-            <motion.div
-              key="contact"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <ContactPage />
-            </motion.div>
-          )}
+          {renderPage()}
         </AnimatePresence>
         <Footer />
         <WhatsAppButton />
@@ -64,11 +74,9 @@ function App() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    // Simulate loading time
     const timer = setTimeout(() => {
       setIsLoading(false)
     }, 1000)
-
     return () => clearTimeout(timer)
   }, [])
 
