@@ -23,6 +23,14 @@ const Header: React.FC = () => {
   const scrollToSection = (href: string) => {
     if (href === '#contact') {
       navigateTo('contact')
+    } else if (href === '#about') {
+      navigateTo('about')
+    } else if (href === '#services') {
+      navigateTo('services')
+    } else if (href === '#projects') {
+      navigateTo('projects')
+    } else if (href === '#alliances') {
+      navigateTo('alliances')
     } else {
       const element = document.querySelector(href)
       if (element) {
