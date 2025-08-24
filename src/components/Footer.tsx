@@ -62,6 +62,25 @@ const Footer: React.FC = () => {
     return iconMap[iconName] || '🔗'
   }
 
+  const handleNavigation = (href: string) => {
+    if (href === '#contact') {
+      navigateTo('contact')
+    } else if (href === '#about') {
+      navigateTo('about')
+    } else if (href === '#services') {
+      navigateTo('services')
+    } else if (href === '#projects') {
+      navigateTo('projects')
+    } else if (href === '#alliances') {
+      navigateTo('alliances')
+    } else {
+      const element = document.querySelector(href)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+  }
+
   return (
     <footer className="bg-gray-900 text-white relative">
       {/* Background Pattern */}
@@ -131,13 +150,7 @@ const Footer: React.FC = () => {
                 {navigationItems.slice(1, -1).map((item) => (
                   <li key={item.id}>
                     <button
-                      onClick={() => {
-                        if (item.href === '#contact') {
-                          navigateTo('contact')
-                        } else {
-                          document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' })
-                        }
-                      }}
+                      onClick={() => handleNavigation(item.href)}
                       className="text-gray-300 hover:text-primary-400 transition-colors duration-200 text-sm"
                     >
                       {item.label[language]}
