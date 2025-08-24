@@ -1,0 +1,437 @@
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import { Target, CheckCircle, ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react'
+import { useLanguage } from '../contexts/LanguageContext'
+import { useNavigation } from '../contexts/NavigationContext'
+import { projects } from '../data/companyData'
+
+const ProjectsPage: React.FC = () => {
+  const { language } = useLanguage()
+  const { navigateTo } = useNavigation()
+  const [selectedCategory, setSelectedCategory] = useState<string>('all')
+  const [selectedProject, setSelectedProject] = useState<string | null>(null)
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1
+  })
+
+  const content = {
+    es: {
+      pageTitle: 'Nuestros Proyectos',
+      pageSubtitle: 'Soluciones ambientales implementadas con éxito en Latinoamérica',
+      backToHome: 'Volver al Inicio',
+      learnMore: 'Saber Más',
+      viewDetails: 'Ver Detalles',
+      contactUs: 'Contáctanos',
+      features: 'Características',
+      getQuote: 'Solicitar Cotización',
+      haveProject: '¿Tienes un Proyecto en Mente?',
+      haveProjectText: 'Conversemos sobre cómo podemos ayudarte a implementar soluciones ambientales innovadoras',
+      startConversation: 'Iniciar Conversación',
+      allProjects: 'Todos',
+      keyFeatures: 'Características Principales',
+      projectDetails: 'Detalles del Proyecto',
+      objective: 'Objetivo',
+      results: 'Resultados',
+      technologiesUsed: 'Tecnologías Utilizadas',
+      consultSimilar: 'Consultar Proyecto Similar'
+    },
+    en: {
+      pageTitle: 'Our Projects',
+      pageSubtitle: 'Environmental solutions successfully implemented in Latin America',
+      backToHome: 'Back to Home',
+      learnMore: 'Learn More',
+      viewDetails: 'View Details',
+      contactUs: 'Contact Us',
+      features: 'Features',
+      getQuote: 'Request Quote',
+      haveProject: 'Have a Project in Mind?',
+      haveProjectText: 'Let\'s talk about how we can help you implement innovative environmental solutions',
+      startConversation: 'Start Conversation',
+      allProjects: 'All',
+      keyFeatures: 'Key Features',
+      projectDetails: 'Project Details',
+      objective: 'Objective',
+      results: 'Results',
+      technologiesUsed: 'Technologies Used',
+      consultSimilar: 'Consult Similar Project'
+    }
+  }
+
+  const currentContent = content[language]
+
+  const filteredProjects = selectedCategory === 'all' 
+    ? projects 
+    : projects.filter(p => p.category[language] === selectedCategory)
+
+  const handleProjectClick = (projectId: string) => {
+    setSelectedProject(selectedProject === projectId ? null : projectId)
+  }
+
+  const handleContactClick = () => {
+    const message = language === 'es'
+      ? 'Hola, me interesa conocer más sobre los proyectos de SAISA'
+      : 'Hello, I am interested in learning more about SAISA projects'
+    
+    const whatsappUrl = `https://wa.me/+595984774091?text=${encodeURIComponent(message)}`
+    window.open(whatsappUrl, '_blank')
+  }
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % Math.ceil(filteredProjects.length / 3))
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + Math.ceil(filteredProjects.length / 3)) % Math.ceil(filteredProjects.length / 3))
+  }
+
+  const goToSlide = (slideIndex: number) => {
+    setCurrentSlide(slideIndex)
+  }
+
+  const goBack = () => {
+    navigateTo('home')
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-primary-50">
+      {/* Custom Header */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="bg-white/90 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            <div className="flex items-center space-x-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={goBack}
+                className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors duration-300"
+              >
+                <ArrowLeft className="w-5 h-5" />
+                <span className="font-medium">{currentContent.backToHome}</span>
+              </motion.button>
+            </div>
+            
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => navigateTo('home')}
+              className="flex items-center space-x-3 cursor-pointer"
+            >
+              <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-secondary-600 rounded-xl flex items-center justify-center">
+                <span className="text-white font-bold text-xl font-display">S</span>
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-gray-900 font-display">SAISA</h1>
+                <p className="text-xs text-gray-600 -mt-1">
+                  {language === 'es' ? 'Servicios Ambientales' : 'Environmental Services'}
+                </p>
+              </div>
+            </motion.button>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Page Header */}
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-center mb-20"
+        >
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8">
+            {currentContent.pageTitle}
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            {currentContent.pageSubtitle}
+          </p>
+        </motion.div>
+
+        {/* Category Filter - Full Width */}
+        <div className="mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex flex-wrap justify-center gap-4"
+          >
+            {['all', ...Array.from(new Set(projects.map(p => p.category[language])))].map((category) => (
+              <motion.button
+                key={category}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                  selectedCategory === category
+                    ? 'bg-primary-600 text-white shadow-lg shadow-primary-500/30'
+                    : 'bg-white/80 backdrop-blur-sm text-gray-700 border border-gray-200 hover:bg-primary-50 hover:border-primary-200'
+                }`}
+              >
+                {category === 'all' 
+                  ? currentContent.allProjects
+                  : category
+                }
+              </motion.button>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Projects Carousel - Full Width */}
+        <div className="mb-20">
+          <div className="relative">
+            {/* Carousel Container */}
+            <div className="overflow-hidden">
+              <motion.div
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              >
+                {Array.from({ length: Math.ceil(filteredProjects.length / 3) }, (_, slideIndex) => (
+                  <div key={slideIndex} className="w-full flex-shrink-0">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                      {filteredProjects.slice(slideIndex * 3, slideIndex * 3 + 3).map((project, index) => (
+                        <motion.div
+                          key={project.id}
+                          initial={{ opacity: 0, y: 30 }}
+                          animate={inView ? { opacity: 1, y: 0 } : {}}
+                          transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                          className="group"
+                        >
+                          <div 
+                            className="bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
+                            onClick={() => handleProjectClick(project.id)}
+                          >
+                            {/* Project Image */}
+                            <div className="relative h-64 overflow-hidden">
+                              <div className={`w-full h-full bg-gradient-to-br ${project.color} opacity-80`} />
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/30">
+                                  <Target className="w-10 h-10 text-white" />
+                                </div>
+                              </div>
+                              <div className="absolute top-4 right-4">
+                                <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-xs font-medium text-gray-700 rounded-full border border-white/50">
+                                  {project.category[language]}
+                                </span>
+                              </div>
+                            </div>
+
+                            {/* Project Content */}
+                            <div className="p-6">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors duration-300">
+                                {project.title[language]}
+                              </h3>
+                              <p className="text-gray-600 mb-4 leading-relaxed">
+                                {project.description[language]}
+                              </p>
+                              
+                              {/* Project Stats */}
+                              <div className="grid grid-cols-2 gap-4 mb-6">
+                                <div className="text-center">
+                                  <div className="text-2xl font-bold text-primary-600">
+                                    {project.stats.impact}
+                                  </div>
+                                  <div className="text-xs text-gray-500">
+                                    {language === 'es' ? 'Impacto' : 'Impact'}
+                                  </div>
+                                </div>
+                                <div className="text-center">
+                                  <div className="text-2xl font-bold text-secondary-600">
+                                    {project.stats.duration}
+                                  </div>
+                                  <div className="text-xs text-gray-500">
+                                    {language === 'es' ? 'Duración' : 'Duration'}
+                                  </div>
+                                </div>
+                              </div>
+
+                              {/* Action Button */}
+                              <motion.button
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                                onClick={(e) => {
+                                  e.stopPropagation()
+                                  handleProjectClick(project.id)
+                                }}
+                                className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-medium py-3 px-6 rounded-xl hover:shadow-lg transition-all duration-300"
+                              >
+                                {currentContent.viewDetails}
+                              </motion.button>
+                            </div>
+                          </div>
+
+                          {/* Expanded Project Details */}
+                          <AnimatePresence>
+                            {selectedProject === project.id && (
+                              <motion.div
+                                initial={{ opacity: 0, height: 0, y: -20 }}
+                                animate={{ opacity: 1, height: 'auto', y: 0 }}
+                                exit={{ opacity: 0, height: 0, y: -20 }}
+                                transition={{ duration: 0.4, ease: "easeInOut" }}
+                                className="mt-8"
+                              >
+                                <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
+                                  <div className="grid md:grid-cols-2 gap-8">
+                                    {/* Project Details */}
+                                    <div>
+                                      <h4 className="text-2xl font-bold text-gray-900 mb-6">
+                                        {currentContent.projectDetails}
+                                      </h4>
+                                      <div className="space-y-4">
+                                        <div className="bg-gradient-to-r from-primary-50 to-primary-100 rounded-2xl p-4 border border-primary-200">
+                                          <div className="flex items-center space-x-3 mb-2">
+                                            <div className="w-8 h-8 bg-primary-500 rounded-lg flex items-center justify-center">
+                                              <Target className="w-4 h-4 text-white" />
+                                            </div>
+                                            <span className="font-semibold text-gray-900">
+                                              {currentContent.objective}
+                                            </span>
+                                          </div>
+                                          <p className="text-gray-700 text-sm">
+                                            {project.objective[language]}
+                                          </p>
+                                        </div>
+                                        
+                                        <div className="bg-gradient-to-r from-secondary-50 to-secondary-100 rounded-2xl p-4 border border-secondary-200">
+                                          <div className="flex items-center space-x-3 mb-2">
+                                            <div className="w-8 h-8 bg-secondary-500 rounded-lg flex items-center justify-center">
+                                              <CheckCircle className="w-4 h-4 text-white" />
+                                            </div>
+                                            <span className="font-semibold text-gray-900">
+                                              {currentContent.results}
+                                            </span>
+                                          </div>
+                                          <p className="text-gray-700 text-sm">
+                                            {project.results[language]}
+                                          </p>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    {/* Technologies Used */}
+                                    <div>
+                                      <h4 className="text-2xl font-bold text-gray-900 mb-6">
+                                        {currentContent.technologiesUsed}
+                                      </h4>
+                                      <div className="grid grid-cols-2 gap-3">
+                                        {project.technologies.map((tech, techIndex) => (
+                                          <div key={techIndex} className="bg-gray-50 rounded-xl p-3 text-center border border-gray-200">
+                                            <span className="text-sm font-medium text-gray-700">{tech}</span>
+                                          </div>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  {/* Call to Action */}
+                                  <div className="mt-8 pt-8 border-t border-gray-200 text-center">
+                                    <motion.button
+                                      whileHover={{ scale: 1.05 }}
+                                      whileTap={{ scale: 0.95 }}
+                                      onClick={handleContactClick}
+                                      className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-semibold py-4 px-8 rounded-xl hover:shadow-xl transition-all duration-300"
+                                    >
+                                      {currentContent.consultSimilar}
+                                    </motion.button>
+                                  </div>
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Carousel Navigation */}
+            {filteredProjects.length > 3 && (
+              <>
+                {/* Previous Button */}
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={prevSlide}
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg border border-gray-200 hover:bg-white transition-all duration-300 z-10"
+                >
+                  <ChevronLeft className="w-6 h-6 text-gray-700" />
+                </motion.button>
+
+                {/* Next Button */}
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={nextSlide}
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg border border-gray-200 hover:bg-white transition-all duration-300 z-10"
+                >
+                  <ChevronRight className="w-6 h-6 text-gray-700" />
+                </motion.button>
+
+                {/* Dots Indicator */}
+                <div className="flex justify-center mt-8 space-x-2">
+                  {Array.from({ length: Math.ceil(filteredProjects.length / 3) }, (_, index) => (
+                    <motion.button
+                      key={index}
+                      whileHover={{ scale: 1.2 }}
+                      whileTap={{ scale: 0.8 }}
+                      onClick={() => goToSlide(index)}
+                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                        currentSlide === index
+                          ? 'bg-primary-600 scale-125'
+                          : 'bg-gray-300 hover:bg-gray-400'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+
+        {/* Call to Action Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="bg-gradient-to-r from-secondary-600 to-primary-600 rounded-3xl p-12 text-center text-white relative overflow-hidden"
+        >
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 right-0 w-32 h-32 border-2 border-white rounded-full" />
+            <div className="absolute bottom-0 left-0 w-24 h-24 border-2 border-white rounded-full" />
+            <div className="absolute top-1/2 right-1/4 w-20 h-20 border-2 border-white rounded-full" />
+          </div>
+          
+          <div className="relative z-10">
+            <h3 className="text-4xl font-bold mb-6">
+              {currentContent.haveProject}
+            </h3>
+            <p className="text-xl mb-8 opacity-90 max-w-3xl mx-auto">
+              {currentContent.haveProjectText}
+            </p>
+            <motion.button
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={handleContactClick}
+              className="bg-white text-secondary-600 font-semibold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors duration-300 shadow-xl"
+            >
+              {currentContent.startConversation}
+            </motion.button>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  )
+}
+
+export default ProjectsPage
