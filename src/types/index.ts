@@ -106,8 +106,4 @@ export interface CompanyInfo {
     es: string
     en: string
   }
-  values: {
-    es: string[]
-    en: string[]
-  }
 }
