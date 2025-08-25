@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Target, Zap, Heart, Users, Award, Shield, CheckCircle, Eye } from 'lucide-react'
+import { Target, Heart, Award, CheckCircle, Eye } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
 import { companyInfo } from '../data/companyData'
 
@@ -20,7 +20,7 @@ const About: React.FC = () => {
       location: 'Ubicación',
       vision: 'Visión',
       mission: 'Misión',
-      values: 'Valores',
+
       visionText: 'Ser el referente latinoamericano en innovación ambiental y tecnologías sostenibles, liderando el cambio hacia un continente más limpio.',
       missionText: 'Motor de transformación sostenible en Latinoamérica, creando valor ambiental, social y económico mediante tecnologías limpias e innovadoras.',
       stats: [
@@ -37,7 +37,7 @@ const About: React.FC = () => {
       location: 'Location',
       vision: 'Vision',
       mission: 'Mission',
-      values: 'Values',
+
       visionText: 'To be the Latin American reference in environmental innovation and sustainable technologies, leading the change towards a cleaner continent.',
       missionText: 'Engine of sustainable transformation in Latin America, creating environmental, social and economic value through clean and innovative technologies.',
       stats: [
@@ -51,23 +51,7 @@ const About: React.FC = () => {
 
   const currentContent = content[language]
 
-  const getValueIcon = (value: string) => {
-    const iconMap: { [key: string]: any } = {
-      'Sostenibilidad': Shield,
-      'Sustainability': Shield,
-      'Innovación': Zap,
-      'Innovation': Zap,
-      'Integridad': Shield,
-      'Integrity': Shield,
-      'Colaboración': Users,
-      'Collaboration': Users,
-      'Excelencia': Award,
-      'Excellence': Award,
-      'Resiliencia': Heart,
-      'Resilience': Heart
-    }
-    return iconMap[value] || Target
-  }
+
 
   return (
     <section id="about" className="relative py-24 overflow-hidden">
@@ -244,48 +228,7 @@ const About: React.FC = () => {
           </div>
         </div>
 
-        {/* Values - Grid Layout */}
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-center mb-16"
-            >
-              <h3 className="text-4xl font-bold text-gray-900 mb-6">
-                {currentContent.values}
-              </h3>
-            </motion.div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {Object.entries(companyInfo.values[language]).map(([key, value], index) => {
-                const IconComponent = getValueIcon(key)
-                return (
-                  <motion.div
-                    key={key}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                    className="group"
-                  >
-                    <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group-hover:border-primary-200">
-                      <div className="w-16 h-16 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <IconComponent className="w-8 h-8 text-primary-600" />
-                      </div>
-                      <h4 className="text-xl font-bold text-gray-900 mb-4 text-center">
-                        {key}
-                      </h4>
-                      <p className="text-gray-600 text-center leading-relaxed">
-                        {value}
-                      </p>
-                    </div>
-                  </motion.div>
-                )
-              })}
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   )
