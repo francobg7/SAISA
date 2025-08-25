@@ -57,19 +57,13 @@ const Header: React.FC = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => navigateTo('home')}
-            className="flex items-center space-x-3 cursor-pointer"
+            className="cursor-pointer"
           >
-            <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-secondary-600 rounded-xl flex items-center justify-center">
-              <span className="text-white font-bold text-xl font-display">S</span>
-            </div>
-            <div className="hidden sm:block">
-              <h1 className="text-xl font-bold text-gray-900 font-display">
-                SAISA
-              </h1>
-              <p className="text-xs text-gray-600 -mt-1">
-                {language === 'es' ? 'Servicios Ambientales' : 'Environmental Services'}
-              </p>
-            </div>
+            <img 
+              src="/logos/saisa.png" 
+              alt="SAISA Logo" 
+              className="w-20 h-20 lg:w-24 lg:h-24 object-contain"
+            />
           </motion.button>
 
           {/* Desktop Navigation */}
