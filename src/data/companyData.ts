@@ -18,10 +18,7 @@ export const companyInfo: CompanyInfo = {
     es: 'Motor de transformación sostenible en Latinoamérica, creando valor ambiental, social y económico mediante tecnologías limpias e innovadoras.',
     en: 'Engine of sustainable transformation in Latin America, creating environmental, social and economic value through clean and innovative technologies.'
   },
-  values: {
-    es: ['Sostenibilidad', 'Innovación', 'Integridad', 'Colaboración', 'Excelencia', 'Resiliencia'],
-    en: ['Sustainability', 'Innovation', 'Integrity', 'Collaboration', 'Excellence', 'Resilience']
-  }
+
 }
 
 export const navigationItems: NavigationItem[] = [
