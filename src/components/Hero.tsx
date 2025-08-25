@@ -16,109 +16,27 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Animated Background */}
+      {/* Professional Green Background */}
       <div className="absolute inset-0">
-        <svg
-          className="w-full h-full"
-          viewBox="0 0 1200 800"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {/* Grid Pattern */}
-          <defs>
-            <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-              <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(34, 197, 94, 0.1)" strokeWidth="1"/>
-            </pattern>
-            <linearGradient id="organicGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="rgba(34, 197, 94, 0.1)" />
-              <stop offset="100%" stopColor="rgba(59, 130, 246, 0.1)" />
-            </linearGradient>
-          </defs>
-          
-          {/* Background Elements */}
-          <rect width="100%" height="100%" fill="url(#grid)" />
-          
-          {/* Organic Shapes */}
-          <path
-            d="M 0 600 Q 300 500 600 600 T 1200 650 L 1200 800 L 0 800 Z"
-            fill="url(#organicGradient)"
-            opacity="0.3"
-          />
-          
-          {/* Environmental Icons */}
-          <g className="opacity-20">
-            {/* Leaf */}
-            <motion.path
-              d="M 200 200 Q 220 180 240 200 T 280 220 Q 260 240 240 220 T 200 200"
-              fill="rgba(34, 197, 94, 0.3)"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.3 }}
-              transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
-            />
-            
-            {/* Recycling Symbol */}
-            <motion.circle
-              cx="1000"
-              cy="300"
-              r="40"
-              fill="none"
-              stroke="rgba(59, 130, 246, 0.3)"
-              strokeWidth="3"
-              initial={{ rotate: 0 }}
-              animate={{ rotate: 360 }}
-              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-            />
-            
-            {/* Water Drop */}
-            <motion.path
-              d="M 150 400 Q 170 380 190 400 T 210 420 Q 190 440 170 420 T 150 400"
-              fill="rgba(59, 130, 246, 0.3)"
-              initial={{ y: 0 }}
-              animate={{ y: -20 }}
-              transition={{ duration: 4, repeat: Infinity, repeatType: "reverse" }}
-            />
-            
-            {/* Wind Turbine */}
-            <motion.path
-              d="M 900 500 L 900 600 M 850 550 L 950 550 M 850 570 L 950 570"
-              stroke="rgba(34, 197, 94, 0.3)"
-              strokeWidth="4"
-              initial={{ rotate: 0 }}
-              animate={{ rotate: 5 }}
-              transition={{ duration: 6, repeat: Infinity, repeatType: "reverse" }}
-            />
-          </g>
-        </svg>
+        {/* Subtle gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50"></div>
         
-        {/* Floating Elements */}
-        <motion.div
-          className="absolute top-20 left-20 w-32 h-32 bg-gradient-to-br from-primary-200 to-secondary-200 rounded-full opacity-20"
-          animate={{ 
-            y: [0, -30, 0],
-            rotate: [0, 180, 360],
-            scale: [1, 1.1, 1]
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
+        {/* Professional geometric patterns */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_80%,rgba(16,185,129,0.1)_0%,transparent_50%)]"></div>
+          <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_20%,rgba(5,150,105,0.1)_0%,transparent_50%)]"></div>
+          <div className="absolute bottom-0 left-0 w-full h-full bg-[radial-gradient(circle_at_40%_40%,rgba(6,182,212,0.1)_0%,transparent_50%)]"></div>
+        </div>
         
-        <motion.div
-          className="absolute top-40 right-32 w-24 h-24 bg-gradient-to-br from-secondary-200 to-accent-200 rounded-full opacity-15"
-          animate={{ 
-            y: [0, 20, 0],
-            rotate: [0, -180, -360],
-            scale: [1, 0.9, 1]
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        />
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="w-full h-full bg-[linear-gradient(rgba(16,185,129,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.1)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+        </div>
         
-        <motion.div
-          className="absolute bottom-32 left-1/3 w-20 h-20 bg-gradient-to-br from-accent-200 to-primary-200 rounded-full opacity-20"
-          animate={{ 
-            y: [0, -15, 0],
-            x: [0, 10, 0],
-            scale: [1, 1.2, 1]
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        />
+        {/* Professional accent elements */}
+        <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-emerald-100/20 to-teal-100/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-40 right-32 w-48 h-48 bg-gradient-to-br from-green-100/20 to-emerald-100/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-32 left-1/3 w-32 h-32 bg-gradient-to-br from-teal-100/20 to-cyan-100/20 rounded-full blur-3xl"></div>
       </div>
 
       {/* Content */}
@@ -138,7 +56,7 @@ const Hero: React.FC = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="mb-8"
               >
-                <span className="inline-block px-6 py-3 bg-gradient-to-r from-primary-100 to-secondary-100 text-primary-700 rounded-full text-sm font-medium border border-primary-200 shadow-sm">
+                <span className="inline-block px-6 py-3 bg-gradient-to-r from-emerald-100 via-green-100 to-teal-100 text-emerald-800 rounded-full text-sm font-medium border border-emerald-200 shadow-sm">
                   {language === 'es' ? 'Innovación Ambiental' : 'Environmental Innovation'}
                 </span>
               </motion.div>
@@ -172,14 +90,14 @@ const Hero: React.FC = () => {
                 <motion.button
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="btn-primary text-lg px-8 py-4 shadow-xl"
+                  className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white text-lg px-8 py-4 shadow-xl rounded-lg font-semibold transition-all duration-300"
                 >
                   {content.ctaPrimary}
                 </motion.button>
                 <motion.button
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="btn-outline text-lg px-8 py-4 border-2"
+                  className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white text-lg px-8 py-4 rounded-lg font-semibold transition-all duration-300"
                 >
                   {content.ctaSecondary}
                 </motion.button>
@@ -194,7 +112,7 @@ const Hero: React.FC = () => {
               className="relative flex items-center justify-center"
             >
               <motion.img
-                src="/earth-globe.png"
+                src="/hero/earth-globe.png"
                 alt="Earth Globe - Environmental Sustainability"
                 className="w-full h-auto max-w-none object-contain scale-200 lg:scale-300 xl:scale-400 2xl:scale-500"
                 style={{ filter: 'drop-shadow(0 25px 50px rgba(0, 0, 0, 0.15))' }}
