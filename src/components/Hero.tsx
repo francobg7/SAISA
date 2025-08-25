@@ -186,65 +186,31 @@ const Hero: React.FC = () => {
               </motion.div>
             </motion.div>
 
-            {/* Right Column - Visual Element */}
+            {/* Right Column - Earth Image */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="relative"
+              className="relative flex items-center justify-center"
             >
-              <div className="relative">
-                {/* Main Visual Container */}
-                <div className="relative w-full h-96 lg:h-[500px] bg-gradient-to-br from-primary-50 via-white to-secondary-50 rounded-3xl overflow-hidden shadow-2xl border border-primary-100">
-                  {/* Floating Elements Inside */}
-                  <motion.div
-                    className="absolute top-10 left-10 w-20 h-20 bg-gradient-to-br from-primary-400 to-secondary-500 rounded-full shadow-lg"
-                    animate={{ 
-                      y: [0, -10, 0],
-                      rotate: [0, 180, 360]
-                    }}
-                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  />
-                  
-                  <motion.div
-                    className="absolute top-20 right-16 w-16 h-16 bg-gradient-to-br from-secondary-400 to-accent-500 rounded-full shadow-lg"
-                    animate={{ 
-                      y: [0, 15, 0],
-                      scale: [1, 1.2, 1]
-                    }}
-                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                  />
-                  
-                  <motion.div
-                    className="absolute bottom-20 left-1/4 w-24 h-24 bg-gradient-to-br from-accent-400 to-primary-500 rounded-full shadow-lg"
-                    animate={{ 
-                      x: [0, 10, 0],
-                      rotate: [0, -180, -360]
-                    }}
-                    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-                  />
-                  
-                  {/* Central Icon */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <motion.div
-                      className="w-32 h-32 bg-gradient-to-br from-primary-500 to-secondary-600 rounded-full flex items-center justify-center shadow-2xl"
-                      animate={{ 
-                        scale: [1, 1.1, 1],
-                        rotate: [0, 5, -5, 0]
-                      }}
-                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    >
-                      <svg className="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                      </svg>
-                    </motion.div>
-                  </div>
-                </div>
-                
-                {/* Decorative Elements */}
-                <div className="absolute -top-4 -right-4 w-8 h-8 bg-accent-400 rounded-full shadow-lg" />
-                <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-primary-400 rounded-full shadow-lg" />
-              </div>
+              <motion.img
+                src="/earth-globe.png"
+                alt="Earth Globe - Environmental Sustainability"
+                className="w-full h-auto max-w-none object-contain scale-200 lg:scale-300 xl:scale-400 2xl:scale-500"
+                style={{ filter: 'drop-shadow(0 25px 50px rgba(0, 0, 0, 0.15))' }}
+                animate={{ 
+                  scale: [1, 1.3, 1],
+                  y: [0, -10, 0]
+                }}
+                transition={{ 
+                  scale: { duration: 8, repeat: Infinity, ease: "easeInOut" },
+                  y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+                }}
+                whileHover={{ 
+                  scale: 1.05,
+                  filter: 'drop-shadow(0 30px 60px rgba(0, 0, 0, 0.2))'
+                }}
+              />
             </motion.div>
           </div>
         </div>
