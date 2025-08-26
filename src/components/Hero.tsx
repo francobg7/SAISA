@@ -15,30 +15,7 @@ const Hero: React.FC = () => {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Professional Green Background */}
-      <div className="absolute inset-0">
-        {/* Subtle gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50"></div>
-        
-        {/* Professional geometric patterns */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_80%,rgba(16,185,129,0.1)_0%,transparent_50%)]"></div>
-          <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_20%,rgba(5,150,105,0.1)_0%,transparent_50%)]"></div>
-          <div className="absolute bottom-0 left-0 w-full h-full bg-[radial-gradient(circle_at_40%_40%,rgba(6,182,212,0.1)_0%,transparent_50%)]"></div>
-        </div>
-        
-        {/* Subtle grid pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="w-full h-full bg-[linear-gradient(rgba(16,185,129,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.1)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
-        </div>
-        
-        {/* Professional accent elements */}
-        <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-br from-emerald-100/20 to-teal-100/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-40 right-32 w-48 h-48 bg-gradient-to-br from-green-100/20 to-emerald-100/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-32 left-1/3 w-32 h-32 bg-gradient-to-br from-teal-100/20 to-cyan-100/20 rounded-full blur-3xl"></div>
-      </div>
-
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50">
       {/* Content */}
       <div className="w-full px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
@@ -111,10 +88,11 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="relative flex items-center justify-center"
             >
+              {/* Earth Globe */}
               <motion.img
                 src="/hero/earth-globe.png"
                 alt="Earth Globe - Environmental Sustainability"
-                className="w-full h-auto max-w-none object-contain scale-200 lg:scale-300 xl:scale-400 2xl:scale-500"
+                className="w-full h-auto max-w-none object-contain scale-200 lg:scale-300 xl:scale-400 2xl:scale-500 relative z-20"
                 style={{ filter: 'drop-shadow(0 25px 50px rgba(0, 0, 0, 0.15))' }}
                 animate={{ 
                   scale: [1, 1.3, 1],
