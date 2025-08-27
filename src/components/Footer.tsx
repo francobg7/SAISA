@@ -86,7 +86,7 @@ const Footer: React.FC = () => {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img 
-          src="/logos/Mockup1.png" 
+          src="/logos/Logo.png" 
           alt="SAISA Environmental Services Background" 
           className="w-full h-full object-cover"
         />
