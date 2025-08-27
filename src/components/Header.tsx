@@ -60,7 +60,7 @@ const Header: React.FC = () => {
             className="cursor-pointer"
           >
             <img 
-              src="/logos/saisa.png" 
+              src="/logos/Logo.png" 
               alt="SAISA Logo" 
               className="w-20 h-20 lg:w-24 lg:h-24 object-contain"
             />
