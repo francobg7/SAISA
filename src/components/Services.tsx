@@ -81,9 +81,9 @@ const Services: React.FC = () => {
       
       {/* Organic Background Shapes */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-full opacity-20 blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-br from-secondary-100 to-accent-100 rounded-full opacity-20 blur-3xl" />
-        <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-gradient-to-br from-accent-50 to-primary-50 rounded-full opacity-15 blur-3xl" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-primary-100 to-secondary-100  opacity-20 blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-br from-secondary-100 to-accent-100  opacity-20 blur-3xl" />
+        <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-gradient-to-br from-accent-50 to-primary-50  opacity-15 blur-3xl" />
       </div>
 
       <div className="relative z-10">
@@ -124,7 +124,7 @@ const Services: React.FC = () => {
                     className="group"
                   >
                     <div 
-                      className={`relative overflow-hidden rounded-3xl transition-all duration-500 group-hover:shadow-2xl ${
+                      className={`relative overflow-hidden transition-all duration-500 group-hover:shadow-2xl ${
                         selectedService === service.id ? 'ring-4 ring-primary-500 ring-offset-4' : ''
                       }`}
                       onClick={() => handleServiceClick(service.id)}
@@ -136,13 +136,13 @@ const Services: React.FC = () => {
                       <div className="relative p-8 text-white">
                         {/* Service Header */}
                         <div className="flex items-start justify-between mb-8">
-                          <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg border border-white/30">
+                          <div className="w-20 h-20 bg-white/20 backdrop-blur-sm flex items-center justify-center shadow-lg border border-white/30">
                             <IconComponent className="w-10 h-10 text-white" />
                           </div>
                           <motion.button
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
-                            className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 border border-white/30"
+                            className="w-10 h-10 bg-white/20 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 border border-white/30"
                           >
                             <ArrowRight className="w-5 h-5 text-white" />
                           </motion.button>
@@ -162,7 +162,7 @@ const Services: React.FC = () => {
                         <div className="space-y-4 mb-8">
                           {service.features[language].slice(0, 3).map((feature, featureIndex) => (
                             <div key={featureIndex} className="flex items-center space-x-3">
-                              <div className="w-6 h-6 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30">
+                              <div className="w-6 h-6 bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
                                 <Check className="w-3 h-3 text-white" />
                               </div>
                               <span className="text-white/90">{feature}</span>
@@ -184,7 +184,7 @@ const Services: React.FC = () => {
                               e.stopPropagation()
                               handleServiceClick(service.id)
                             }}
-                            className="flex-1 bg-white/20 backdrop-blur-sm text-white border-2 border-white/30 rounded-xl py-3 px-6 font-medium transition-all duration-300 hover:bg-white/30 hover:border-white/50"
+                            className="flex-1 bg-white/20 backdrop-blur-sm text-white border-2 border-white/30 py-3 px-6 font-medium transition-all duration-300 hover:bg-white/30 hover:border-white/50"
                           >
                             {selectedService === service.id ? currentContent.viewDetails : currentContent.learnMore}
                           </motion.button>
@@ -195,7 +195,7 @@ const Services: React.FC = () => {
                               e.stopPropagation()
                               handleContactClick(service.id)
                             }}
-                            className="flex-1 bg-white text-gray-900 rounded-xl py-3 px-6 font-medium transition-all duration-300 hover:bg-gray-100 shadow-lg"
+                            className="flex-1 bg-white text-gray-900 py-3 px-6 font-medium transition-all duration-300 hover:bg-gray-100 shadow-lg"
                           >
                             {currentContent.contactUs}
                           </motion.button>
@@ -213,7 +213,7 @@ const Services: React.FC = () => {
                           transition={{ duration: 0.4, ease: "easeInOut" }}
                           className="mt-8"
                         >
-                          <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
+                          <div className="bg-white/95 backdrop-blur-sm  p-8 shadow-2xl border border-white/20">
                             <div className="grid md:grid-cols-2 gap-8">
                               {/* Features List */}
                               <div>
@@ -223,7 +223,7 @@ const Services: React.FC = () => {
                                 <div className="space-y-4">
                                   {service.features[language].map((feature, featureIndex) => (
                                     <div key={featureIndex} className="flex items-center space-x-3">
-                                      <div className="w-6 h-6 bg-primary-100 rounded-full flex items-center justify-center">
+                                      <div className="w-6 h-6 bg-primary-100  flex items-center justify-center">
                                         <Check className="w-4 h-4 text-primary-600" />
                                       </div>
                                       <span className="text-gray-700">{feature}</span>
@@ -238,9 +238,9 @@ const Services: React.FC = () => {
                                   {language === 'es' ? 'Beneficios' : 'Benefits'}
                                 </h4>
                                 <div className="space-y-4">
-                                  <div className="bg-gradient-to-r from-primary-50 to-secondary-50 rounded-2xl p-6 border border-primary-100">
+                                  <div className="bg-gradient-to-r from-primary-50 to-secondary-50  p-6 border border-primary-100">
                                     <div className="flex items-center space-x-3 mb-3">
-                                      <div className="w-8 h-8 bg-primary-500 rounded-lg flex items-center justify-center">
+                                      <div className="w-8 h-8 bg-primary-500  flex items-center justify-center">
                                         <Zap className="w-4 h-4 text-white" />
                                       </div>
                                       <span className="font-semibold text-gray-900">
@@ -255,9 +255,9 @@ const Services: React.FC = () => {
                                     </p>
                                   </div>
                                   
-                                  <div className="bg-gradient-to-r from-secondary-50 to-accent-50 rounded-2xl p-6 border border-secondary-100">
+                                  <div className="bg-gradient-to-r from-secondary-50 to-accent-50  p-6 border border-secondary-100">
                                     <div className="flex items-center space-x-3 mb-3">
-                                      <div className="w-8 h-8 bg-secondary-500 rounded-lg flex items-center justify-center">
+                                      <div className="w-8 h-8 bg-secondary-500  flex items-center justify-center">
                                         <Shield className="w-4 h-4 text-white" />
                                       </div>
                                       <span className="font-semibold text-gray-900">
@@ -281,7 +281,7 @@ const Services: React.FC = () => {
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => handleContactClick(service.id)}
-                                className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-semibold py-4 px-8 rounded-xl hover:shadow-xl transition-all duration-300"
+                                className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-semibold py-4 px-8  hover:shadow-xl transition-all duration-300"
                               >
                                 {language === 'es' ? 'Solicitar Cotización' : 'Request Quote'}
                               </motion.button>
@@ -304,13 +304,13 @@ const Services: React.FC = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="bg-gradient-to-r from-primary-600 to-secondary-600 rounded-3xl p-12 text-center text-white relative overflow-hidden"
+              className="bg-gradient-to-r from-primary-600 to-secondary-600  p-12 text-center text-white relative overflow-hidden"
             >
               {/* Background Pattern */}
               <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-0 left-0 w-32 h-32 border-2 border-white rounded-full" />
-                <div className="absolute top-10 right-10 w-24 h-24 border-2 border-white rounded-full" />
-                <div className="absolute bottom-10 left-20 w-20 h-20 border-2 border-white rounded-full" />
+                <div className="absolute top-0 left-0 w-32 h-32 border-2 border-white " />
+                <div className="absolute top-10 right-10 w-24 h-24 border-2 border-white " />
+                <div className="absolute bottom-10 left-20 w-20 h-20 border-2 border-white " />
               </div>
               
               <div className="relative z-10">
@@ -336,7 +336,7 @@ const Services: React.FC = () => {
                     const whatsappUrl = `https://wa.me/+595984774091?text=${encodeURIComponent(message)}`
                     window.open(whatsappUrl, '_blank')
                   }}
-                  className="bg-white text-primary-600 font-semibold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors duration-300 shadow-xl"
+                  className="bg-white text-primary-600 font-semibold px-8 py-4  hover:bg-gray-100 transition-colors duration-300 shadow-xl"
                 >
                   {language === 'es' ? 'Conversar con Expertos' : 'Talk to Experts'}
                 </motion.button>
