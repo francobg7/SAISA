@@ -46,9 +46,13 @@ const Header: React.FC = () => {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-slate-800/95 backdrop-blur-custom shadow-lg'
-          : 'bg-slate-800/90 backdrop-blur-custom'
+          ? 'shadow-lg'
+          : ''
       }`}
+      style={{
+        backgroundColor: isScrolled ? 'rgba(0, 33, 126, 0.95)' : 'rgba(0, 33, 126, 0.9)',
+        backdropFilter: 'blur(10px)'
+      }}
     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-20">
@@ -73,7 +77,7 @@ const Header: React.FC = () => {
                 key={item.id}
                 whileHover={{ y: -2 }}
                 onClick={() => scrollToSection(item.href)}
-                className="text-white hover:text-slate-200 font-medium transition-colors duration-200"
+                className="text-white hover:text-blue-200 font-medium transition-colors duration-200"
               >
                 {item.label[language]}
               </motion.button>
@@ -87,7 +91,7 @@ const Header: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={toggleLanguage}
-              className="hidden sm:flex items-center space-x-2 px-3 py-2 bg-slate-700 hover:bg-slate-600 transition-colors duration-200"
+              className="hidden sm:flex items-center space-x-2 px-3 py-2 bg-blue-700 hover:bg-blue-600 transition-colors duration-200"
             >
               <Globe className="w-4 h-4 text-white" />
               <span className="text-sm font-medium text-white">
@@ -98,7 +102,7 @@ const Header: React.FC = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 hover:bg-slate-700 transition-colors duration-200"
+              className="lg:hidden p-2 hover:bg-blue-700 transition-colors duration-200"
             >
               {isOpen ? (
                 <X className="w-6 h-6 text-white" />
@@ -116,7 +120,11 @@ const Header: React.FC = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden border-t border-slate-700 bg-slate-800/95 backdrop-blur-custom"
+              className="lg:hidden border-t border-blue-700"
+              style={{
+                backgroundColor: 'rgba(0, 33, 126, 0.95)',
+                backdropFilter: 'blur(10px)'
+              }}
             >
               <div className="py-4 space-y-2">
                 {navigationItems.map((item) => (
@@ -124,7 +132,7 @@ const Header: React.FC = () => {
                     key={item.id}
                     whileHover={{ x: 10 }}
                     onClick={() => scrollToSection(item.href)}
-                    className="block w-full text-left px-4 py-3 text-white hover:text-slate-200 hover:bg-slate-700 transition-all duration-200 font-medium"
+                    className="block w-full text-left px-4 py-3 text-white hover:text-blue-200 hover:bg-blue-700 transition-all duration-200 font-medium"
                   >
                     {item.label[language]}
                   </motion.button>
@@ -134,7 +142,7 @@ const Header: React.FC = () => {
                 <div className="px-4 py-3">
                   <button
                     onClick={toggleLanguage}
-                    className="flex items-center space-x-2 px-3 py-2 bg-slate-700 hover:bg-slate-600 transition-colors duration-200 w-full justify-center"
+                    className="flex items-center space-x-2 px-3 py-2 bg-blue-700 hover:bg-blue-600 transition-colors duration-200 w-full justify-center"
                   >
                     <Globe className="w-4 h-4 text-white" />
                     <span className="text-sm font-medium text-white">
