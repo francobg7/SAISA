@@ -116,7 +116,7 @@ const Header: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={toggleLanguage}
-              className="hidden sm:flex items-center space-x-2 px-3 py-2 bg-blue-700 hover:bg-blue-600 transition-colors duration-200"
+              className="hidden sm:flex items-center space-x-2 px-3 py-2 bg-blue-700 hover:bg-blue-600 transition-colors duration-200 rounded-lg"
             >
               <Globe className="w-4 h-4 text-white" />
               <span className="text-sm font-medium text-white text-shadow">
@@ -127,7 +127,7 @@ const Header: React.FC = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 hover:bg-blue-700 transition-colors duration-200"
+              className="lg:hidden p-2 hover:bg-blue-700 transition-colors duration-200 rounded-lg"
             >
               {isOpen ? (
                 <X className="w-6 h-6 text-white" />
@@ -167,7 +167,7 @@ const Header: React.FC = () => {
                 <div className="px-4 py-3">
                   <button
                     onClick={toggleLanguage}
-                    className="flex items-center space-x-2 px-3 py-2 bg-blue-700 hover:bg-blue-600 transition-colors duration-200 w-full justify-center"
+                    className="flex items-center space-x-2 px-3 py-2 bg-blue-700 hover:bg-blue-600 transition-colors duration-200 w-full justify-center rounded-lg"
                   >
                     <Globe className="w-4 h-4 text-white" />
                     <span className="text-sm font-medium text-white">

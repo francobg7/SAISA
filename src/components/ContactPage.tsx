@@ -188,8 +188,8 @@ const ContactPage: React.FC = () => {
           
           {/* Contact Info Cards */}
           <div className="grid md:grid-cols-3 gap-6 mt-8 max-w-4xl mx-auto">
-            <div className="bg-white p-6 shadow-lg border border-gray-100">
-              <div className="w-12 h-12 bg-primary-100 text-primary-600 flex items-center justify-center mx-auto mb-4">
+            <div className="bg-white p-6 shadow-lg border border-gray-100 rounded-xl">
+              <div className="w-12 h-12 bg-primary-100 text-primary-600 flex items-center justify-center mx-auto mb-4 rounded-full">
                 <MapPin className="w-6 h-6" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">
@@ -200,8 +200,8 @@ const ContactPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-white p-6 shadow-lg border border-gray-100">
-              <div className="w-12 h-12 bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4">
+            <div className="bg-white p-6 shadow-lg border border-gray-100 rounded-xl">
+              <div className="w-12 h-12 bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-4 rounded-full">
                 <Mail className="w-6 h-6" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">
@@ -212,8 +212,8 @@ const ContactPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-white p-6 shadow-lg border border-gray-100">
-              <div className="w-12 h-12 bg-blue-100 text-blue-600 flex items-center justify-center mx-auto mb-4">
+            <div className="bg-white p-6 shadow-lg border border-gray-100 rounded-xl">
+              <div className="w-12 h-12 bg-blue-100 text-blue-600 flex items-center justify-center mx-auto mb-4 rounded-full">
                 <MessageCircle className="w-6 h-6" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">
@@ -228,7 +228,7 @@ const ContactPage: React.FC = () => {
 
         {/* Contact Form Section */}
         <div className="mb-8">
-          <div className="bg-white p-8 shadow-xl border border-gray-100">
+          <div className="bg-white p-8 shadow-xl border border-gray-100 rounded-2xl">
             <h2 className="text-3xl font-bold text-gray-900 mb-8">
               {currentContent.sendMessage}
             </h2>
@@ -262,7 +262,7 @@ const ContactPage: React.FC = () => {
                       onChange={handleInputChange}
                       required
                       placeholder={currentContent.placeholders.name}
-                      className="w-full px-4 py-3 border border-gray-300  focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                      className="w-full px-4 py-3 border border-gray-300  focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 rounded-lg"
                     />
                   </div>
                   <div>

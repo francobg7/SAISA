@@ -33,7 +33,7 @@ const Hero: React.FC = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="mb-8"
               >
-                <span className="inline-block px-6 py-3 bg-gradient-to-r from-blue-100 via-indigo-100 to-white/80 text-[#364980] text-sm font-medium border border-blue-200 shadow-sm">
+                <span className="inline-block px-6 py-3 bg-gradient-to-r from-blue-100 via-indigo-100 to-white/80 text-[#364980] text-sm font-medium border border-blue-200 shadow-sm rounded-xl">
                   {language === 'es' ? 'Innovación Ambiental' : 'Environmental Innovation'}
                 </span>
               </motion.div>
@@ -67,14 +67,14 @@ const Hero: React.FC = () => {
                 <motion.button
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white text-lg px-8 py-4 shadow-xl font-semibold transition-all duration-300"
+                  className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white text-lg px-8 py-4 shadow-xl font-semibold transition-all duration-300 rounded-xl"
                 >
                   {content.ctaPrimary}
                 </motion.button>
                 <motion.button
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="border-2 border-blue-300 text-blue-100 hover:bg-blue-500 hover:text-white text-lg px-8 py-4 font-semibold transition-all duration-300"
+                  className="border-2 border-blue-300 text-blue-100 hover:bg-blue-500 hover:text-white text-lg px-8 py-4 font-semibold transition-all duration-300 rounded-xl"
                 >
                   {content.ctaSecondary}
                 </motion.button>

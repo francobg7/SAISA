@@ -126,7 +126,7 @@ const ServicesPage: React.FC = () => {
                   className="group"
                 >
                   <div 
-                    className={`relative overflow-hidden  transition-all duration-500 group-hover:shadow-2xl ${
+                    className={`relative overflow-hidden rounded-2xl transition-all duration-500 group-hover:shadow-2xl ${
                       selectedService === service.id ? 'ring-4 ring-primary-500 ring-offset-4' : ''
                     }`}
                     onClick={() => handleServiceClick(service.id)}
@@ -138,13 +138,13 @@ const ServicesPage: React.FC = () => {
                     <div className="relative p-8 text-white">
                       {/* Service Header */}
                       <div className="flex items-start justify-between mb-8">
-                        <div className="w-20 h-20 bg-white/20 backdrop-blur-sm  flex items-center justify-center shadow-lg border border-white/30">
+                        <div className="w-20 h-20 bg-white/20 backdrop-blur-sm  flex items-center justify-center shadow-lg border border-white/30 rounded-full">
                           <IconComponent className="w-10 h-10 text-white" />
                         </div>
                         <motion.button
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
-                          className="w-10 h-10 bg-white/20 backdrop-blur-sm  flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 border border-white/30"
+                          className="w-10 h-10 bg-white/20 backdrop-blur-sm  flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 border border-white/30 rounded-full"
                         >
                           <ArrowRight className="w-5 h-5 text-white" />
                         </motion.button>
@@ -164,7 +164,7 @@ const ServicesPage: React.FC = () => {
                       <div className="space-y-4 mb-8">
                         {service.features[language].slice(0, 3).map((feature, featureIndex) => (
                           <div key={featureIndex} className="flex items-center space-x-3">
-                            <div className="w-6 h-6 bg-white/20 backdrop-blur-sm  flex items-center justify-center border border-white/30">
+                            <div className="w-6 h-6 bg-white/20 backdrop-blur-sm  flex items-center justify-center border border-white/30 rounded-full">
                               <Check className="w-3 h-3 text-white" />
                             </div>
                             <span className="text-white/90">{feature}</span>
@@ -186,7 +186,7 @@ const ServicesPage: React.FC = () => {
                             e.stopPropagation()
                             handleServiceClick(service.id)
                           }}
-                          className="flex-1 bg-white/20 backdrop-blur-sm text-white border-2 border-white/30  py-3 px-6 font-medium transition-all duration-300 hover:bg-white/30 hover:border-white/50"
+                          className="flex-1 bg-white/20 backdrop-blur-sm text-white border-2 border-white/30  py-3 px-6 font-medium transition-all duration-300 hover:bg-white/30 hover:border-white/50 rounded-xl"
                         >
                           {selectedService === service.id ? currentContent.viewDetails : currentContent.learnMore}
                         </motion.button>
@@ -197,7 +197,7 @@ const ServicesPage: React.FC = () => {
                             e.stopPropagation()
                             handleContactClick(service.id)
                           }}
-                          className="flex-1 bg-white text-gray-900  py-3 px-6 font-medium transition-all duration-300 hover:bg-gray-100 shadow-lg"
+                          className="flex-1 bg-white text-gray-900  py-3 px-6 font-medium transition-all duration-300 hover:bg-gray-100 shadow-lg rounded-xl"
                         >
                           {currentContent.contactUs}
                         </motion.button>
@@ -215,7 +215,7 @@ const ServicesPage: React.FC = () => {
                         transition={{ duration: 0.4, ease: "easeInOut" }}
                         className="mt-8"
                       >
-                        <div className="bg-white/95 backdrop-blur-sm  p-8 shadow-2xl border border-white/20">
+                        <div className="bg-white/95 backdrop-blur-sm  p-8 shadow-2xl border border-white/20 rounded-2xl">
                           <div className="grid md:grid-cols-2 gap-8">
                             {/* Features List */}
                             <div>

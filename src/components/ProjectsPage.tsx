@@ -237,7 +237,7 @@ const ProjectsPage: React.FC = () => {
                                 transition={{ duration: 0.4, ease: "easeInOut" }}
                                 className="mt-8"
                               >
-                                <div className="bg-white/95 backdrop-blur-sm  p-8 shadow-2xl border border-white/20">
+                                <div className="bg-white/95 backdrop-blur-sm  p-8 shadow-2xl border border-white/20 rounded-2xl">
                                   <div className="grid md:grid-cols-2 gap-8">
                                     {/* Project Details */}
                                     <div>
@@ -245,9 +245,9 @@ const ProjectsPage: React.FC = () => {
                                         {currentContent.projectDetails}
                                       </h4>
                                       <div className="space-y-4">
-                                        <div className="bg-gradient-to-r from-primary-50 to-primary-100  p-4 border border-primary-200">
+                                        <div className="bg-gradient-to-r from-primary-50 to-primary-100  p-4 border border-primary-200 rounded-xl">
                                           <div className="flex items-center space-x-3 mb-2">
-                                            <div className="w-8 h-8 bg-primary-500  flex items-center justify-center">
+                                            <div className="w-8 h-8 bg-primary-500  flex items-center justify-center rounded-full">
                                               <Target className="w-4 h-4 text-white" />
                                             </div>
                                             <span className="font-semibold text-gray-900">
@@ -259,9 +259,9 @@ const ProjectsPage: React.FC = () => {
                                           </p>
                                         </div>
                                         
-                                        <div className="bg-gradient-to-r from-secondary-50 to-secondary-100  p-4 border border-secondary-200">
+                                        <div className="bg-gradient-to-r from-secondary-50 to-secondary-100  p-4 border border-secondary-200 rounded-xl">
                                           <div className="flex items-center space-x-3 mb-2">
-                                            <div className="w-8 h-8 bg-secondary-500  flex items-center justify-center">
+                                            <div className="w-8 h-8 bg-secondary-500  flex items-center justify-center rounded-full">
                                               <CheckCircle className="w-4 h-4 text-white" />
                                             </div>
                                             <span className="font-semibold text-gray-900">
@@ -282,7 +282,7 @@ const ProjectsPage: React.FC = () => {
                                       </h4>
                                       <div className="grid grid-cols-2 gap-3">
                                         {project.technologies.map((tech, techIndex) => (
-                                          <div key={techIndex} className="bg-gray-50  p-3 text-center border border-gray-200">
+                                          <div key={techIndex} className="bg-gray-50  p-3 text-center border border-gray-200 rounded-lg">
                                             <span className="text-sm font-medium text-gray-700">{tech}</span>
                                           </div>
                                         ))}
@@ -296,7 +296,7 @@ const ProjectsPage: React.FC = () => {
                                       whileHover={{ scale: 1.05 }}
                                       whileTap={{ scale: 0.95 }}
                                       onClick={handleContactClick}
-                                      className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-semibold py-4 px-8  hover:shadow-xl transition-all duration-300"
+                                      className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-semibold py-4 px-8  hover:shadow-xl transition-all duration-300 rounded-xl"
                                     >
                                       {currentContent.consultSimilar}
                                     </motion.button>
@@ -321,7 +321,7 @@ const ProjectsPage: React.FC = () => {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={prevSlide}
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm  flex items-center justify-center shadow-lg border border-gray-200 hover:bg-white transition-all duration-300 z-10"
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm  flex items-center justify-center shadow-lg border border-gray-200 hover:bg-white transition-all duration-300 z-10 rounded-full"
                 >
                   <ChevronLeft className="w-6 h-6 text-gray-700" />
                 </motion.button>
@@ -331,7 +331,7 @@ const ProjectsPage: React.FC = () => {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={nextSlide}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm  flex items-center justify-center shadow-lg border border-gray-200 hover:bg-white transition-all duration-300 z-10"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm  flex items-center justify-center shadow-lg border border-gray-200 hover:bg-white transition-all duration-300 z-10 rounded-full"
                 >
                   <ChevronRight className="w-6 h-6 text-gray-700" />
                 </motion.button>

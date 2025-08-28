@@ -134,8 +134,8 @@ const Alliances: React.FC = () => {
               onClick={() => setSelectedType(type)}
               className={`px-4 py-2  text-sm font-medium transition-all duration-300 flex items-center space-x-2 ${
                 selectedType === type
-                  ? 'bg-primary-600 text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-primary-600 text-white shadow-lg rounded-lg'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-lg'
               }`}
             >
               {type !== 'all' && (
@@ -168,7 +168,7 @@ const Alliances: React.FC = () => {
                 >
                   {/* Alliance Header */}
                   <div className="flex items-start justify-between mb-6">
-                    <div className={`w-16 h-16 bg-gradient-to-br ${gradientClass} flex items-center justify-center shadow-lg`}>
+                    <div className={`w-16 h-16 bg-gradient-to-br ${gradientClass} flex items-center justify-center shadow-lg rounded-full`}>
                       <IconComponent className="w-8 h-8 text-white" />
                     </div>
                     <span className={`px-3 py-1 text-xs font-medium ${
@@ -176,7 +176,7 @@ const Alliances: React.FC = () => {
                       alliance.type === 'private' ? 'bg-green-100 text-green-700' :
                       alliance.type === 'ngo' ? 'bg-purple-100 text-purple-700' :
                       'bg-orange-100 text-orange-700'
-                    }`}>
+                    } rounded-full`}>
                       {currentContent.partnershipTypes[alliance.type]}
                     </span>
                   </div>
@@ -260,7 +260,7 @@ const Alliances: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="text-center mb-16"
         >
-          <div className="bg-gradient-to-r from-primary-600 to-secondary-600  p-8 text-white max-w-4xl mx-auto">
+          <div className="bg-gradient-to-r from-primary-600 to-secondary-600  p-8 text-white max-w-4xl mx-auto rounded-2xl">
             <h3 className="text-2xl font-bold mb-4">
               {currentContent.becomePartner}
             </h3>
@@ -272,7 +272,7 @@ const Alliances: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handlePartnershipContact}
-                className="bg-white text-primary-600 font-semibold px-8 py-3  hover:bg-gray-100 transition-colors duration-300"
+                className="bg-white text-primary-600 font-semibold px-8 py-3  hover:bg-gray-100 transition-colors duration-300 rounded-xl"
               >
                 {currentContent.contactForPartnership}
               </motion.button>
@@ -280,7 +280,7 @@ const Alliances: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="border-2 border-white text-white font-semibold px-8 py-3  hover:bg-white hover:text-primary-600 transition-all duration-300"
+                className="border-2 border-white text-white font-semibold px-8 py-3  hover:bg-white hover:text-primary-600 transition-all duration-300 rounded-xl"
               >
                 {currentContent.contactUs}
               </motion.button>
@@ -325,7 +325,7 @@ const Alliances: React.FC = () => {
               transition={{ duration: 0.6, delay: 1.2 + index * 0.1 }}
               className="text-center"
             >
-              <div className="w-16 h-16 bg-primary-100  flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-primary-100  flex items-center justify-center mx-auto mb-4 rounded-full">
                 <benefit.icon className="w-8 h-8 text-primary-600" />
               </div>
               <h4 className="text-xl font-bold text-gray-900 mb-3">

@@ -126,8 +126,8 @@ const Projects: React.FC = () => {
                   onClick={() => setSelectedCategory(category)}
                   className={`px-6 py-3  font-medium transition-all duration-300 ${
                     selectedCategory === category
-                      ? 'bg-primary-600 text-white shadow-lg shadow-primary-500/30'
-                      : 'bg-white/80 backdrop-blur-sm text-gray-700 border border-gray-200 hover:bg-primary-50 hover:border-primary-200'
+                      ? 'bg-primary-600 text-white shadow-lg shadow-primary-500/30 rounded-xl'
+                      : 'bg-white/80 backdrop-blur-sm text-gray-700 border border-gray-200 hover:bg-primary-50 hover:border-primary-200 rounded-xl'
                   }`}
                 >
                   {category === 'all' 
@@ -162,19 +162,19 @@ const Projects: React.FC = () => {
                             className="group"
                           >
                             <div 
-                              className="bg-white overflow-hidden shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
+                              className="bg-white overflow-hidden shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer rounded-2xl"
                               onClick={() => handleProjectClick(project.id)}
                             >
                               {/* Project Image */}
                               <div className="relative h-64 overflow-hidden">
                                 <div className={`w-full h-full bg-gradient-to-br ${project.color} opacity-80`} />
                                 <div className="absolute inset-0 flex items-center justify-center">
-                                  <div className="w-20 h-20 bg-white/20 backdrop-blur-sm  flex items-center justify-center border border-white/30">
+                                  <div className="w-20 h-20 bg-white/20 backdrop-blur-sm  flex items-center justify-center border border-white/30 rounded-full">
                                     <Target className="w-10 h-10 text-white" />
                                   </div>
                                 </div>
                                 <div className="absolute top-4 right-4">
-                                  <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-xs font-medium text-gray-700  border border-white/50">
+                                  <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-xs font-medium text-gray-700  border border-white/50 rounded-full">
                                     {project.category[language]}
                                   </span>
                                 </div>
@@ -318,7 +318,7 @@ const Projects: React.FC = () => {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={prevSlide}
-                    className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm  flex items-center justify-center shadow-lg border border-gray-200 hover:bg-white transition-all duration-300 z-10"
+                    className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm  flex items-center justify-center shadow-lg border border-gray-200 hover:bg-white transition-all duration-300 z-10 rounded-full"
                   >
                     <ChevronLeft className="w-6 h-6 text-gray-700" />
                   </motion.button>
@@ -328,7 +328,7 @@ const Projects: React.FC = () => {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={nextSlide}
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm  flex items-center justify-center shadow-lg border border-gray-200 hover:bg-white transition-all duration-300 z-10"
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm  flex items-center justify-center shadow-lg border border-gray-200 hover:bg-white transition-all duration-300 z-10 rounded-full"
                   >
                     <ChevronRight className="w-6 h-6 text-gray-700" />
                   </motion.button>
@@ -343,8 +343,8 @@ const Projects: React.FC = () => {
                         onClick={() => goToSlide(index)}
                         className={`w-3 h-3  transition-all duration-300 ${
                           currentSlide === index
-                            ? 'bg-primary-600 scale-125'
-                            : 'bg-gray-300 hover:bg-gray-400'
+                            ? 'bg-primary-600 scale-125 rounded-full'
+                            : 'bg-gray-300 hover:bg-gray-400 rounded-full'
                         }`}
                       />
                     ))}
@@ -362,7 +362,7 @@ const Projects: React.FC = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="bg-gradient-to-r from-secondary-600 to-primary-600  p-12 text-center text-white relative overflow-hidden"
+              className="bg-gradient-to-r from-secondary-600 to-primary-600  p-12 text-center text-white relative overflow-hidden rounded-2xl"
             >
               {/* Background Pattern */}
               <div className="absolute inset-0 opacity-10">
@@ -388,7 +388,7 @@ const Projects: React.FC = () => {
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={handleContactClick}
-                  className="bg-white text-secondary-600 font-semibold px-8 py-4  hover:bg-gray-100 transition-colors duration-300 shadow-xl"
+                  className="bg-white text-secondary-600 font-semibold px-8 py-4  hover:bg-gray-100 transition-colors duration-300 shadow-xl rounded-xl"
                 >
                   {language === 'es' ? 'Iniciar Conversación' : 'Start Conversation'}
                 </motion.button>

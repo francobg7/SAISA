@@ -181,19 +181,19 @@ const AlliancesPage: React.FC = () => {
                   className="group"
                 >
                   <div 
-                    className="bg-white  overflow-hidden shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
+                    className="bg-white  overflow-hidden shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer rounded-2xl"
                     onClick={() => handleAllianceClick(alliance.id)}
                   >
                     {/* Alliance Header */}
                     <div className={`bg-gradient-to-br ${gradientClass} p-6 text-white`}>
                       <div className="flex items-center justify-between mb-4">
-                        <div className="w-16 h-16 bg-white/20 backdrop-blur-sm  flex items-center justify-center border border-white/30">
+                        <div className="w-16 h-16 bg-white/20 backdrop-blur-sm  flex items-center justify-center border border-white/30 rounded-full">
                           <IconComponent className="w-8 h-8 text-white" />
                         </div>
                         <motion.button
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
-                          className="w-8 h-8 bg-white/20 backdrop-blur-sm  flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 border border-white/30"
+                          className="w-8 h-8 bg-white/20 backdrop-blur-sm  flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 border border-white/30 rounded-full"
                         >
                           <ArrowRight className="w-4 h-4 text-white" />
                         </motion.button>
@@ -203,7 +203,7 @@ const AlliancesPage: React.FC = () => {
                         {alliance.name}
                       </h3>
                       
-                      <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm  text-sm font-medium border border-white/30">
+                      <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm  text-sm font-medium border border-white/30 rounded-full">
                         {getTypeLabel(alliance.type)}
                       </span>
                     </div>
@@ -222,7 +222,7 @@ const AlliancesPage: React.FC = () => {
                           e.stopPropagation()
                           handleAllianceClick(alliance.id)
                         }}
-                        className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-medium py-3 px-6  hover:shadow-lg transition-all duration-300"
+                        className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-medium py-3 px-6  hover:shadow-lg transition-all duration-300 rounded-xl"
                       >
                         {currentContent.viewDetails}
                       </motion.button>
@@ -239,7 +239,7 @@ const AlliancesPage: React.FC = () => {
                         transition={{ duration: 0.4, ease: "easeInOut" }}
                         className="mt-6"
                       >
-                        <div className="bg-white/95 backdrop-blur-sm  p-8 shadow-2xl border border-white/20">
+                        <div className="bg-white/95 backdrop-blur-sm  p-8 shadow-2xl border border-white/20 rounded-2xl">
                           <div className="grid md:grid-cols-2 gap-8">
                             {/* Alliance Details */}
                             <div>
@@ -247,9 +247,9 @@ const AlliancesPage: React.FC = () => {
                                 {alliance.name}
                               </h4>
                               <div className="space-y-4">
-                                <div className="bg-gradient-to-r from-primary-50 to-primary-100  p-4 border border-primary-200">
+                                <div className="bg-gradient-to-r from-primary-50 to-primary-100  p-4 border border-primary-200 rounded-xl">
                                   <div className="flex items-center space-x-3 mb-2">
-                                    <div className="w-8 h-8 bg-primary-500  flex items-center justify-center">
+                                    <div className="w-8 h-8 bg-primary-500  flex items-center justify-center rounded-full">
                                       <IconComponent className="w-4 h-4 text-white" />
                                     </div>
                                     <span className="font-semibold text-gray-900">
@@ -269,9 +269,9 @@ const AlliancesPage: React.FC = () => {
                                 {currentContent.partnershipBenefits}
                               </h4>
                               <div className="space-y-4">
-                                <div className="bg-gradient-to-r from-primary-50 to-secondary-50  p-4 border border-primary-100">
+                                <div className="bg-gradient-to-r from-primary-50 to-secondary-50  p-4 border border-primary-100 rounded-xl">
                                   <div className="flex items-center space-x-3 mb-2">
-                                    <div className="w-8 h-8 bg-primary-500  flex items-center justify-center">
+                                    <div className="w-8 h-8 bg-primary-500  flex items-center justify-center rounded-full">
                                       <Users className="w-4 h-4 text-white" />
                                     </div>
                                     <span className="font-semibold text-gray-900">
@@ -286,9 +286,9 @@ const AlliancesPage: React.FC = () => {
                                   </p>
                                 </div>
                                 
-                                <div className="bg-gradient-to-r from-secondary-50 to-accent-50  p-4 border border-secondary-100">
+                                <div className="bg-gradient-to-r from-secondary-50 to-accent-50  p-4 border border-secondary-100 rounded-xl">
                                   <div className="flex items-center space-x-3 mb-2">
-                                    <div className="w-8 h-8 bg-secondary-500  flex items-center justify-center">
+                                    <div className="w-8 h-8 bg-secondary-500  flex items-center justify-center rounded-full">
                                       <CheckCircle className="w-4 h-4 text-white" />
                                     </div>
                                     <span className="font-semibold text-gray-900">
@@ -312,7 +312,7 @@ const AlliancesPage: React.FC = () => {
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
                               onClick={handlePartnershipContact}
-                              className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-semibold py-4 px-8  hover:shadow-xl transition-all duration-300"
+                              className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-semibold py-4 px-8  hover:shadow-xl transition-all duration-300 rounded-xl"
                             >
                               {currentContent.contactUs}
                             </motion.button>
