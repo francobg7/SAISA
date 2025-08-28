@@ -132,14 +132,14 @@ const Alliances: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setSelectedType(type)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center space-x-2 ${
+              className={`px-4 py-2  text-sm font-medium transition-all duration-300 flex items-center space-x-2 ${
                 selectedType === type
                   ? 'bg-primary-600 text-white shadow-lg'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
               {type !== 'all' && (
-                <span className="w-2 h-2 rounded-full bg-current opacity-60" />
+                <span className="w-2 h-2  bg-current opacity-60" />
               )}
               <span>
                 {type === 'all' ? currentContent.allAlliances : currentContent.partnershipTypes[type as keyof typeof currentContent.partnershipTypes]}
@@ -168,10 +168,10 @@ const Alliances: React.FC = () => {
                 >
                   {/* Alliance Header */}
                   <div className="flex items-start justify-between mb-6">
-                    <div className={`w-16 h-16 bg-gradient-to-br ${gradientClass} rounded-2xl flex items-center justify-center shadow-lg`}>
+                    <div className={`w-16 h-16 bg-gradient-to-br ${gradientClass} flex items-center justify-center shadow-lg`}>
                       <IconComponent className="w-8 h-8 text-white" />
                     </div>
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    <span className={`px-3 py-1 text-xs font-medium ${
                       alliance.type === 'government' ? 'bg-blue-100 text-blue-700' :
                       alliance.type === 'private' ? 'bg-green-100 text-green-700' :
                       alliance.type === 'ngo' ? 'bg-purple-100 text-purple-700' :
@@ -213,7 +213,7 @@ const Alliances: React.FC = () => {
                       animate={{ opacity: 1, height: 'auto' }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="mt-6 bg-white rounded-2xl p-6 shadow-lg border border-gray-100"
+                      className="mt-6 bg-white p-6 shadow-lg border border-gray-100"
                     >
                       <div className="space-y-4 mb-6">
                         <div>
@@ -260,7 +260,7 @@ const Alliances: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="text-center mb-16"
         >
-          <div className="bg-gradient-to-r from-primary-600 to-secondary-600 rounded-3xl p-8 text-white max-w-4xl mx-auto">
+          <div className="bg-gradient-to-r from-primary-600 to-secondary-600  p-8 text-white max-w-4xl mx-auto">
             <h3 className="text-2xl font-bold mb-4">
               {currentContent.becomePartner}
             </h3>
@@ -272,7 +272,7 @@ const Alliances: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handlePartnershipContact}
-                className="bg-white text-primary-600 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors duration-300"
+                className="bg-white text-primary-600 font-semibold px-8 py-3  hover:bg-gray-100 transition-colors duration-300"
               >
                 {currentContent.contactForPartnership}
               </motion.button>
@@ -280,7 +280,7 @@ const Alliances: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="border-2 border-white text-white font-semibold px-8 py-3 rounded-lg hover:bg-white hover:text-primary-600 transition-all duration-300"
+                className="border-2 border-white text-white font-semibold px-8 py-3  hover:bg-white hover:text-primary-600 transition-all duration-300"
               >
                 {currentContent.contactUs}
               </motion.button>
@@ -325,7 +325,7 @@ const Alliances: React.FC = () => {
               transition={{ duration: 0.6, delay: 1.2 + index * 0.1 }}
               className="text-center"
             >
-              <div className="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-primary-100  flex items-center justify-center mx-auto mb-4">
                 <benefit.icon className="w-8 h-8 text-primary-600" />
               </div>
               <h4 className="text-xl font-bold text-gray-900 mb-3">
