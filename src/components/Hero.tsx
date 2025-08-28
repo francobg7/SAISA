@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-[#364980] via-[#2d3d6a] to-[#1f2e55]">
       {/* Content */}
       <div className="w-full px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
@@ -33,7 +33,7 @@ const Hero: React.FC = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="mb-8"
               >
-                <span className="inline-block px-6 py-3 bg-gradient-to-r from-emerald-100 via-green-100 to-teal-100 text-emerald-800 text-sm font-medium border border-emerald-200 shadow-sm">
+                <span className="inline-block px-6 py-3 bg-gradient-to-r from-blue-100 via-indigo-100 to-white/80 text-[#364980] text-sm font-medium border border-blue-200 shadow-sm">
                   {language === 'es' ? 'Innovación Ambiental' : 'Environmental Innovation'}
                 </span>
               </motion.div>
@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-                className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight"
+                className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight"
               >
                 {content.title}{' '}
                 <span className="gradient-text">{content.titleHighlight}</span>
@@ -52,7 +52,7 @@ const Hero: React.FC = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
-                className="text-xl md:text-2xl text-gray-600 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0"
+                className="text-xl md:text-2xl text-blue-100 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0"
               >
                 {content.subtitle}
               </motion.p>
@@ -67,14 +67,14 @@ const Hero: React.FC = () => {
                 <motion.button
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white text-lg px-8 py-4 shadow-xl font-semibold transition-all duration-300"
+                  className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white text-lg px-8 py-4 shadow-xl font-semibold transition-all duration-300"
                 >
                   {content.ctaPrimary}
                 </motion.button>
                 <motion.button
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white text-lg px-8 py-4 font-semibold transition-all duration-300"
+                  className="border-2 border-blue-300 text-blue-100 hover:bg-blue-500 hover:text-white text-lg px-8 py-4 font-semibold transition-all duration-300"
                 >
                   {content.ctaSecondary}
                 </motion.button>
@@ -93,7 +93,7 @@ const Hero: React.FC = () => {
                 src="/hero/earth-globe.webp"
                 alt="Earth Globe - Environmental Sustainability"
                 className="w-full h-auto max-w-none object-contain scale-200 lg:scale-300 xl:scale-400 2xl:scale-500 relative z-20"
-                style={{ filter: 'drop-shadow(0 25px 50px rgba(0, 0, 0, 0.15))' }}
+                style={{ filter: 'drop-shadow(0 25px 50px rgba(59, 130, 246, 0.3))' }}
                 animate={{ 
                   scale: [1, 1.3, 1],
                   y: [0, -10, 0]
@@ -104,7 +104,7 @@ const Hero: React.FC = () => {
                 }}
                 whileHover={{ 
                   scale: 1.05,
-                  filter: 'drop-shadow(0 30px 60px rgba(0, 0, 0, 0.2))'
+                  filter: 'drop-shadow(0 30px 60px rgba(59, 130, 246, 0.4))'
                 }}
               />
             </motion.div>

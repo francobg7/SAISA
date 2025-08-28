@@ -20,6 +20,30 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Add a style to the header before component mounts
+  useEffect(() => {
+    // Create a style element
+    const styleElement = document.createElement('style')
+    styleElement.innerHTML = `
+      .header-shadow-overlay {
+        background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%);
+        pointer-events: none;
+        z-index: -1;
+      }
+      
+      .text-shadow {
+        text-shadow: 0px 1px 2px rgba(0,0,0,0.5);
+      }
+    `
+    // Append the style element to the head
+    document.head.appendChild(styleElement)
+
+    // Clean up function
+    return () => {
+      document.head.removeChild(styleElement)
+    }
+  }, [])
+
   const scrollToSection = (href: string) => {
     if (href === '#contact') {
       navigateTo('contact')
@@ -46,10 +70,11 @@ const Header: React.FC = () => {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-slate-800/95 backdrop-blur-custom shadow-lg'
-          : 'bg-slate-800/90 backdrop-blur-custom'
+          ? 'bg-[#00217e]/95 backdrop-blur-custom shadow-lg'
+          : 'bg-transparent'
       }`}
     >
+      {!isScrolled && <div className="absolute inset-0 header-shadow-overlay"></div>}
       <div className="container-custom">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -73,7 +98,7 @@ const Header: React.FC = () => {
                 key={item.id}
                 whileHover={{ y: -2 }}
                 onClick={() => scrollToSection(item.href)}
-                className="text-white hover:text-slate-200 font-medium transition-colors duration-200"
+                className="text-white hover:text-slate-200 font-medium transition-colors duration-200 text-shadow"
               >
                 {item.label[language]}
               </motion.button>
@@ -82,15 +107,14 @@ const Header: React.FC = () => {
 
           {/* Language Switcher & Mobile Menu Button */}
           <div className="flex items-center space-x-4">
-            {/* Language Switcher */}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={toggleLanguage}
-              className="hidden sm:flex items-center space-x-2 px-3 py-2 bg-slate-700 hover:bg-slate-600 transition-colors duration-200"
-            >
+            {/* Language Switcher */}              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={toggleLanguage}
+                className="hidden sm:flex items-center space-x-2 px-3 py-2 bg-[#001a65] hover:bg-[#001550] transition-colors duration-200"
+              >
               <Globe className="w-4 h-4 text-white" />
-              <span className="text-sm font-medium text-white">
+              <span className="text-sm font-medium text-white text-shadow">
                 {language === 'es' ? 'ES' : 'EN'}
               </span>
             </motion.button>
@@ -98,7 +122,7 @@ const Header: React.FC = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 hover:bg-slate-700 transition-colors duration-200"
+              className="lg:hidden p-2 hover:bg-[#001a65] transition-colors duration-200"
             >
               {isOpen ? (
                 <X className="w-6 h-6 text-white" />
@@ -116,7 +140,7 @@ const Header: React.FC = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden border-t border-slate-700 bg-slate-800/95 backdrop-blur-custom"
+              className="lg:hidden border-t border-white/20 bg-[#00217e]/95 backdrop-blur-custom"
             >
               <div className="py-4 space-y-2">
                 {navigationItems.map((item) => (
@@ -124,7 +148,7 @@ const Header: React.FC = () => {
                     key={item.id}
                     whileHover={{ x: 10 }}
                     onClick={() => scrollToSection(item.href)}
-                    className="block w-full text-left px-4 py-3 text-white hover:text-slate-200 hover:bg-slate-700 transition-all duration-200 font-medium"
+                    className="block w-full text-left px-4 py-3 text-white hover:text-slate-200 hover:bg-[#001a65] transition-all duration-200 font-medium"
                   >
                     {item.label[language]}
                   </motion.button>
@@ -134,7 +158,7 @@ const Header: React.FC = () => {
                 <div className="px-4 py-3">
                   <button
                     onClick={toggleLanguage}
-                    className="flex items-center space-x-2 px-3 py-2 bg-slate-700 hover:bg-slate-600 transition-colors duration-200 w-full justify-center"
+                    className="flex items-center space-x-2 px-3 py-2 bg-[#001a65] hover:bg-[#001550] transition-colors duration-200 w-full justify-center"
                   >
                     <Globe className="w-4 h-4 text-white" />
                     <span className="text-sm font-medium text-white">
@@ -147,6 +171,9 @@ const Header: React.FC = () => {
           )}
         </AnimatePresence>
       </div>
+
+      {/* Shadow overlay for better text readability */}
+      <div className="header-shadow-overlay" />
     </motion.header>
   )
 }
