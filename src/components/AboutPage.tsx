@@ -1,14 +1,14 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Target, Heart, Award, CheckCircle, Eye, ArrowLeft } from 'lucide-react'
+import { Target, Heart, Award, CheckCircle, Eye } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
-import { useNavigation } from '../contexts/NavigationContext'
+
 import { companyInfo } from '../data/companyData'
 
 const AboutPage: React.FC = () => {
   const { language } = useLanguage()
-  const { navigateTo } = useNavigation()
+
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1
@@ -57,9 +57,7 @@ const AboutPage: React.FC = () => {
 
 
 
-  const goBack = () => {
-    navigateTo('home')
-  }
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-primary-50 pt-20">
