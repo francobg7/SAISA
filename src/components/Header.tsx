@@ -87,7 +87,7 @@ const Header: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={toggleLanguage}
-              className="hidden sm:flex items-center space-x-2 px-3 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 transition-colors duration-200"
+              className="hidden sm:flex items-center space-x-2 px-3 py-2 bg-slate-700 hover:bg-slate-600 transition-colors duration-200"
             >
               <Globe className="w-4 h-4 text-white" />
               <span className="text-sm font-medium text-white">
@@ -98,7 +98,7 @@ const Header: React.FC = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 rounded-lg hover:bg-slate-700 transition-colors duration-200"
+              className="lg:hidden p-2 hover:bg-slate-700 transition-colors duration-200"
             >
               {isOpen ? (
                 <X className="w-6 h-6 text-white" />
@@ -124,7 +124,7 @@ const Header: React.FC = () => {
                     key={item.id}
                     whileHover={{ x: 10 }}
                     onClick={() => scrollToSection(item.href)}
-                    className="block w-full text-left px-4 py-3 text-white hover:text-slate-200 hover:bg-slate-700 rounded-lg transition-all duration-200 font-medium"
+                    className="block w-full text-left px-4 py-3 text-white hover:text-slate-200 hover:bg-slate-700 transition-all duration-200 font-medium"
                   >
                     {item.label[language]}
                   </motion.button>
@@ -134,7 +134,7 @@ const Header: React.FC = () => {
                 <div className="px-4 py-3">
                   <button
                     onClick={toggleLanguage}
-                    className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 transition-colors duration-200 w-full justify-center"
+                    className="flex items-center space-x-2 px-3 py-2 bg-slate-700 hover:bg-slate-600 transition-colors duration-200 w-full justify-center"
                   >
                     <Globe className="w-4 h-4 text-white" />
                     <span className="text-sm font-medium text-white">
