@@ -51,18 +51,23 @@ const About: React.FC = () => {
 
   const currentContent = content[language]
 
-
-
   return (
     <section id="about" className="relative py-24 overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-primary-50" />
-      
-      {/* Organic Background Shapes */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-full opacity-30 blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-br from-secondary-100 to-accent-100 rounded-full opacity-30 blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-accent-50 to-primary-50 rounded-full opacity-20 blur-3xl" />
+      {/* Video Background */}
+      <div className="absolute inset-0 w-full h-full">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-contain"
+          style={{ objectPosition: 'center center' }}
+        >
+          <source src="/main/prueba-icon.mp4" type="video/mp4" />
+          Tu navegador no soporta el elemento de video.
+        </video>
+        
+
       </div>
 
       <div className="relative z-10">
@@ -99,7 +104,7 @@ const About: React.FC = () => {
               >
                 <div className="space-y-8">
                   {/* Company Description */}
-                  <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20">
+                  <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20">
                     <h3 className="text-3xl font-bold text-gray-900 mb-6">
                       {companyInfo.name}
                     </h3>
@@ -160,7 +165,7 @@ const About: React.FC = () => {
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={inView ? { opacity: 1, scale: 1 } : {}}
                       transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
-                      className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                      className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                     >
                       <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-secondary-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                         <IconComponent className="w-8 h-8 text-white" />
@@ -180,7 +185,7 @@ const About: React.FC = () => {
         </div>
 
         {/* Vision & Mission - Full Width Background */}
-        <div className="w-full bg-gradient-to-r from-primary-600 to-secondary-600 py-20 mb-24">
+        <div className="w-full bg-slate-800 py-20 mb-24">
           <div className="w-full px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
               <div className="grid lg:grid-cols-2 gap-16">
@@ -191,8 +196,8 @@ const About: React.FC = () => {
                   transition={{ duration: 0.8, delay: 0.2 }}
                   className="text-center lg:text-left"
                 >
-                  <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
-                    <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto lg:mx-0 mb-6">
+                  <div className="bg-white/20 backdrop-blur-sm rounded-3xl p-8 border border-white/30">
+                    <div className="w-20 h-20 bg-white/30 rounded-2xl flex items-center justify-center mx-auto lg:mx-0 mb-6">
                       <Eye className="w-10 h-10 text-white" />
                     </div>
                     <h3 className="text-3xl font-bold text-white mb-6">
@@ -211,8 +216,8 @@ const About: React.FC = () => {
                   transition={{ duration: 0.8, delay: 0.4 }}
                   className="text-center lg:text-left"
                 >
-                  <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
-                    <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto lg:mx-0 mb-6">
+                  <div className="bg-white/20 backdrop-blur-sm rounded-3xl p-8 border border-white/30">
+                    <div className="w-20 h-20 bg-white/30 rounded-2xl flex items-center justify-center mx-auto lg:mx-0 mb-6">
                       <Target className="w-10 h-10 text-white" />
                     </div>
                     <h3 className="text-3xl font-bold text-white mb-6">
@@ -227,8 +232,6 @@ const About: React.FC = () => {
             </div>
           </div>
         </div>
-
-
       </div>
     </section>
   )

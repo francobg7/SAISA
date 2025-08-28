@@ -46,8 +46,8 @@ const Header: React.FC = () => {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-custom shadow-lg'
-          : 'bg-transparent'
+          ? 'bg-slate-800/95 backdrop-blur-custom shadow-lg'
+          : 'bg-slate-800/90 backdrop-blur-custom'
       }`}
     >
       <div className="container-custom">
@@ -73,7 +73,7 @@ const Header: React.FC = () => {
                 key={item.id}
                 whileHover={{ y: -2 }}
                 onClick={() => scrollToSection(item.href)}
-                className="text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200"
+                className="text-white hover:text-slate-200 font-medium transition-colors duration-200"
               >
                 {item.label[language]}
               </motion.button>
@@ -87,10 +87,10 @@ const Header: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={toggleLanguage}
-              className="hidden sm:flex items-center space-x-2 px-3 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors duration-200"
+              className="hidden sm:flex items-center space-x-2 px-3 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 transition-colors duration-200"
             >
-              <Globe className="w-4 h-4 text-gray-600" />
-              <span className="text-sm font-medium text-gray-700">
+              <Globe className="w-4 h-4 text-white" />
+              <span className="text-sm font-medium text-white">
                 {language === 'es' ? 'ES' : 'EN'}
               </span>
             </motion.button>
@@ -98,12 +98,12 @@ const Header: React.FC = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+              className="lg:hidden p-2 rounded-lg hover:bg-slate-700 transition-colors duration-200"
             >
               {isOpen ? (
-                <X className="w-6 h-6 text-gray-700" />
+                <X className="w-6 h-6 text-white" />
               ) : (
-                <Menu className="w-6 h-6 text-gray-700" />
+                <Menu className="w-6 h-6 text-white" />
               )}
             </button>
           </div>
@@ -116,7 +116,7 @@ const Header: React.FC = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden border-t border-gray-200 bg-white/95 backdrop-blur-custom"
+              className="lg:hidden border-t border-slate-700 bg-slate-800/95 backdrop-blur-custom"
             >
               <div className="py-4 space-y-2">
                 {navigationItems.map((item) => (
@@ -124,7 +124,7 @@ const Header: React.FC = () => {
                     key={item.id}
                     whileHover={{ x: 10 }}
                     onClick={() => scrollToSection(item.href)}
-                    className="block w-full text-left px-4 py-3 text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-lg transition-all duration-200 font-medium"
+                    className="block w-full text-left px-4 py-3 text-white hover:text-slate-200 hover:bg-slate-700 rounded-lg transition-all duration-200 font-medium"
                   >
                     {item.label[language]}
                   </motion.button>
@@ -134,10 +134,10 @@ const Header: React.FC = () => {
                 <div className="px-4 py-3">
                   <button
                     onClick={toggleLanguage}
-                    className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-primary-50 hover:bg-primary-100 transition-colors duration-200 w-full justify-center"
+                    className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 transition-colors duration-200 w-full justify-center"
                   >
-                    <Globe className="w-4 h-4 text-primary-600" />
-                    <span className="text-sm font-medium text-primary-700">
+                    <Globe className="w-4 h-4 text-white" />
+                    <span className="text-sm font-medium text-white">
                       {language === 'es' ? 'Cambiar a Inglés' : 'Switch to Spanish'}
                     </span>
                   </button>
