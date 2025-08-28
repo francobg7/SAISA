@@ -166,7 +166,7 @@ const Contact: React.FC = () => {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="bg-gradient-to-br from-primary-50 to-secondary-50 rounded-3xl p-8 border border-primary-100">
+            <div className="bg-gradient-to-br from-primary-50 to-secondary-50  p-8 border border-primary-100">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
                 {currentContent.sendMessage}
               </h3>
@@ -200,7 +200,7 @@ const Contact: React.FC = () => {
                         onChange={handleInputChange}
                         required
                         placeholder={currentContent.placeholders.name}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                        className="w-full px-4 py-3 border border-gray-300  focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
                       />
                     </div>
                     <div>
@@ -215,7 +215,7 @@ const Contact: React.FC = () => {
                         onChange={handleInputChange}
                         required
                         placeholder={currentContent.placeholders.email}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                        className="w-full px-4 py-3 border border-gray-300  focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
                       />
                     </div>
                   </div>
@@ -232,7 +232,7 @@ const Contact: React.FC = () => {
                         value={formData.company}
                         onChange={handleInputChange}
                         placeholder={currentContent.placeholders.company}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                        className="w-full px-4 py-3 border border-gray-300  focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
                       />
                     </div>
                     <div>
@@ -244,7 +244,7 @@ const Contact: React.FC = () => {
                         name="service"
                         value={formData.service}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                        className="w-full px-4 py-3 border border-gray-300  focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
                       >
                         <option value="">{language === 'es' ? 'Seleccionar servicio' : 'Select service'}</option>
                         {services.map((service) => (
@@ -267,7 +267,7 @@ const Contact: React.FC = () => {
                       onChange={handleInputChange}
                       rows={4}
                       placeholder={currentContent.placeholders.message}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 resize-none"
+                      className="w-full px-4 py-3 border border-gray-300  focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 resize-none"
                     />
                   </div>
 
@@ -280,7 +280,7 @@ const Contact: React.FC = () => {
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        <div className="w-5 h-5 border-2 border-white border-t-transparent  animate-spin" />
                         <span>{language === 'es' ? 'Enviando...' : 'Sending...'}</span>
                       </>
                     ) : (
@@ -313,9 +313,9 @@ const Contact: React.FC = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={handleWhatsApp}
-                  className="w-full flex items-center space-x-4 p-4 bg-green-50 hover:bg-green-100 rounded-xl transition-all duration-300 border border-green-200"
+                  className="w-full flex items-center space-x-4 p-4 bg-green-50 hover:bg-green-100  transition-all duration-300 border border-green-200"
                 >
-                  <div className="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center">
+                  <div className="w-12 h-12 bg-green-600  flex items-center justify-center">
                     <MessageCircle className="w-6 h-6 text-white" />
                   </div>
                   <div className="text-left">
@@ -333,9 +333,9 @@ const Contact: React.FC = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={handleEmail}
-                  className="w-full flex items-center space-x-4 p-4 bg-blue-50 hover:bg-blue-100 rounded-xl transition-all duration-300 border border-blue-200"
+                  className="w-full flex items-center space-x-4 p-4 bg-blue-50 hover:bg-blue-100  transition-all duration-300 border border-blue-200"
                 >
-                  <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
+                  <div className="w-12 h-12 bg-blue-600  flex items-center justify-center">
                     <Mail className="w-6 h-6 text-white" />
                   </div>
                   <div className="text-left">
@@ -349,8 +349,8 @@ const Contact: React.FC = () => {
                 </motion.button>
 
                 {/* Address */}
-                <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-xl">
-                  <div className="w-12 h-12 bg-primary-600 rounded-xl flex items-center justify-center">
+                <div className="flex items-center space-x-4 p-4 bg-gray-50 ">
+                  <div className="w-12 h-12 bg-primary-600  flex items-center justify-center">
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div className="text-left">
@@ -364,8 +364,8 @@ const Contact: React.FC = () => {
                 </div>
 
                 {/* Business Hours */}
-                <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-xl">
-                  <div className="w-12 h-12 bg-secondary-600 rounded-xl flex items-center justify-center">
+                <div className="flex items-center space-x-4 p-4 bg-gray-50 ">
+                  <div className="w-12 h-12 bg-secondary-600  flex items-center justify-center">
                     <Clock className="w-6 h-6 text-white" />
                   </div>
                   <div className="text-left">
@@ -381,7 +381,7 @@ const Contact: React.FC = () => {
             </div>
 
             {/* Call to Action */}
-            <div className="bg-gradient-to-r from-primary-600 to-secondary-600 rounded-2xl p-6 text-white">
+            <div className="bg-gradient-to-r from-primary-600 to-secondary-600  p-6 text-white">
               <h4 className="text-xl font-bold mb-3">
                 {currentContent.getInTouch}
               </h4>
@@ -392,7 +392,7 @@ const Contact: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleWhatsApp}
-                className="w-full bg-white text-primary-600 font-semibold py-3 rounded-lg hover:bg-gray-100 transition-colors duration-300"
+                className="w-full bg-white text-primary-600 font-semibold py-3  hover:bg-gray-100 transition-colors duration-300"
               >
                 {currentContent.contactMethods.whatsapp}
               </motion.button>
