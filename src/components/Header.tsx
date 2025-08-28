@@ -93,6 +93,9 @@ const Header: React.FC = () => {
               alt="SAISA Logo" 
               className="w-24 h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 object-contain"
             />
+            <div className="hidden sm:block text-white text-xs font-medium text-shadow">
+              Servicios Ambientales Integrados S.A.
+            </div>
           </motion.button>
 
           {/* Desktop Navigation */}
@@ -116,7 +119,7 @@ const Header: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={toggleLanguage}
-              className="hidden sm:flex items-center space-x-2 px-3 py-2 bg-blue-700 hover:bg-blue-600 transition-colors duration-200 rounded-lg"
+              className="hidden sm:flex items-center space-x-2 px-3 py-2 bg-[#001a65] hover:bg-[#001550] transition-colors duration-200 rounded-lg"
             >
               <Globe className="w-4 h-4 text-white" />
               <span className="text-sm font-medium text-white text-shadow">
@@ -127,7 +130,7 @@ const Header: React.FC = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 hover:bg-blue-700 transition-colors duration-200 rounded-lg"
+              className="lg:hidden p-2 hover:bg-[#001a65] transition-colors duration-200 rounded-lg"
             >
               {isOpen ? (
                 <X className="w-6 h-6 text-white" />
@@ -145,7 +148,7 @@ const Header: React.FC = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden border-t border-blue-700"
+              className="lg:hidden border-t border-white/20"
               style={{
                 backgroundColor: 'rgba(0, 33, 126, 0.95)',
                 backdropFilter: 'blur(10px)'
@@ -157,7 +160,7 @@ const Header: React.FC = () => {
                     key={item.id}
                     whileHover={{ x: 10 }}
                     onClick={() => scrollToSection(item.href)}
-                    className="block w-full text-left px-4 py-3 text-white hover:text-blue-200 hover:bg-blue-700 transition-all duration-200 font-medium"
+                    className="block w-full text-left px-4 py-3 text-white hover:text-blue-200 hover:bg-[#001a65] transition-all duration-200 font-medium"
                   >
                     {item.label[language]}
                   </motion.button>
@@ -167,7 +170,7 @@ const Header: React.FC = () => {
                 <div className="px-4 py-3">
                   <button
                     onClick={toggleLanguage}
-                    className="flex items-center space-x-2 px-3 py-2 bg-blue-700 hover:bg-blue-600 transition-colors duration-200 w-full justify-center rounded-lg"
+                    className="flex items-center space-x-2 px-3 py-2 bg-[#001a65] hover:bg-[#001550] transition-colors duration-200 w-full justify-center rounded-lg"
                   >
                     <Globe className="w-4 h-4 text-white" />
                     <span className="text-sm font-medium text-white">
