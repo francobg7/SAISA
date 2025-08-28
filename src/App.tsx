@@ -89,7 +89,7 @@ function App() {
           transition={{ duration: 0.5 }}
           className="text-center"
         >
-          <div className="w-20 h-20 border-4 border-primary-200 border-t-primary-600 rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-20 h-20 border-4 border-primary-200 border-t-primary-600  animate-spin mx-auto mb-4"></div>
           <h2 className="text-2xl font-bold text-primary-600 mb-2">SAISA</h2>
           <p className="text-gray-600">Cargando...</p>
         </motion.div>
