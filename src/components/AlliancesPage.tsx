@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Users, Building2, Globe, ArrowLeft, ArrowRight, CheckCircle } from 'lucide-react'
+import { Users, Building2, Globe, ArrowRight, CheckCircle } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
-import { useNavigation } from '../contexts/NavigationContext'
+
 import { alliances } from '../data/companyData'
 
 const AlliancesPage: React.FC = () => {
   const { language } = useLanguage()
-  const { navigateTo } = useNavigation()
+
   const [selectedType, setSelectedType] = useState<string>('all')
   const [selectedAlliance, setSelectedAlliance] = useState<string | null>(null)
   const [ref, inView] = useInView({
@@ -112,9 +112,7 @@ const AlliancesPage: React.FC = () => {
     window.open(whatsappUrl, '_blank')
   }
 
-  const goBack = () => {
-    navigateTo('home')
-  }
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-secondary-50 pt-20">

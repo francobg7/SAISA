@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Target, CheckCircle, ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react'
+import { Target, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
-import { useNavigation } from '../contexts/NavigationContext'
+
 import { projects } from '../data/companyData'
 
 const ProjectsPage: React.FC = () => {
   const { language } = useLanguage()
-  const { navigateTo } = useNavigation()
+
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [selectedProject, setSelectedProject] = useState<string | null>(null)
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -91,9 +91,7 @@ const ProjectsPage: React.FC = () => {
     setCurrentSlide(slideIndex)
   }
 
-  const goBack = () => {
-    navigateTo('home')
-  }
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-primary-50 pt-20">

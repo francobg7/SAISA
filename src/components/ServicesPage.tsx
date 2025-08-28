@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { ArrowRight, Check, Recycle, Droplets, Leaf, Zap, Shield, Target, ArrowLeft } from 'lucide-react'
+import { ArrowRight, Check, Recycle, Droplets, Leaf, Zap, Shield, Target } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
-import { useNavigation } from '../contexts/NavigationContext'
+
 import { services } from '../data/companyData'
 
 const ServicesPage: React.FC = () => {
   const { language } = useLanguage()
-  const { navigateTo } = useNavigation()
+
   const [selectedService, setSelectedService] = useState<string | null>(null)
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -84,9 +84,7 @@ const ServicesPage: React.FC = () => {
     window.open(whatsappUrl, '_blank')
   }
 
-  const goBack = () => {
-    navigateTo('home')
-  }
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-secondary-50 pt-20">
