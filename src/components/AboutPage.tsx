@@ -175,7 +175,7 @@ const AboutPage: React.FC = () => {
         </div>
 
         {/* Vision & Mission - Full Width Background */}
-        <div className="w-full bg-gradient-to-r from-primary-600 to-secondary-600  py-20 mb-24 relative overflow-hidden">
+        <div className="w-full py-20 mb-24 relative overflow-hidden" style={{ backgroundColor: '#00217e' }}>
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 left-0 w-32 h-32 border-2 border-white " />
