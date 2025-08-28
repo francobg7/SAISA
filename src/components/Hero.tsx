@@ -90,7 +90,7 @@ const Hero: React.FC = () => {
             >
               {/* Earth Globe */}
               <motion.img
-                src="/hero/earth-globe.png"
+                src="/hero/earth-globe.webp"
                 alt="Earth Globe - Environmental Sustainability"
                 className="w-full h-auto max-w-none object-contain scale-200 lg:scale-300 xl:scale-400 2xl:scale-500 relative z-20"
                 style={{ filter: 'drop-shadow(0 25px 50px rgba(0, 0, 0, 0.15))' }}
