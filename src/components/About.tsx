@@ -190,7 +190,7 @@ const About: React.FC = () => {
         </div>
 
         {/* Vision & Mission - Full Width Background */}
-        <div className="w-full bg-slate-800 py-20 mb-24">
+        <div className="w-full bg-navy-500 py-20 mb-24">
           <div className="w-full px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
               <div className="grid lg:grid-cols-2 gap-16">
