@@ -117,47 +117,8 @@ const AlliancesPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-secondary-50">
-      {/* Custom Header */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="bg-white/90 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
-            <div className="flex items-center space-x-4">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={goBack}
-                className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors duration-300"
-              >
-                <ArrowLeft className="w-5 h-5" />
-                <span className="font-medium">{currentContent.backToHome}</span>
-              </motion.button>
-            </div>
-            
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => navigateTo('home')}
-              className="flex items-center space-x-3 cursor-pointer"
-            >
-              <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-secondary-600 rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-xl font-display">S</span>
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-gray-900 font-display">SAISA</h1>
-                <p className="text-xs text-gray-600 -mt-1">
-                  {language === 'es' ? 'Servicios Ambientales' : 'Environmental Services'}
-                </p>
-              </div>
-            </motion.button>
-          </div>
-        </div>
-      </motion.div>
+    <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-secondary-50 pt-20">
+
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -191,7 +152,7 @@ const AlliancesPage: React.FC = () => {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setSelectedType(type)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                className={`px-6 py-3  font-medium transition-all duration-300 ${
                   selectedType === type
                     ? 'bg-primary-600 text-white shadow-lg shadow-primary-500/30'
                     : 'bg-white/80 backdrop-blur-sm text-gray-700 border border-gray-200 hover:bg-primary-50 hover:border-primary-200'
@@ -222,19 +183,19 @@ const AlliancesPage: React.FC = () => {
                   className="group"
                 >
                   <div 
-                    className="bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
+                    className="bg-white  overflow-hidden shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
                     onClick={() => handleAllianceClick(alliance.id)}
                   >
                     {/* Alliance Header */}
                     <div className={`bg-gradient-to-br ${gradientClass} p-6 text-white`}>
                       <div className="flex items-center justify-between mb-4">
-                        <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/30">
+                        <div className="w-16 h-16 bg-white/20 backdrop-blur-sm  flex items-center justify-center border border-white/30">
                           <IconComponent className="w-8 h-8 text-white" />
                         </div>
                         <motion.button
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
-                          className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 border border-white/30"
+                          className="w-8 h-8 bg-white/20 backdrop-blur-sm  flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 border border-white/30"
                         >
                           <ArrowRight className="w-4 h-4 text-white" />
                         </motion.button>
@@ -244,7 +205,7 @@ const AlliancesPage: React.FC = () => {
                         {alliance.name}
                       </h3>
                       
-                      <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium border border-white/30">
+                      <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm  text-sm font-medium border border-white/30">
                         {getTypeLabel(alliance.type)}
                       </span>
                     </div>
@@ -263,7 +224,7 @@ const AlliancesPage: React.FC = () => {
                           e.stopPropagation()
                           handleAllianceClick(alliance.id)
                         }}
-                        className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-medium py-3 px-6 rounded-xl hover:shadow-lg transition-all duration-300"
+                        className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-medium py-3 px-6  hover:shadow-lg transition-all duration-300"
                       >
                         {currentContent.viewDetails}
                       </motion.button>
@@ -280,7 +241,7 @@ const AlliancesPage: React.FC = () => {
                         transition={{ duration: 0.4, ease: "easeInOut" }}
                         className="mt-6"
                       >
-                        <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
+                        <div className="bg-white/95 backdrop-blur-sm  p-8 shadow-2xl border border-white/20">
                           <div className="grid md:grid-cols-2 gap-8">
                             {/* Alliance Details */}
                             <div>
@@ -288,9 +249,9 @@ const AlliancesPage: React.FC = () => {
                                 {alliance.name}
                               </h4>
                               <div className="space-y-4">
-                                <div className="bg-gradient-to-r from-primary-50 to-primary-100 rounded-2xl p-4 border border-primary-200">
+                                <div className="bg-gradient-to-r from-primary-50 to-primary-100  p-4 border border-primary-200">
                                   <div className="flex items-center space-x-3 mb-2">
-                                    <div className="w-8 h-8 bg-primary-500 rounded-lg flex items-center justify-center">
+                                    <div className="w-8 h-8 bg-primary-500  flex items-center justify-center">
                                       <IconComponent className="w-4 h-4 text-white" />
                                     </div>
                                     <span className="font-semibold text-gray-900">
@@ -310,9 +271,9 @@ const AlliancesPage: React.FC = () => {
                                 {currentContent.partnershipBenefits}
                               </h4>
                               <div className="space-y-4">
-                                <div className="bg-gradient-to-r from-primary-50 to-secondary-50 rounded-2xl p-4 border border-primary-100">
+                                <div className="bg-gradient-to-r from-primary-50 to-secondary-50  p-4 border border-primary-100">
                                   <div className="flex items-center space-x-3 mb-2">
-                                    <div className="w-8 h-8 bg-primary-500 rounded-lg flex items-center justify-center">
+                                    <div className="w-8 h-8 bg-primary-500  flex items-center justify-center">
                                       <Users className="w-4 h-4 text-white" />
                                     </div>
                                     <span className="font-semibold text-gray-900">
@@ -327,9 +288,9 @@ const AlliancesPage: React.FC = () => {
                                   </p>
                                 </div>
                                 
-                                <div className="bg-gradient-to-r from-secondary-50 to-accent-50 rounded-2xl p-4 border border-secondary-100">
+                                <div className="bg-gradient-to-r from-secondary-50 to-accent-50  p-4 border border-secondary-100">
                                   <div className="flex items-center space-x-3 mb-2">
-                                    <div className="w-8 h-8 bg-secondary-500 rounded-lg flex items-center justify-center">
+                                    <div className="w-8 h-8 bg-secondary-500  flex items-center justify-center">
                                       <CheckCircle className="w-4 h-4 text-white" />
                                     </div>
                                     <span className="font-semibold text-gray-900">
@@ -353,7 +314,7 @@ const AlliancesPage: React.FC = () => {
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
                               onClick={handlePartnershipContact}
-                              className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-semibold py-4 px-8 rounded-xl hover:shadow-xl transition-all duration-300"
+                              className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-semibold py-4 px-8  hover:shadow-xl transition-all duration-300"
                             >
                               {currentContent.contactUs}
                             </motion.button>
@@ -373,13 +334,13 @@ const AlliancesPage: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="bg-gradient-to-r from-primary-600 to-secondary-600 rounded-3xl p-12 text-center text-white relative overflow-hidden"
+          className="bg-gradient-to-r from-primary-600 to-secondary-600  p-12 text-center text-white relative overflow-hidden"
         >
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-0 w-32 h-32 border-2 border-white rounded-full" />
-            <div className="absolute bottom-0 right-0 w-24 h-24 border-2 border-white rounded-full" />
-            <div className="absolute top-1/2 right-1/4 w-20 h-20 border-2 border-white rounded-full" />
+            <div className="absolute top-0 left-0 w-32 h-32 border-2 border-white " />
+            <div className="absolute bottom-0 right-0 w-24 h-24 border-2 border-white " />
+            <div className="absolute top-1/2 right-1/4 w-20 h-20 border-2 border-white " />
           </div>
           
           <div className="relative z-10">
@@ -393,7 +354,7 @@ const AlliancesPage: React.FC = () => {
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               onClick={handlePartnershipContact}
-              className="bg-white text-primary-600 font-semibold px-8 py-4 rounded-xl hover:bg-gray-100 transition-colors duration-300 shadow-xl"
+              className="bg-white text-primary-600 font-semibold px-8 py-4  hover:bg-gray-100 transition-colors duration-300 shadow-xl"
             >
               {currentContent.contactPartnership}
             </motion.button>
