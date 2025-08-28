@@ -87,7 +87,7 @@ const Header: React.FC = () => {
             <img 
               src="/logos/Logo.png" 
               alt="SAISA Logo" 
-              className="w-20 h-20 lg:w-24 lg:h-24 object-contain"
+              className="w-24 h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 object-contain"
             />
           </motion.button>
 
