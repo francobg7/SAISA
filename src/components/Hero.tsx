@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
   }
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50">
       {/* Content */}
       <div className="w-full px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
@@ -33,7 +33,7 @@ const Hero: React.FC = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="mb-8"
               >
-                <span className="inline-block px-6 py-3 bg-gradient-to-r from-slate-100 via-blue-100 to-slate-200 text-slate-800 rounded-full text-sm font-medium border border-slate-300 shadow-sm">
+                <span className="inline-block px-6 py-3 bg-gradient-to-r from-emerald-100 via-green-100 to-teal-100 text-emerald-800 text-sm font-medium border border-emerald-200 shadow-sm">
                   {language === 'es' ? 'Innovación Ambiental' : 'Environmental Innovation'}
                 </span>
               </motion.div>
@@ -45,7 +45,7 @@ const Hero: React.FC = () => {
                 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-tight"
               >
                 {content.title}{' '}
-                <span className="bg-gradient-to-r from-green-600 to-slate-800 bg-clip-text text-transparent">{content.titleHighlight}</span>
+                <span className="gradient-text">{content.titleHighlight}</span>
               </motion.h1>
 
               <motion.p
@@ -67,14 +67,14 @@ const Hero: React.FC = () => {
                 <motion.button
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-slate-800 hover:bg-slate-700 text-white text-lg px-8 py-4 shadow-xl rounded-lg font-semibold transition-all duration-300"
+                  className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white text-lg px-8 py-4 shadow-xl font-semibold transition-all duration-300"
                 >
                   {content.ctaPrimary}
                 </motion.button>
                 <motion.button
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="border-2 border-slate-800 text-slate-800 hover:bg-slate-800 hover:text-white text-lg px-8 py-4 rounded-lg font-semibold transition-all duration-300"
+                  className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white text-lg px-8 py-4 font-semibold transition-all duration-300"
                 >
                   {content.ctaSecondary}
                 </motion.button>
