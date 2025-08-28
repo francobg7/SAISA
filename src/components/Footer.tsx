@@ -169,7 +169,7 @@ const Footer: React.FC = () => {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.1, y: -2 }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-10 h-10 bg-white/20 hover:bg-white/30 rounded-lg flex items-center justify-center transition-all duration-300"
+                      className="w-10 h-10 bg-white/20 hover:bg-white/30 flex items-center justify-center transition-all duration-300"
                     >
                       <span className="text-lg">{getSocialIcon(social.icon)}</span>
                     </motion.a>
@@ -189,12 +189,12 @@ const Footer: React.FC = () => {
                   <input
                     type="email"
                     placeholder={currentContent.newsletter.placeholder}
-                    className="flex-1 px-4 py-2 bg-white/20 border border-white/30 rounded-l-lg text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+                    className="flex-1 px-4 py-2 bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
                   />
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-4 py-2 bg-white text-gray-900 hover:bg-gray-100 rounded-r-lg transition-colors duration-200 font-semibold"
+                    className="px-4 py-2 bg-white text-gray-900 hover:bg-gray-100 transition-colors duration-200 font-semibold"
                   >
                     {currentContent.newsletter.subscribe}
                   </motion.button>
@@ -236,7 +236,7 @@ const Footer: React.FC = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 z-40"
+        className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white shadow-lg flex items-center justify-center transition-all duration-300 z-40"
         aria-label={currentContent.backToTop}
       >
         <ArrowUp className="w-5 h-5" />
