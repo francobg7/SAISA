@@ -62,47 +62,8 @@ const AboutPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-primary-50">
-      {/* Custom Header */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="bg-white/90 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
-            <div className="flex items-center space-x-4">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={goBack}
-                className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors duration-300"
-              >
-                <ArrowLeft className="w-5 h-5" />
-                <span className="font-medium">{currentContent.backToHome}</span>
-              </motion.button>
-            </div>
-            
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => navigateTo('home')}
-              className="flex items-center space-x-3 cursor-pointer"
-            >
-              <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-secondary-600 rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-xl font-display">S</span>
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-gray-900 font-display">SAISA</h1>
-                <p className="text-xs text-gray-600 -mt-1">
-                  {language === 'es' ? 'Servicios Ambientales' : 'Environmental Services'}
-                </p>
-              </div>
-            </motion.button>
-          </div>
-        </div>
-      </motion.div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-primary-50 pt-20">
+
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -122,6 +83,8 @@ const AboutPage: React.FC = () => {
           </p>
         </motion.div>
 
+
+
         {/* Company Info - Expanded Layout */}
         <div className="mb-24">
           <div className="grid lg:grid-cols-3 gap-16 items-start">
@@ -134,7 +97,7 @@ const AboutPage: React.FC = () => {
             >
               <div className="space-y-8">
                 {/* Company Description */}
-                <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20">
+                <div className="bg-white/80 backdrop-blur-sm  p-8 shadow-xl border border-white/20">
                   <h3 className="text-3xl font-bold text-gray-900 mb-6">
                     {companyInfo.name}
                   </h3>
@@ -145,9 +108,9 @@ const AboutPage: React.FC = () => {
 
                 {/* Company Details */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl p-6 border border-primary-200">
+                  <div className="bg-gradient-to-br from-primary-50 to-primary-100  p-6 border border-primary-200">
                     <div className="flex items-center space-x-4">
-                      <div className="w-14 h-14 bg-primary-500 rounded-xl flex items-center justify-center shadow-lg">
+                      <div className="w-14 h-14 bg-primary-500  flex items-center justify-center shadow-lg">
                         <Award className="w-7 h-7 text-white" />
                       </div>
                       <div>
@@ -161,9 +124,9 @@ const AboutPage: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-br from-secondary-50 to-secondary-100 rounded-2xl p-6 border border-secondary-200">
+                  <div className="bg-gradient-to-br from-secondary-50 to-secondary-100  p-6 border border-secondary-200">
                     <div className="flex items-center space-x-4">
-                      <div className="w-14 h-14 bg-secondary-500 rounded-xl flex items-center justify-center shadow-lg">
+                      <div className="w-14 h-14 bg-secondary-500  flex items-center justify-center shadow-lg">
                         <Target className="w-7 h-7 text-white" />
                       </div>
                       <div>
@@ -195,9 +158,9 @@ const AboutPage: React.FC = () => {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={inView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                    className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                    className="bg-white/90 backdrop-blur-sm  p-6 shadow-lg border border-white/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                   >
-                    <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-secondary-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-secondary-600  flex items-center justify-center mx-auto mb-4 shadow-lg">
                       <IconComponent className="w-8 h-8 text-white" />
                     </div>
                     <div className="text-2xl font-bold text-primary-600 mb-2 text-center">
@@ -214,12 +177,12 @@ const AboutPage: React.FC = () => {
         </div>
 
         {/* Vision & Mission - Full Width Background */}
-        <div className="w-full bg-gradient-to-r from-primary-600 to-secondary-600 rounded-3xl py-20 mb-24 relative overflow-hidden">
+        <div className="w-full bg-gradient-to-r from-primary-600 to-secondary-600  py-20 mb-24 relative overflow-hidden">
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-0 w-32 h-32 border-2 border-white rounded-full" />
-            <div className="absolute bottom-0 right-0 w-24 h-24 border-2 border-white rounded-full" />
-            <div className="absolute top-1/2 right-1/4 w-20 h-20 border-2 border-white rounded-full" />
+            <div className="absolute top-0 left-0 w-32 h-32 border-2 border-white " />
+            <div className="absolute bottom-0 right-0 w-24 h-24 border-2 border-white " />
+            <div className="absolute top-1/2 right-1/4 w-20 h-20 border-2 border-white " />
           </div>
           
           <div className="relative z-10 px-8">
@@ -231,8 +194,8 @@ const AboutPage: React.FC = () => {
                 transition={{ duration: 0.8, delay: 0.8 }}
                 className="text-center lg:text-left"
               >
-                <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
-                  <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto lg:mx-0 mb-6">
+                <div className="bg-white/10 backdrop-blur-sm  p-8 border border-white/20">
+                  <div className="w-20 h-20 bg-white/20  flex items-center justify-center mx-auto lg:mx-0 mb-6">
                     <Eye className="w-10 h-10 text-white" />
                   </div>
                   <h3 className="text-3xl font-bold text-white mb-6">
@@ -251,8 +214,8 @@ const AboutPage: React.FC = () => {
                 transition={{ duration: 0.8, delay: 1.0 }}
                 className="text-center lg:text-left"
               >
-                <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20">
-                  <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto lg:mx-0 mb-6">
+                <div className="bg-white/10 backdrop-blur-sm  p-8 border border-white/20">
+                  <div className="w-20 h-20 bg-white/20  flex items-center justify-center mx-auto lg:mx-0 mb-6">
                     <Target className="w-10 h-10 text-white" />
                   </div>
                   <h3 className="text-3xl font-bold text-white mb-6">
