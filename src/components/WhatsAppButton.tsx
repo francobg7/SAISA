@@ -43,8 +43,6 @@ const WhatsAppButton: React.FC = () => {
         <div className="absolute left-full top-1/2 transform -translate-y-1/2 w-0 h-0 border-l-4 border-l-gray-900 border-t-4 border-t-transparent border-b-4 border-b-transparent"></div>
       </div>
 
-      {/* Pulse Animation */}
-      <div className="absolute inset-0 bg-green-400 animate-ping opacity-20"></div>
     </motion.button>
   )
 }
