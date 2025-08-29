@@ -289,7 +289,7 @@ const Hero: React.FC = () => {
           <motion.img
             src="/hero/earth-globe.webp"
             alt="Earth Globe - Environmental Sustainability"
-            className="w-[260px] md:w-[340px] lg:w-[420px] h-auto object-contain rounded-full shadow-2xl border-4 border-emerald-900/40 relative z-10"
+            className="w-[260px] md:w-[340px] lg:w-[420px] h-auto object-contain rounded-full shadow-2xl relative z-10"
             style={{ 
               filter: 'drop-shadow(0 25px 50px rgba(16, 185, 129, 0.4))',
               boxShadow: '0 0 60px rgba(16, 185, 129, 0.3), inset 0 0 60px rgba(16, 185, 129, 0.1)'
