@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Award, MapPin, ArrowRight, Building2, Calendar } from 'lucide-react'
+import { Award, ArrowRight, Building2, Calendar } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
 import { useNavigation } from '../../contexts/NavigationContext'
 import { companyInfo } from '../../data/companyData'
