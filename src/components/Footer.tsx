@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Mail, MapPin, Phone, ArrowUp } from 'lucide-react'
+import { Mail, MapPin, Phone, ArrowUp, Linkedin, Facebook, Twitter, Instagram } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
 import { useNavigation } from '../contexts/NavigationContext'
 import { companyInfo, navigationItems, socialLinks } from '../data/companyData'
@@ -54,12 +54,12 @@ const Footer: React.FC = () => {
 
   const getSocialIcon = (iconName: string) => {
     const iconMap: { [key: string]: any } = {
-      'linkedin': '🔗',
-      'twitter': '🐦',
-      'facebook': '📘',
-      'instagram': '📷'
+      'linkedin': <Linkedin className="w-5 h-5" />,
+      'twitter': <Twitter className="w-5 h-5" />,
+      'facebook': <Facebook className="w-5 h-5" />,
+      'instagram': <Instagram className="w-5 h-5" />
     }
-    return iconMap[iconName] || '🔗'
+    return iconMap[iconName] || <Linkedin className="w-5 h-5" />
   }
 
   const handleNavigation = (href: string) => {
@@ -82,8 +82,8 @@ const Footer: React.FC = () => {
   }
 
   return (
-    <footer className="relative text-white">
-      {/* Background Image */}
+    <footer className="relative text-white" style={{ backgroundColor: 'rgba(0, 33, 126, 0.95)' }}>
+      {/* Background with same color as navbar */}
       <div className="absolute inset-0">
         <img 
           src="/hero/footer-image.png" 
@@ -91,7 +91,7 @@ const Footer: React.FC = () => {
           className="w-full h-full object-cover"
         />
         {/* Subtle overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0 bg-black/10"></div>
       </div>
       
       <div className="container-custom relative z-10">
@@ -106,7 +106,15 @@ const Footer: React.FC = () => {
               transition={{ duration: 0.6 }}
               className="lg:col-span-2"
             >
-              {/* Logo section removed to respect the logo in the background image */}
+              {/* Logo in green */}
+              <div className="mb-6">
+                <img 
+                  src="/logos/Logo.png" 
+                  alt="SAISA Logo" 
+                  className="w-24 h-24 lg:w-28 lg:h-28 object-contain filter brightness-0 invert"
+                  style={{ filter: 'brightness(0) saturate(100%) invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%)' }}
+                />
+              </div>
 
               {/* Contact Info */}
               <div className="space-y-3">
