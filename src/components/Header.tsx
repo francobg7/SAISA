@@ -93,13 +93,13 @@ const Header: React.FC = () => {
     >
       {!isScrolled && <div className="absolute inset-0 header-shadow-overlay"></div>}
       <div className="container-custom">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center h-20">
           {/* Logo */}
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => navigateTo('home')}
-            className="cursor-pointer"
+            className="cursor-pointer flex-shrink-0"
           >
             <img 
               src="/logos/Logo.png" 
@@ -108,8 +108,8 @@ const Header: React.FC = () => {
             />
           </motion.button>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          {/* Desktop Navigation - Moved to the right */}
+          <nav className="hidden lg:flex items-center space-x-8 ml-auto mr-8">
             {navigationItems.map((item) => (
               <motion.button
                 key={item.id}
@@ -123,7 +123,7 @@ const Header: React.FC = () => {
           </nav>
 
           {/* Language Switcher & Mobile Menu Button */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4 flex-shrink-0">
             {/* Language Switcher - Transparent with ecological design */}
             <motion.button
               whileHover={{ scale: 1.05 }}
