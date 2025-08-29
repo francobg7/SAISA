@@ -8,7 +8,6 @@ import { services } from '../../data/companyData'
 const Services: React.FC = () => {
   const { language } = useLanguage()
   const [selectedService, setSelectedService] = useState<string | null>(null)
-  const [hoveredService, setHoveredService] = useState<string | null>(null)
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1
@@ -118,7 +117,6 @@ const Services: React.FC = () => {
             const IconComponent = getServiceIcon(service.icon)
             const gradientClass = getServiceGradient(index)
             const isExpanded = selectedService === service.id
-            const isHovered = hoveredService === service.id
             
             return (
               <motion.div
@@ -126,8 +124,7 @@ const Services: React.FC = () => {
                 initial={{ opacity: 0, y: 50 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
-                onHoverStart={() => setHoveredService(service.id)}
-                onHoverEnd={() => setHoveredService(null)}
+
                 className="group"
               >
                 {/* Service Card */}
