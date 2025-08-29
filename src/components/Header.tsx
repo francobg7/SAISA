@@ -56,7 +56,9 @@ const Header: React.FC = () => {
   }, [])
 
   const scrollToSection = (href: string) => {
-    if (href === '#contact') {
+    if (href === '#home') {
+      navigateTo('home')
+    } else if (href === '#contact') {
       navigateTo('contact')
     } else if (href === '#about') {
       navigateTo('about')
