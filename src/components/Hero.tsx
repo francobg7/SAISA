@@ -1,116 +1,141 @@
+
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useLanguage } from '../contexts/LanguageContext'
 
 const Hero: React.FC = () => {
   const { language } = useLanguage()
-  const content = {
-    title: language === 'es' ? 'Transformamos' : 'We Transform',
-    titleHighlight: language === 'es' ? 'el Futuro Ambiental' : 'Environmental Future',
-    subtitle: language === 'es' 
-      ? 'Somos pioneros en innovación y aplicación de tecnologías sostenibles, bajas en carbono y orientadas a la economía circular. Transformamos fuentes de contaminación en activos ambientales con valor de mercado.'
-      : 'We are pioneers in innovation and application of sustainable, low-carbon technologies oriented towards the circular economy. We transform pollution sources into environmental assets with market value.',
-    ctaPrimary: language === 'es' ? 'Conoce Nuestros Servicios' : 'Discover Our Services',
-    ctaSecondary: language === 'es' ? 'Ver Proyectos' : 'View Projects'
-  }
+  const title = language === 'es'
+    ? 'Transformamos el futuro Ambiental'
+    : 'We Transform Environmental Future'
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-[#364980] via-[#2d3d6a] to-[#1f2e55]">
-      {/* Content */}
-      <div className="w-full px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[80vh]">
-            {/* Left Column - Text Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-center lg:text-left"
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="mb-8"
-              >
-                <span className="inline-block px-6 py-3 bg-gradient-to-r from-blue-100 via-indigo-100 to-white/80 text-[#364980] text-sm font-medium border border-blue-200 shadow-sm rounded-xl">
-                  {language === 'es' ? 'Innovación Ambiental' : 'Environmental Innovation'}
-                </span>
-              </motion.div>
-
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight"
-              >
-                {content.title}{' '}
-                <span className="gradient-text">{content.titleHighlight}</span>
-              </motion.h1>
-
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-                className="text-xl md:text-2xl text-blue-100 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0"
-              >
-                {content.subtitle}
-              </motion.p>
-
-              {/* CTA Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1 }}
-                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-              >
-                <motion.button
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white text-lg px-8 py-4 shadow-xl font-semibold transition-all duration-300 rounded-xl"
-                >
-                  {content.ctaPrimary}
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="border-2 border-blue-300 text-blue-100 hover:bg-blue-500 hover:text-white text-lg px-8 py-4 font-semibold transition-all duration-300 rounded-xl"
-                >
-                  {content.ctaSecondary}
-                </motion.button>
-              </motion.div>
-            </motion.div>
-
-            {/* Right Column - Earth Image */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="relative flex items-center justify-center"
-            >
-              {/* Earth Globe */}
-              <motion.img
-                src="/hero/earth-globe.webp"
-                alt="Earth Globe - Environmental Sustainability"
-                className="w-full h-auto max-w-none object-contain scale-200 lg:scale-300 xl:scale-400 2xl:scale-500 relative z-20"
-                style={{ filter: 'drop-shadow(0 25px 50px rgba(59, 130, 246, 0.3))' }}
-                animate={{ 
-                  scale: [1, 1.3, 1],
-                  y: [0, -10, 0]
-                }}
-                transition={{ 
-                  scale: { duration: 8, repeat: Infinity, ease: "easeInOut" },
-                  y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
-                }}
-                whileHover={{ 
-                  scale: 1.05,
-                  filter: 'drop-shadow(0 30px 60px rgba(59, 130, 246, 0.4))'
-                }}
-              />
-            </motion.div>
-          </div>
-        </div>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Ecological Background with multiple layers */}
+      <div className="absolute inset-0 bg-gradient-to-br from-emerald-900 via-teal-800 to-cyan-900">
+        {/* Organic floating shapes - leaves and nature elements */}
+        <div className="absolute top-20 left-10 w-32 h-32 bg-emerald-400/20 rounded-full blur-xl animate-pulse" />
+        <div className="absolute top-40 right-20 w-24 h-24 bg-teal-400/15 rounded-full blur-lg animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-32 left-1/4 w-20 h-20 bg-cyan-400/20 rounded-full blur-lg animate-pulse" style={{ animationDelay: '2s' }} />
+        
+        {/* Leaf-like shapes */}
+        <div className="absolute top-1/3 left-1/3 w-16 h-16 bg-green-400/10 rounded-full transform rotate-45 blur-md animate-pulse" style={{ animationDelay: '0.5s' }} />
+        <div className="absolute bottom-1/4 right-1/3 w-12 h-12 bg-emerald-400/15 rounded-full transform -rotate-12 blur-md animate-pulse" style={{ animationDelay: '1.5s' }} />
+        
+        {/* Water ripple effect */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-blue-900/40 via-transparent to-transparent" />
       </div>
+
+      {/* Animated particles representing environmental elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(8)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 bg-green-400/30 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0.3, 0.8, 0.3],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Main content container */}
+      <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between px-6 py-24 lg:py-32 relative z-10">
+        {/* Left: Title with ecological vertical bar */}
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="flex flex-row items-center w-full lg:w-1/2"
+        >
+          <div className="hidden lg:block h-32 w-2 rounded-full bg-gradient-to-b from-emerald-400 via-teal-400 to-cyan-400 mr-8 shadow-lg relative">
+            {/* Add small leaf decoration */}
+            <div className="absolute -top-2 -right-1 w-4 h-4 bg-green-400/60 rounded-full transform rotate-45" />
+            <div className="absolute -bottom-2 -left-1 w-3 h-3 bg-teal-400/60 rounded-full transform -rotate-45" />
+          </div>
+          <div className="relative">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white drop-shadow-xl text-left">
+              {title}
+            </h1>
+            {/* Ecological accent line */}
+            <div className="mt-4 w-24 h-1 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full shadow-lg" />
+          </div>
+        </motion.div>
+
+        {/* Right: Earth Globe with enhanced ecological effects */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="w-full lg:w-1/2 flex items-center justify-center mt-12 lg:mt-0 relative"
+        >
+          {/* Orbital rings representing environmental cycles */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <motion.div
+              className="w-[500px] h-[500px] border border-emerald-400/20 rounded-full"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            />
+            <motion.div
+              className="absolute w-[420px] h-[420px] border border-teal-400/15 rounded-full"
+              animate={{ rotate: -360 }}
+              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+            />
+          </div>
+
+          <motion.img
+            src="/hero/earth-globe.webp"
+            alt="Earth Globe - Environmental Sustainability"
+            className="w-[260px] md:w-[340px] lg:w-[420px] h-auto object-contain rounded-full shadow-2xl border-4 border-emerald-900/40 relative z-10"
+            style={{ 
+              filter: 'drop-shadow(0 25px 50px rgba(16, 185, 129, 0.4))',
+              boxShadow: '0 0 60px rgba(16, 185, 129, 0.3), inset 0 0 60px rgba(16, 185, 129, 0.1)'
+            }}
+            animate={{ 
+              scale: [1, 1.3, 1],
+              y: [0, -10, 0]
+            }}
+            transition={{ 
+              scale: { duration: 8, repeat: Infinity, ease: "easeInOut" },
+              y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+            }}
+            whileHover={{ 
+              scale: 1.05,
+              filter: 'drop-shadow(0 30px 60px rgba(16, 185, 129, 0.5))'
+            }}
+          />
+
+          {/* Floating environmental icons around the globe */}
+          <motion.div
+            className="absolute top-4 left-4 w-8 h-8 bg-emerald-400/20 rounded-full flex items-center justify-center"
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <div className="w-3 h-3 bg-emerald-400 rounded-full" />
+          </motion.div>
+          
+          <motion.div
+            className="absolute bottom-8 right-8 w-6 h-6 bg-teal-400/20 rounded-full flex items-center justify-center"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          >
+            <div className="w-2 h-2 bg-teal-400 rounded-full" />
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Bottom ecological wave effect */}
+      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-emerald-800/30 via-transparent to-transparent" />
     </section>
   )
 }

@@ -34,6 +34,17 @@ const Header: React.FC = () => {
       .text-shadow {
         text-shadow: 0px 1px 2px rgba(0,0,0,0.5);
       }
+
+      .eco-glass {
+        background: rgba(16, 185, 129, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(16, 185, 129, 0.2);
+      }
+
+      .eco-glass-hover {
+        background: rgba(16, 185, 129, 0.2);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+      }
     `
     // Append the style element to the head
     document.head.appendChild(styleElement)
@@ -114,15 +125,15 @@ const Header: React.FC = () => {
 
           {/* Language Switcher & Mobile Menu Button */}
           <div className="flex items-center space-x-4">
-            {/* Language Switcher */}
+            {/* Language Switcher - Transparent with ecological design */}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={toggleLanguage}
-              className="hidden sm:flex items-center space-x-2 px-3 py-2 bg-[#001a65] hover:bg-[#001550] transition-colors duration-200 rounded-lg"
+              className="hidden sm:flex items-center space-x-2 px-4 py-2 eco-glass hover:eco-glass-hover transition-all duration-300 rounded-full border border-emerald-400/30"
             >
-              <Globe className="w-4 h-4 text-white" />
-              <span className="text-sm font-medium text-white text-shadow">
+              <Globe className="w-4 h-4 text-emerald-200" />
+              <span className="text-sm font-medium text-emerald-100 text-shadow">
                 {language === 'es' ? 'ES' : 'EN'}
               </span>
             </motion.button>
@@ -170,11 +181,11 @@ const Header: React.FC = () => {
                 <div className="px-4 py-3">
                   <button
                     onClick={toggleLanguage}
-                    className="flex items-center space-x-2 px-3 py-2 bg-[#001a65] hover:bg-[#001550] transition-colors duration-200 w-full justify-center rounded-lg"
+                    className="flex items-center space-x-2 px-4 py-3 eco-glass hover:eco-glass-hover transition-all duration-300 w-full justify-center rounded-lg border border-emerald-400/30"
                   >
-                    <Globe className="w-4 h-4 text-white" />
-                    <span className="text-sm font-medium text-white">
-                      {language === 'es' ? 'ES' : 'EN'}
+                    <Globe className="w-4 h-4 text-emerald-200" />
+                    <span className="text-sm font-medium text-emerald-100">
+                      {language === 'es' ? 'Cambiar a Inglés' : 'Switch to Spanish'}
                     </span>
                   </button>
                 </div>
