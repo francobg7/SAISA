@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Hero, About, Services, Projects, Alliances, Contact } from '../../components/sections'
+import { Hero, About, Services, Projects, Alliances } from '../../components/sections'
 
 const HomePage: React.FC = () => {
   return (
@@ -16,7 +16,6 @@ const HomePage: React.FC = () => {
       <Services />
       <Projects />
       <Alliances />
-      <Contact />
     </motion.main>
   )
 }
