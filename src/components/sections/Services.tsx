@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { ArrowRight, Check, Recycle, Droplets, Leaf, Zap, Shield, Target } from 'lucide-react'
+import { ArrowRight, Check, Recycle, Droplets, Leaf, Zap, Shield, Target, ChevronDown, ExternalLink } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
 import { services } from '../../data/companyData'
 
 const Services: React.FC = () => {
   const { language } = useLanguage()
   const [selectedService, setSelectedService] = useState<string | null>(null)
+  const [hoveredService, setHoveredService] = useState<string | null>(null)
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1
@@ -16,21 +17,27 @@ const Services: React.FC = () => {
   const content = {
     es: {
       sectionTitle: 'Nuestros Servicios',
-      sectionSubtitle: 'Soluciones integrales y tecnologías innovadoras para los desafíos ambientales del siglo XXI',
-      learnMore: 'Conocer Más',
-      viewDetails: 'Ver Detalles',
-      features: 'Características Principales',
-      contactUs: 'Contáctanos',
-      getQuote: 'Solicitar Cotización'
+      sectionSubtitle: 'Tecnologías innovadoras que transforman el futuro',
+      learnMore: 'Explorar servicio',
+      contactUs: 'Comenzar proyecto',
+      features: 'Lo que incluye',
+      benefits: 'Beneficios clave',
+      getQuote: 'Obtener propuesta',
+      customSolution: 'Proyectos personalizados',
+      customSolutionDesc: 'Cada desafío es único. Creamos soluciones a medida.',
+      talkToExperts: 'Consulta gratuita'
     },
     en: {
       sectionTitle: 'Our Services',
-      sectionSubtitle: 'Comprehensive solutions and innovative technologies for the environmental challenges of the 21st century',
-      learnMore: 'Learn More',
-      viewDetails: 'View Details',
-      features: 'Key Features',
-      contactUs: 'Contact Us',
-      getQuote: 'Get Quote'
+      sectionSubtitle: 'Innovative technologies that transform the future',
+      learnMore: 'Explore service',
+      contactUs: 'Start project',
+      features: 'What\'s included',
+      benefits: 'Key benefits',
+      getQuote: 'Get proposal',
+      customSolution: 'Custom projects',
+      customSolutionDesc: 'Every challenge is unique. We create tailored solutions.',
+      talkToExperts: 'Free consultation'
     }
   }
 
@@ -48,16 +55,16 @@ const Services: React.FC = () => {
     return iconMap[iconName] || Target
   }
 
-  const getServiceColor = (colorName: string) => {
-    const colorMap: { [key: string]: string } = {
-      'primary': 'from-primary-500 to-primary-600',
-      'secondary': 'from-secondary-500 to-secondary-600',
-      'accent': 'from-accent-500 to-accent-600',
-      'green': 'from-green-500 to-green-600',
-      'blue': 'from-blue-500 to-blue-600',
-      'purple': 'from-purple-500 to-purple-600'
-    }
-    return colorMap[colorName] || 'from-primary-500 to-primary-600'
+  const getServiceGradient = (index: number) => {
+    const gradients = [
+      'from-blue-500 via-blue-600 to-indigo-600',
+      'from-emerald-500 via-green-600 to-teal-600',
+      'from-purple-500 via-violet-600 to-purple-600',
+      'from-orange-500 via-red-500 to-pink-600',
+      'from-cyan-500 via-blue-500 to-indigo-600',
+      'from-amber-500 via-orange-500 to-red-500'
+    ]
+    return gradients[index % gradients.length]
   }
 
   const handleServiceClick = (serviceId: string) => {
@@ -67,283 +74,249 @@ const Services: React.FC = () => {
   const handleContactClick = (serviceId: string) => {
     const service = services.find((s: any) => s.id === serviceId)
     const message = language === 'es'
-      ? `Hola, me interesa el servicio de ${service?.title.es}`
-      : `Hello, I am interested in the ${service?.title.en} service`
+      ? `Hola, quiero iniciar un proyecto de ${service?.title.es}`
+      : `Hello, I want to start a ${service?.title.en} project`
     
     const whatsappUrl = `https://wa.me/+595984774091?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, '_blank')
   }
 
   return (
-    <section id="services" className="relative py-24 overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-secondary-50" />
-      
-      {/* Organic Background Shapes */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-primary-100 to-secondary-100  opacity-20 blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-br from-secondary-100 to-accent-100  opacity-20 blur-3xl" />
-        <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-gradient-to-br from-accent-50 to-primary-50  opacity-15 blur-3xl" />
+    <section id="services" className="py-32 bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
 
-      <div className="relative z-10">
-        {/* Section Header - Full Width */}
-        <div className="w-full px-4 sm:px-6 lg:px-8 mb-20">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              ref={ref}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6 }}
-              className="text-center"
-            >
-              <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-8">
-                {currentContent.sectionTitle}
-              </h2>
-              <p className="text-2xl md:text-3xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                {currentContent.sectionSubtitle}
-              </p>
-            </motion.div>
+      <div className="container mx-auto px-6 lg:px-8 relative z-10">
+        
+        {/* Header */}
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-24"
+        >
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-3xl mb-8 shadow-lg shadow-blue-500/25">
+            <Target className="w-10 h-10 text-white" />
           </div>
-        </div>
+          <h2 className="text-5xl lg:text-6xl font-bold text-white mb-6 bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
+            {currentContent.sectionTitle}
+          </h2>
+          <div className="w-32 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mx-auto mb-8 rounded-full" />
+          <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            {currentContent.sectionSubtitle}
+          </p>
+        </motion.div>
 
-        {/* Services Grid - Expanded Layout */}
-        <div className="w-full px-4 sm:px-6 lg:px-8 mb-20">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12">
-              {services.map((service: any, index: number) => {
-                const IconComponent = getServiceIcon(service.icon)
-                const gradientClass = getServiceColor(service.color)
-                
-                return (
-                  <motion.div
-                    key={service.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="group"
-                  >
-                    <div 
-                      className={`relative overflow-hidden transition-all duration-500 group-hover:shadow-2xl rounded-2xl ${
-                        selectedService === service.id ? 'ring-4 ring-primary-500 ring-offset-4' : ''
-                      }`}
-                      onClick={() => handleServiceClick(service.id)}
-                    >
-                      {/* Service Background */}
-                      <div className={`absolute inset-0 bg-gradient-to-br ${gradientClass} opacity-90`} />
-                      
-                      {/* Service Content */}
-                      <div className="relative p-8 text-white">
-                        {/* Service Header */}
-                        <div className="flex items-start justify-between mb-8">
-                          <div className="w-20 h-20 bg-white/20 backdrop-blur-sm flex items-center justify-center shadow-lg border border-white/30 rounded-full">
-                            <IconComponent className="w-10 h-10 text-white" />
-                          </div>
-                          <motion.button
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            className="w-10 h-10 bg-white/20 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 border border-white/30 rounded-full"
-                          >
-                            <ArrowRight className="w-5 h-5 text-white" />
-                          </motion.button>
+        {/* Services Grid */}
+        <div className="grid lg:grid-cols-3 gap-8 mb-24">
+          {services.map((service: any, index: number) => {
+            const IconComponent = getServiceIcon(service.icon)
+            const gradientClass = getServiceGradient(index)
+            const isExpanded = selectedService === service.id
+            const isHovered = hoveredService === service.id
+            
+            return (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 50 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                onHoverStart={() => setHoveredService(service.id)}
+                onHoverEnd={() => setHoveredService(null)}
+                className="group"
+              >
+                {/* Service Card */}
+                <motion.div
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden shadow-2xl"
+                >
+                  {/* Gradient overlay */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${gradientClass} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
+                  
+                  {/* Card content */}
+                  <div className="relative p-8">
+                    {/* Header */}
+                    <div className="flex items-start justify-between mb-8">
+                      <motion.div
+                        whileHover={{ rotate: 10, scale: 1.1 }}
+                        className={`w-16 h-16 bg-gradient-to-br ${gradientClass} rounded-2xl flex items-center justify-center shadow-lg`}
+                      >
+                        <IconComponent className="w-8 h-8 text-white" />
+                      </motion.div>
+                      <motion.button
+                        onClick={() => handleServiceClick(service.id)}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        className="w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center transition-all duration-300 border border-white/20"
+                      >
+                        <motion.div
+                          animate={{ rotate: isExpanded ? 180 : 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <ChevronDown className="w-5 h-5 text-white" />
+                        </motion.div>
+                      </motion.button>
+                    </div>
+
+                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-200 transition-colors duration-300">
+                      {service.title[language]}
+                    </h3>
+                    
+                    <p className="text-gray-300 leading-relaxed mb-8 line-clamp-3">
+                      {service.description[language]}
+                    </p>
+
+                    {/* Quick stats or features */}
+                    <div className="grid grid-cols-2 gap-4 mb-8">
+                      <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10">
+                        <div className="text-2xl font-bold text-white mb-1">
+                          {service.features[language].length}
                         </div>
-
-                        {/* Service Content */}
-                        <div className="mb-8">
-                          <h3 className="text-3xl font-bold mb-6 group-hover:text-white transition-colors duration-300">
-                            {service.title[language]}
-                          </h3>
-                          <p className="text-lg leading-relaxed text-white/90">
-                            {service.description[language]}
-                          </p>
+                        <div className="text-xs text-gray-400 uppercase tracking-wide">
+                          {language === 'es' ? 'Características' : 'Features'}
                         </div>
-
-                        {/* Features Preview */}
-                        <div className="space-y-4 mb-8">
-                                                     {service.features[language].slice(0, 3).map((feature: string, featureIndex: number) => (
-                            <div key={featureIndex} className="flex items-center space-x-3">
-                              <div className="w-6 h-6 bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30 rounded-full">
-                                <Check className="w-3 h-3 text-white" />
-                              </div>
-                              <span className="text-white/90">{feature}</span>
-                            </div>
-                          ))}
-                          {service.features[language].length > 3 && (
-                            <div className="text-white/80 font-medium">
-                              +{service.features[language].length - 3} {language === 'es' ? 'más características' : 'more features'}
-                            </div>
-                          )}
+                      </div>
+                      <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10">
+                        <div className="text-2xl font-bold text-emerald-400 mb-1">
+                          100%
                         </div>
-
-                        {/* Action Buttons */}
-                        <div className="flex flex-col sm:flex-row gap-4">
-                          <motion.button
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            onClick={(e) => {
-                              e.stopPropagation()
-                              handleServiceClick(service.id)
-                            }}
-                            className="flex-1 bg-white/20 backdrop-blur-sm text-white border-2 border-white/30 py-3 px-6 font-medium transition-all duration-300 hover:bg-white/30 hover:border-white/50 rounded-xl"
-                          >
-                            {selectedService === service.id ? currentContent.viewDetails : currentContent.learnMore}
-                          </motion.button>
-                          <motion.button
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            onClick={(e) => {
-                              e.stopPropagation()
-                              handleContactClick(service.id)
-                            }}
-                            className="flex-1 bg-white text-gray-900 py-3 px-6 font-medium transition-all duration-300 hover:bg-gray-100 shadow-lg rounded-xl"
-                          >
-                            {currentContent.contactUs}
-                          </motion.button>
+                        <div className="text-xs text-gray-400 uppercase tracking-wide">
+                          {language === 'es' ? 'Sostenible' : 'Sustainable'}
                         </div>
                       </div>
                     </div>
 
-                    {/* Expanded Service Details */}
-                    <AnimatePresence>
-                      {selectedService === service.id && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0, y: -20 }}
-                          animate={{ opacity: 1, height: 'auto', y: 0 }}
-                          exit={{ opacity: 0, height: 0, y: -20 }}
-                          transition={{ duration: 0.4, ease: "easeInOut" }}
-                          className="mt-8"
-                        >
-                          <div className="bg-white/95 backdrop-blur-sm  p-8 shadow-2xl border border-white/20 rounded-2xl">
-                            <div className="grid md:grid-cols-2 gap-8">
-                              {/* Features List */}
-                              <div>
-                                <h4 className="text-2xl font-bold text-gray-900 mb-6">
-                                  {language === 'es' ? 'Características Principales' : 'Key Features'}
-                                </h4>
-                                <div className="space-y-4">
-                                                                     {service.features[language].map((feature: string, featureIndex: number) => (
-                                    <div key={featureIndex} className="flex items-center space-x-3">
-                                      <div className="w-6 h-6 bg-primary-100  flex items-center justify-center rounded-full">
-                                        <Check className="w-4 h-4 text-primary-600" />
-                                      </div>
-                                      <span className="text-gray-700">{feature}</span>
-                                    </div>
-                                  ))}
-                                </div>
-                              </div>
+                    {/* Action Buttons */}
+                    <div className="space-y-3">
+                      <motion.button
+                        onClick={() => handleServiceClick(service.id)}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="w-full bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white py-4 px-6 rounded-xl font-medium transition-all duration-300 border border-white/20 flex items-center justify-center gap-2"
+                      >
+                        {currentContent.learnMore}
+                        <ExternalLink className="w-4 h-4" />
+                      </motion.button>
+                      <motion.button
+                        onClick={() => handleContactClick(service.id)}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className={`w-full bg-gradient-to-r ${gradientClass} text-white py-4 px-6 rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl`}
+                      >
+                        {currentContent.contactUs}
+                      </motion.button>
+                    </div>
+                  </div>
 
-                              {/* Benefits */}
-                              <div>
-                                <h4 className="text-2xl font-bold text-gray-900 mb-6">
-                                  {language === 'es' ? 'Beneficios' : 'Benefits'}
-                                </h4>
-                                <div className="space-y-4">
-                                  <div className="bg-gradient-to-r from-primary-50 to-secondary-50  p-6 border border-primary-100 rounded-xl">
-                                    <div className="flex items-center space-x-3 mb-3">
-                                      <div className="w-8 h-8 bg-primary-500  flex items-center justify-center rounded-full">
-                                        <Zap className="w-4 h-4 text-white" />
-                                      </div>
-                                      <span className="font-semibold text-gray-900">
-                                        {language === 'es' ? 'Eficiencia' : 'Efficiency'}
-                                      </span>
+                  {/* Expanded Details */}
+                  <AnimatePresence>
+                    {isExpanded && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                        className="border-t border-white/10 bg-black/20 backdrop-blur-sm"
+                      >
+                        <div className="p-8">
+                          <div className="space-y-8">
+                            
+                            {/* Features */}
+                            <div>
+                              <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                                <div className="w-2 h-2 bg-blue-400 rounded-full" />
+                                {currentContent.features}
+                              </h4>
+                              <div className="grid gap-3">
+                                {service.features[language].map((feature: string, featureIndex: number) => (
+                                  <motion.div
+                                    key={featureIndex}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: featureIndex * 0.1 }}
+                                    className="flex items-center gap-3"
+                                  >
+                                    <div className="w-5 h-5 bg-emerald-500/20 rounded-full flex items-center justify-center">
+                                      <Check className="w-3 h-3 text-emerald-400" />
                                     </div>
-                                    <p className="text-gray-600 text-sm">
-                                      {language === 'es' 
-                                        ? 'Optimización de procesos para máxima efectividad'
-                                        : 'Process optimization for maximum effectiveness'
-                                      }
-                                    </p>
-                                  </div>
-                                  
-                                  <div className="bg-gradient-to-r from-secondary-50 to-accent-50  p-6 border border-secondary-100 rounded-xl">
-                                    <div className="flex items-center space-x-3 mb-3">
-                                      <div className="w-8 h-8 bg-secondary-500  flex items-center justify-center rounded-full">
-                                        <Shield className="w-4 h-4 text-white" />
-                                      </div>
-                                      <span className="font-semibold text-gray-900">
-                                        {language === 'es' ? 'Sostenibilidad' : 'Sustainability'}
-                                      </span>
-                                    </div>
-                                    <p className="text-gray-600 text-sm">
-                                      {language === 'es'
-                                        ? 'Soluciones respetuosas con el medio ambiente'
-                                        : 'Environmentally friendly solutions'
-                                      }
-                                    </p>
-                                  </div>
-                                </div>
+                                    <span className="text-gray-300 text-sm">{feature}</span>
+                                  </motion.div>
+                                ))}
                               </div>
                             </div>
 
-                            {/* Call to Action */}
-                            <div className="mt-8 pt-8 border-t border-gray-200 text-center">
-                              <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                onClick={() => handleContactClick(service.id)}
-                                className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-semibold py-4 px-8  hover:shadow-xl transition-all duration-300 rounded-xl"
-                              >
-                                {language === 'es' ? 'Solicitar Cotización' : 'Request Quote'}
-                              </motion.button>
-                            </div>
+                            {/* CTA */}
+                            <motion.button
+                              onClick={() => handleContactClick(service.id)}
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
+                              className="w-full bg-gradient-to-r from-white to-gray-100 text-gray-900 py-4 px-6 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                            >
+                              {currentContent.getQuote}
+                            </motion.button>
                           </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
-                )
-              })}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              </motion.div>
+            )
+          })}
+        </div>
+
+        {/* Custom Solutions CTA */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.8, delay: 1 }}
+          className="relative"
+        >
+          <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-3xl p-12 text-center relative overflow-hidden shadow-2xl">
+            {/* Animated background pattern */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-0 left-0 w-40 h-40 border border-white rounded-full animate-pulse" />
+              <div className="absolute bottom-0 right-0 w-32 h-32 border border-white rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+              <div className="absolute top-1/2 left-1/4 w-24 h-24 border border-white rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+            </div>
+            
+            <div className="relative z-10 max-w-3xl mx-auto">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-8"
+              >
+                <Target className="w-10 h-10 text-white" />
+              </motion.div>
+              <h3 className="text-4xl font-bold text-white mb-6">
+                {currentContent.customSolution}
+              </h3>
+              <p className="text-xl text-white/90 mb-10 leading-relaxed">
+                {currentContent.customSolutionDesc}
+              </p>
+              <motion.button
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  const message = language === 'es'
+                    ? 'Hola, necesito una consulta para un proyecto personalizado'
+                    : 'Hello, I need a consultation for a custom project'
+                  const whatsappUrl = `https://wa.me/+595984774091?text=${encodeURIComponent(message)}`
+                  window.open(whatsappUrl, '_blank')
+                }}
+                className="bg-white text-purple-600 px-10 py-5 rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center gap-3"
+              >
+                {currentContent.talkToExperts}
+                <ArrowRight className="w-6 h-6" />
+              </motion.button>
             </div>
           </div>
-        </div>
-
-        {/* Call to Action Section */}
-        <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="bg-gradient-to-r from-primary-600 to-secondary-600  p-12 text-center text-white relative overflow-hidden rounded-2xl"
-            >
-              {/* Background Pattern */}
-              <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-0 left-0 w-32 h-32 border-2 border-white " />
-                <div className="absolute top-10 right-10 w-24 h-24 border-2 border-white " />
-                <div className="absolute bottom-10 left-20 w-20 h-20 border-2 border-white " />
-              </div>
-              
-              <div className="relative z-10">
-                <h3 className="text-4xl font-bold mb-6">
-                  {language === 'es' 
-                    ? '¿Necesitas una Solución Personalizada?' 
-                    : 'Need a Custom Solution?'
-                  }
-                </h3>
-                <p className="text-xl mb-8 opacity-90 max-w-3xl mx-auto">
-                  {language === 'es'
-                    ? 'Nuestro equipo de expertos está listo para crear soluciones ambientales adaptadas a tus necesidades específicas'
-                    : 'Our team of experts is ready to create environmental solutions tailored to your specific needs'
-                  }
-                </p>
-                <motion.button
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => {
-                    const message = language === 'es'
-                      ? 'Hola, necesito una solución personalizada para mi empresa'
-                      : 'Hello, I need a custom solution for my company'
-                    const whatsappUrl = `https://wa.me/+595984774091?text=${encodeURIComponent(message)}`
-                    window.open(whatsappUrl, '_blank')
-                  }}
-                  className="bg-white text-primary-600 font-semibold px-8 py-4  hover:bg-gray-100 transition-colors duration-300 shadow-xl rounded-xl"
-                >
-                  {language === 'es' ? 'Conversar con Expertos' : 'Talk to Experts'}
-                </motion.button>
-              </div>
-            </motion.div>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )
