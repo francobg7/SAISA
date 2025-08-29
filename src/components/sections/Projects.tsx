@@ -130,7 +130,7 @@ const Projects: React.FC = () => {
                       : 'bg-white/80 backdrop-blur-sm text-gray-700 border border-gray-200 hover:bg-primary-50 hover:border-primary-200 rounded-xl'
                   }`}
                 >
-                                    {category === 'all'
+                  {category === 'all' 
                     ? (language === 'es' ? 'Todos' : 'All')
                     : (category as string)
                   }

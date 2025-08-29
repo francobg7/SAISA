@@ -64,11 +64,47 @@ const Hero: React.FC = () => {
             <div className="absolute -bottom-2 -left-1 w-3 h-3 bg-teal-400/60 rounded-full transform -rotate-45" />
           </div>
           <div className="relative">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white drop-shadow-xl text-left">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white drop-shadow-xl text-left uppercase tracking-wide">
               {title}
             </h1>
+            
+            {/* Action Buttons */}
+            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-gradient-to-r from-blue-400 to-blue-800 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-blue-300/30 hover:border-blue-200/50"
+                onClick={() => {
+                  // Navegar a la página de servicios
+                  window.location.hash = '#services'
+                  // O usar el contexto de navegación si está disponible
+                  if (typeof window !== 'undefined' && window.dispatchEvent) {
+                    window.dispatchEvent(new CustomEvent('navigate', { detail: 'services' }))
+                  }
+                }}
+              >
+                {language === 'es' ? 'Conocer Servicios' : 'Discover Services'}
+              </motion.button>
+              
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-900 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-blue-400/30 hover:border-blue-300/50"
+                onClick={() => {
+                  // Navegar a la página de proyectos
+                  window.location.hash = '#projects'
+                  // O usar el contexto de navegación si está disponible
+                  if (typeof window !== 'undefined' && window.dispatchEvent) {
+                    window.dispatchEvent(new CustomEvent('navigate', { detail: 'projects' }))
+                  }
+                }}
+              >
+                {language === 'es' ? 'Conocer Proyectos' : 'Discover Projects'}
+              </motion.button>
+            </div>
+            
             {/* Ecological accent line */}
-            <div className="mt-4 w-24 h-1 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full shadow-lg" />
+            <div className="mt-6 w-24 h-1 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full shadow-lg" />
           </div>
         </motion.div>
 
