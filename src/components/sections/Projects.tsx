@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Target, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react'
-import { useLanguage } from '../contexts/LanguageContext'
-import { projects } from '../data/companyData'
+import { useLanguage } from '../../contexts/LanguageContext'
+import { projects } from '../../data/companyData'
 
 const Projects: React.FC = () => {
   const { language } = useLanguage()
@@ -49,7 +49,7 @@ const Projects: React.FC = () => {
   // Filter projects by category
   const filteredProjects = selectedCategory === 'all' 
     ? projects 
-    : projects.filter(p => p.category[language] === selectedCategory)
+    : projects.filter((p: any) => p.category[language] === selectedCategory)
 
   const handleProjectClick = (projectId: string) => {
     setSelectedProject(selectedProject === projectId ? null : projectId)
@@ -118,21 +118,21 @@ const Projects: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="flex flex-wrap justify-center gap-4"
             >
-              {['all', ...Array.from(new Set(projects.map(p => p.category[language])))].map((category) => (
+              {['all', ...Array.from(new Set(projects.map((p: any) => p.category[language])))].map((category) => (
                 <motion.button
-                  key={category}
+                  key={category as string}
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => setSelectedCategory(category)}
+                  onClick={() => setSelectedCategory(category as string)}
                   className={`px-6 py-3  font-medium transition-all duration-300 ${
                     selectedCategory === category
                       ? 'bg-primary-600 text-white shadow-lg shadow-primary-500/30 rounded-xl'
                       : 'bg-white/80 backdrop-blur-sm text-gray-700 border border-gray-200 hover:bg-primary-50 hover:border-primary-200 rounded-xl'
                   }`}
                 >
-                  {category === 'all' 
+                                    {category === 'all'
                     ? (language === 'es' ? 'Todos' : 'All')
-                    : category
+                    : (category as string)
                   }
                 </motion.button>
               ))}
@@ -153,7 +153,7 @@ const Projects: React.FC = () => {
                   {Array.from({ length: Math.ceil(filteredProjects.length / 3) }, (_, slideIndex) => (
                     <div key={slideIndex} className="w-full flex-shrink-0">
                       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {filteredProjects.slice(slideIndex * 3, slideIndex * 3 + 3).map((project, index) => (
+                        {filteredProjects.slice(slideIndex * 3, slideIndex * 3 + 3).map((project: any, index: number) => (
                           <motion.div
                             key={project.id}
                             initial={{ opacity: 0, y: 30 }}
@@ -278,7 +278,7 @@ const Projects: React.FC = () => {
                                           {language === 'es' ? 'Tecnologías Utilizadas' : 'Technologies Used'}
                                         </h4>
                                         <div className="grid grid-cols-2 gap-3">
-                                          {project.technologies.map((tech, techIndex) => (
+                                                                                     {project.technologies.map((tech: string, techIndex: number) => (
                                             <div key={techIndex} className="bg-gray-50 p-3 text-center border border-gray-200">
                                               <span className="text-sm font-medium text-gray-700">{tech}</span>
                                             </div>

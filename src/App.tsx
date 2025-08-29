@@ -1,16 +1,14 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Header from './components/Header'
-import Hero from './components/Hero'
-import About from './components/About'
-import Services from './components/Services'
-import Projects from './components/Projects'
-import Alliances from './components/Alliances'
-import ContactPage from './components/ContactPage'
-import AboutPage from './components/AboutPage'
-import ServicesPage from './components/ServicesPage'
-import ProjectsPage from './components/ProjectsPage'
-import AlliancesPage from './components/AlliancesPage'
+import { 
+  HomePage, 
+  NosotrosPage, 
+  ServiciosPage, 
+  ProyectosPage, 
+  AlianzasPage, 
+  ContactoPage 
+} from './pages'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
 import LanguageContext from './contexts/LanguageContext'
@@ -28,31 +26,17 @@ function AppContent() {
   const renderPage = () => {
     switch (currentPage) {
       case 'about':
-        return <AboutPage />
+        return <NosotrosPage />
       case 'services':
-        return <ServicesPage />
+        return <ServiciosPage />
       case 'projects':
-        return <ProjectsPage />
+        return <ProyectosPage />
       case 'alliances':
-        return <AlliancesPage />
+        return <AlianzasPage />
       case 'contact':
-        return <ContactPage />
+        return <ContactoPage />
       default:
-        return (
-          <motion.main
-            key="home"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <Hero />
-            <About />
-            <Services />
-            <Projects />
-            <Alliances />
-          </motion.main>
-        )
+        return <HomePage />
     }
   }
 

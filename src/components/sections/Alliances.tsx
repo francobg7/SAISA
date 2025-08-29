@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Building2, GraduationCap, Globe, Users, ExternalLink } from 'lucide-react'
-import { useLanguage } from '../contexts/LanguageContext'
-import { alliances } from '../data/companyData'
+import { useLanguage } from '../../contexts/LanguageContext'
+import { alliances } from '../../data/companyData'
 
 const Alliances: React.FC = () => {
   const { language } = useLanguage()
@@ -56,12 +56,12 @@ const Alliances: React.FC = () => {
   const currentContent = content[language]
 
   // Get unique alliance types
-  const allianceTypes = ['all', ...Array.from(new Set(alliances.map(a => a.type)))]
+  const allianceTypes = ['all', ...Array.from(new Set(alliances.map((a: any) => a.type)))]
 
   // Filter alliances by type
   const filteredAlliances = selectedType === 'all' 
     ? alliances 
-    : alliances.filter(a => a.type === selectedType)
+    : alliances.filter((a: any) => a.type === selectedType)
 
   const handleAllianceClick = (allianceId: string) => {
     setSelectedAlliance(selectedAlliance === allianceId ? null : allianceId)
@@ -128,10 +128,10 @@ const Alliances: React.FC = () => {
           </span>
           {allianceTypes.map((type) => (
             <motion.button
-              key={type}
+              key={type as string}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => setSelectedType(type)}
+              onClick={() => setSelectedType(type as string)}
               className={`px-4 py-2  text-sm font-medium transition-all duration-300 flex items-center space-x-2 ${
                 selectedType === type
                   ? 'bg-primary-600 text-white shadow-lg rounded-lg'
@@ -150,7 +150,7 @@ const Alliances: React.FC = () => {
 
         {/* Alliances Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
-          {filteredAlliances.map((alliance, index) => {
+          {filteredAlliances.map((alliance: any, index: number) => {
             const IconComponent = getTypeIcon(alliance.type)
             const gradientClass = getTypeColor(alliance.type)
             
@@ -177,7 +177,7 @@ const Alliances: React.FC = () => {
                       alliance.type === 'ngo' ? 'bg-purple-100 text-purple-700' :
                       'bg-orange-100 text-orange-700'
                     } rounded-full`}>
-                      {currentContent.partnershipTypes[alliance.type]}
+                                                   {currentContent.partnershipTypes[alliance.type as keyof typeof currentContent.partnershipTypes]}
                     </span>
                   </div>
 
@@ -218,7 +218,7 @@ const Alliances: React.FC = () => {
                       <div className="space-y-4 mb-6">
                         <div>
                           <h4 className="font-semibold text-gray-900 mb-2">
-                            {currentContent.partnershipTypes[alliance.type]}
+                            {currentContent.partnershipTypes[alliance.type as keyof typeof currentContent.partnershipTypes]}
                           </h4>
                           <p className="text-gray-600">{alliance.name}</p>
                         </div>

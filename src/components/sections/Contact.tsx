@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Mail, MapPin, Clock, Send, CheckCircle, MessageCircle } from 'lucide-react'
-import { useLanguage } from '../contexts/LanguageContext'
-import { companyInfo, services } from '../data/companyData'
+import { useLanguage } from '../../contexts/LanguageContext'
+import { companyInfo, services } from '../../data/companyData'
 
 const Contact: React.FC = () => {
   const { language } = useLanguage()
@@ -247,7 +247,7 @@ const Contact: React.FC = () => {
                         className="w-full px-4 py-3 border border-gray-300  focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
                       >
                         <option value="">{language === 'es' ? 'Seleccionar servicio' : 'Select service'}</option>
-                        {services.map((service) => (
+                        {services.map((service: any) => (
                           <option key={service.id} value={service.title[language]}>
                             {service.title[language]}
                           </option>

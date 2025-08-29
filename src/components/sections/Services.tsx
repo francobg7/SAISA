@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { ArrowRight, Check, Recycle, Droplets, Leaf, Zap, Shield, Target } from 'lucide-react'
-import { useLanguage } from '../contexts/LanguageContext'
-import { services } from '../data/companyData'
+import { useLanguage } from '../../contexts/LanguageContext'
+import { services } from '../../data/companyData'
 
 const Services: React.FC = () => {
   const { language } = useLanguage()
@@ -65,7 +65,7 @@ const Services: React.FC = () => {
   }
 
   const handleContactClick = (serviceId: string) => {
-    const service = services.find(s => s.id === serviceId)
+    const service = services.find((s: any) => s.id === serviceId)
     const message = language === 'es'
       ? `Hola, me interesa el servicio de ${service?.title.es}`
       : `Hello, I am interested in the ${service?.title.en} service`
@@ -111,7 +111,7 @@ const Services: React.FC = () => {
         <div className="w-full px-4 sm:px-6 lg:px-8 mb-20">
           <div className="max-w-7xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12">
-              {services.map((service, index) => {
+              {services.map((service: any, index: number) => {
                 const IconComponent = getServiceIcon(service.icon)
                 const gradientClass = getServiceColor(service.color)
                 
@@ -160,7 +160,7 @@ const Services: React.FC = () => {
 
                         {/* Features Preview */}
                         <div className="space-y-4 mb-8">
-                          {service.features[language].slice(0, 3).map((feature, featureIndex) => (
+                                                     {service.features[language].slice(0, 3).map((feature: string, featureIndex: number) => (
                             <div key={featureIndex} className="flex items-center space-x-3">
                               <div className="w-6 h-6 bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30 rounded-full">
                                 <Check className="w-3 h-3 text-white" />
@@ -221,7 +221,7 @@ const Services: React.FC = () => {
                                   {language === 'es' ? 'Características Principales' : 'Key Features'}
                                 </h4>
                                 <div className="space-y-4">
-                                  {service.features[language].map((feature, featureIndex) => (
+                                                                     {service.features[language].map((feature: string, featureIndex: number) => (
                                     <div key={featureIndex} className="flex items-center space-x-3">
                                       <div className="w-6 h-6 bg-primary-100  flex items-center justify-center rounded-full">
                                         <Check className="w-4 h-4 text-primary-600" />

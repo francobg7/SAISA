@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { useLanguage } from '../contexts/LanguageContext'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 const Hero: React.FC = () => {
   const { language } = useLanguage()

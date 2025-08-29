@@ -2,8 +2,8 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Target, Heart, Award, CheckCircle, Eye } from 'lucide-react'
-import { useLanguage } from '../contexts/LanguageContext'
-import { companyInfo } from '../data/companyData'
+import { useLanguage } from '../../contexts/LanguageContext'
+import { companyInfo } from '../../data/companyData'
 
 const About: React.FC = () => {
   const { language } = useLanguage()
@@ -154,7 +154,7 @@ const About: React.FC = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="space-y-6"
               >
-                {currentContent.stats.map((stat, index) => {
+                {currentContent.stats.map((stat: any, index: number) => {
                   const IconComponent = stat.icon
                   return (
                     <motion.div
