@@ -57,31 +57,6 @@ const Hero: React.FC = () => {
           </motion.div>
         ))}
 
-        {/* Floating bottles and cans */}
-        {[...Array(4)].map((_, i) => (
-          <motion.div
-            key={`bottle-${i}`}
-            className="absolute text-xl md:text-2xl lg:text-3xl text-blue-400/30"
-            style={{
-              left: `${10 + (i * 25) % 90}%`,
-              top: `${20 + (i * 30) % 80}%`,
-            }}
-            animate={{
-              y: [0, -25, 0],
-              x: [0, 10, 0],
-              rotate: [0, 15, 0],
-              opacity: [0.1, 0.5, 0.1],
-            }}
-            transition={{
-              duration: 6 + Math.random() * 3,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          >
-            🍶
-          </motion.div>
-        ))}
-
         {/* Floating leaves and nature elements */}
         {[...Array(5)].map((_, i) => (
           <motion.div
