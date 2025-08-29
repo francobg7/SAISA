@@ -230,32 +230,72 @@ const Hero: React.FC = () => {
             {/* Main outer ring */}
             <motion.div
               className="w-[500px] h-[500px] border border-emerald-400/20 rounded-full"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              animate={{ 
+                rotate: 360,
+                scale: [1, 1.1, 1],
+                y: [0, -5, 0]
+              }}
+              transition={{ 
+                rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                scale: { duration: 8, repeat: Infinity, ease: "easeInOut" },
+                y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+              }}
             />
             {/* Secondary ring */}
             <motion.div
               className="absolute w-[420px] h-[420px] border border-teal-400/15 rounded-full"
-              animate={{ rotate: -360 }}
-              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+              animate={{ 
+                rotate: -360,
+                scale: [1, 1.08, 1],
+                y: [0, -4, 0]
+              }}
+              transition={{ 
+                rotate: { duration: 15, repeat: Infinity, ease: "linear" },
+                scale: { duration: 8, repeat: Infinity, ease: "easeInOut" },
+                y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+              }}
             />
             {/* NEW: Third ring */}
             <motion.div
               className="absolute w-[480px] h-[480px] border border-blue-400/10 rounded-full"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+              animate={{ 
+                rotate: 360,
+                scale: [1, 1.12, 1],
+                y: [0, -6, 0]
+              }}
+              transition={{ 
+                rotate: { duration: 25, repeat: Infinity, ease: "linear" },
+                scale: { duration: 8, repeat: Infinity, ease: "easeInOut" },
+                y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+              }}
             />
             {/* NEW: Fourth ring */}
             <motion.div
               className="absolute w-[380px] h-[380px] border border-cyan-400/12 rounded-full"
-              animate={{ rotate: -360 }}
-              transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+              animate={{ 
+                rotate: -360,
+                scale: [1, 1.06, 1],
+                y: [0, -3, 0]
+              }}
+              transition={{ 
+                rotate: { duration: 18, repeat: Infinity, ease: "linear" },
+                scale: { duration: 8, repeat: Infinity, ease: "easeInOut" },
+                y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+              }}
             />
             {/* NEW: Fifth ring */}
             <motion.div
               className="absolute w-[520px] h-[520px] border border-green-400/8 rounded-full"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+              animate={{ 
+                rotate: 360,
+                scale: [1, 1.15, 1],
+                y: [0, -7, 0]
+              }}
+              transition={{ 
+                rotate: { duration: 30, repeat: Infinity, ease: "linear" },
+                scale: { duration: 8, repeat: Infinity, ease: "easeInOut" },
+                y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+              }}
             />
           </div>
 
