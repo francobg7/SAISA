@@ -237,10 +237,9 @@ const Hero: React.FC = () => {
           <motion.img
             src="/hero/earth-globe.webp"
             alt="Earth Globe - Environmental Sustainability"
-            className="w-[260px] md:w-[340px] lg:w-[420px] h-auto object-contain rounded-full shadow-2xl relative z-10"
+            className="w-[260px] md:w-[340px] lg:w-[420px] h-auto object-contain rounded-full relative z-10"
             style={{ 
-              filter: 'drop-shadow(0 25px 50px rgba(16, 185, 129, 0.4))',
-              boxShadow: '0 0 60px rgba(16, 185, 129, 0.3), inset 0 0 60px rgba(16, 185, 129, 0.1)'
+              filter: 'drop-shadow(0 15px 30px rgba(16, 185, 129, 0.2))'
             }}
             animate={{ 
               scale: [1, 1.3, 1],
@@ -252,7 +251,7 @@ const Hero: React.FC = () => {
             }}
             whileHover={{ 
               scale: 1.05,
-              filter: 'drop-shadow(0 30px 60px rgba(16, 185, 129, 0.5))'
+              filter: 'drop-shadow(0 20px 40px rgba(16, 185, 129, 0.3))'
             }}
           />
 
