@@ -104,9 +104,6 @@ const Header: React.FC = () => {
               alt="SAISA Logo" 
               className="w-24 h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 object-contain"
             />
-            <div className="hidden sm:block text-white text-xs font-medium text-shadow">
-              Servicios Ambientales Integrados S.A.
-            </div>
           </motion.button>
 
           {/* Desktop Navigation */}
