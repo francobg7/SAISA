@@ -2,7 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 
 import { Building2, Users, Globe } from 'lucide-react'
-import { Card, GoogleMap } from '../../components/ui'
+import { Card } from '../../components/ui'
 import ContactForm from '../../components/forms/ContactForm'
 import ContactInfo from '../../components/forms/ContactInfo'
 import { useLanguage } from '../../contexts/LanguageContext'
@@ -147,98 +147,6 @@ const ContactoPage: React.FC = () => {
                 </p>
               </Card>
             ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Map Section */}
-      <div className="px-4 sm:px-6 lg:px-8 mb-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              {language === 'es' ? 'Nuestra Ubicación' : 'Our Location'}
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              {language === 'es' 
-                ? 'Encuéntranos en el corazón de Paraguay, donde la innovación ambiental se encuentra con la sostenibilidad.' 
-                : 'Find us in the heart of Paraguay, where environmental innovation meets sustainability.'
-              }
-            </p>
-          </div>
-          
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Map */}
-            <div className="order-2 lg:order-1">
-              <GoogleMap
-                center={{ lat: -25.2637, lng: -57.5759 }} // Coordenadas de Asunción, Paraguay
-                zoom={14}
-                height="400px"
-                markerTitle="SAISA - Servicios Ambientales Integrales"
-              />
-            </div>
-            
-            {/* Location Info */}
-            <div className="order-1 lg:order-2 space-y-6">
-              <div className="bg-white p-6 shadow-lg border border-gray-100 rounded-xl">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                  {language === 'es' ? 'Información de Ubicación' : 'Location Information'}
-                </h3>
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-primary-100 text-primary-600 flex items-center justify-center rounded-full flex-shrink-0">
-                      <span className="text-sm">📍</span>
-                    </div>
-                    <div>
-                      <p className="font-medium text-gray-900">Dirección</p>
-                      <p className="text-gray-600">R.I 4 Curupayty 639, Paraguay</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-primary-100 text-primary-600 flex items-center justify-center rounded-full flex-shrink-0">
-                      <span className="text-sm">🕒</span>
-                    </div>
-                    <div>
-                      <p className="font-medium text-gray-900">Horario de Atención</p>
-                      <p className="text-gray-600">Lun - Vie: 8:00 AM - 6:00 PM</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-primary-100 text-primary-600 flex items-center justify-center rounded-full flex-shrink-0">
-                      <span className="text-sm">🚗</span>
-                    </div>
-                    <div>
-                      <p className="font-medium text-gray-900">Acceso</p>
-                      <p className="text-gray-600">Fácil acceso desde el centro de Asunción</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="bg-gradient-to-r from-primary-50 to-secondary-50 p-6 rounded-xl border border-primary-100">
-                <h4 className="text-lg font-semibold text-primary-800 mb-3">
-                  {language === 'es' ? '¿Necesitas Direcciones?' : 'Need Directions?'}
-                </h4>
-                <p className="text-primary-700 mb-4">
-                  {language === 'es' 
-                    ? 'Usa el mapa interactivo para encontrar la mejor ruta hacia nuestras oficinas.'
-                    : 'Use the interactive map to find the best route to our offices.'
-                  }
-                </p>
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="bg-primary-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-primary-700 transition-colors"
-                  onClick={() => {
-                    // Abrir Google Maps en nueva pestaña
-                    window.open('https://maps.google.com/?q=-25.2637,-57.5759', '_blank')
-                  }}
-                >
-                  {language === 'es' ? 'Abrir en Google Maps' : 'Open in Google Maps'}
-                </motion.button>
-              </div>
-            </div>
           </div>
         </div>
       </div>
