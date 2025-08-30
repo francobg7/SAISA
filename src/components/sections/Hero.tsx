@@ -69,11 +69,15 @@ const Hero: React.FC = () => {
             </h1>
             
             {/* Action Buttons */}
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <div className="mt-12 flex flex-col sm:flex-row gap-6">
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-blue-400 to-blue-800 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-blue-300/30 hover:border-blue-200/50"
+                whileHover={{ 
+                  scale: 1.02, 
+                  y: -3,
+                  boxShadow: "0 20px 40px rgba(59, 130, 246, 0.4)"
+                }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative px-10 py-5 bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600 text-white font-bold text-lg rounded-2xl shadow-2xl transition-all duration-500 overflow-hidden"
                 onClick={() => {
                   // Navegar a la página de servicios
                   window.location.hash = '#services'
@@ -83,13 +87,39 @@ const Hero: React.FC = () => {
                   }
                 }}
               >
-                {language === 'es' ? 'Conocer Servicios' : 'Discover Services'}
+                {/* Animated background gradient */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-cyan-500 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                {/* Shimmer effect */}
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
+                
+                {/* Button content */}
+                <div className="relative flex items-center justify-center gap-3">
+                  <div className="w-2 h-2 bg-white rounded-full animate-pulse group-hover:scale-150 transition-transform duration-300" />
+                  {language === 'es' ? 'Conocer Servicios' : 'Discover Services'}
+                  <motion.div
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                    className="w-5 h-5"
+                  >
+                    <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+                      <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  </motion.div>
+                </div>
+
+                {/* Glow effect */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 to-indigo-600 opacity-50 blur-xl scale-110 group-hover:scale-125 transition-transform duration-500 -z-10" />
               </motion.button>
               
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-900 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-blue-400/30 hover:border-blue-300/50"
+                whileHover={{ 
+                  scale: 1.02, 
+                  y: -3,
+                  boxShadow: "0 20px 40px rgba(16, 185, 129, 0.4)"
+                }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative px-10 py-5 bg-gradient-to-r from-emerald-500 via-green-600 to-teal-600 text-white font-bold text-lg rounded-2xl shadow-2xl transition-all duration-500 overflow-hidden"
                 onClick={() => {
                   // Navegar a la página de proyectos
                   window.location.hash = '#projects'
@@ -99,7 +129,29 @@ const Hero: React.FC = () => {
                   }
                 }}
               >
-                {language === 'es' ? 'Conocer Proyectos' : 'Discover Projects'}
+                {/* Animated background gradient */}
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-green-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                {/* Shimmer effect */}
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
+                
+                {/* Button content */}
+                <div className="relative flex items-center justify-center gap-3">
+                  <div className="w-2 h-2 bg-white rounded-full animate-pulse group-hover:scale-150 transition-transform duration-300" />
+                  {language === 'es' ? 'Conocer Proyectos' : 'Discover Projects'}
+                  <motion.div
+                    animate={{ rotate: [0, 360] }}
+                    transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
+                    className="w-5 h-5"
+                  >
+                    <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+                      <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
+                    </svg>
+                  </motion.div>
+                </div>
+
+                {/* Glow effect */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 opacity-50 blur-xl scale-110 group-hover:scale-125 transition-transform duration-500 -z-10" />
               </motion.button>
             </div>
             
