@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Card } from '../../components/ui'
 import { useLanguage } from '../../contexts/LanguageContext'
 
 const ProyectosPage: React.FC = () => {
   const { language } = useLanguage()
-  const [selectedObjective, setSelectedObjective] = useState(0)
 
   const [introRef, introInView] = useInView({
     triggerOnce: true,
@@ -130,7 +128,7 @@ const ProyectosPage: React.FC = () => {
     >
       {/* Hero Section */}
       <div 
-        className="relative min-h-[80vh] flex items-center justify-center bg-cover bg-center bg-no-repeat"
+        className="relative min-h-[65vh] flex items-center justify-center bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: 'url(/public/Proyectos/proyecto01.jpg)',
           backgroundSize: '100%',

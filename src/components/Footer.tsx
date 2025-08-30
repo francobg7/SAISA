@@ -2,12 +2,10 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Mail, MapPin, Phone, ArrowUp, Linkedin, Facebook, Twitter, Instagram } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
-import { useNavigation } from '../contexts/NavigationContext'
-import { companyInfo, navigationItems, socialLinks } from '../data/companyData'
+import { companyInfo, socialLinks } from '../data/companyData'
 
 const Footer: React.FC = () => {
   const { language } = useLanguage()
-  const { navigateTo } = useNavigation()
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1
@@ -15,10 +13,11 @@ const Footer: React.FC = () => {
 
   const content = {
     es: {
-      description: 'Empresa pionera en innovación y aplicación de tecnologías sostenibles, bajas en carbono y orientadas a la economía circular.',
       quickLinks: 'Enlaces Rápidos',
       services: 'Servicios',
-      contact: 'Contacto',
+      about: 'Nosotros',
+      projects: 'Proyectos',
+      alliances: 'Alianzas',
       followUs: 'Síguenos',
       allRightsReserved: 'Todos los derechos reservados',
       backToTop: 'Volver arriba',
@@ -30,10 +29,11 @@ const Footer: React.FC = () => {
       }
     },
     en: {
-      description: 'Pioneering company in innovation and application of sustainable technologies, low-carbon and oriented towards the circular economy.',
       quickLinks: 'Quick Links',
       services: 'Services',
-      contact: 'Contact',
+      about: 'About',
+      projects: 'Projects',
+      alliances: 'Alliances',
       followUs: 'Follow Us',
       allRightsReserved: 'All rights reserved',
       backToTop: 'Back to top',
@@ -62,38 +62,15 @@ const Footer: React.FC = () => {
     return iconMap[iconName] || <Linkedin className="w-5 h-5" />
   }
 
-  const handleNavigation = (href: string) => {
-    if (href === '#contact') {
-      navigateTo('contact')
-    } else if (href === '#about') {
-      navigateTo('about')
-    } else if (href === '#services') {
-      navigateTo('services')
-    } else if (href === '#projects') {
-      navigateTo('projects')
-    } else if (href === '#alliances') {
-      navigateTo('alliances')
-    } else {
-      const element = document.querySelector(href)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-      }
-    }
-  }
+  const quickLinks = [
+    { id: 'about', label: currentContent.about, href: '/nosotros' },
+    { id: 'services', label: currentContent.services, href: '/servicios' },
+    { id: 'projects', label: currentContent.projects, href: '/proyectos' },
+    { id: 'alliances', label: currentContent.alliances, href: '/alianzas' }
+  ]
 
   return (
-    <footer className="relative text-white" style={{ backgroundColor: 'rgba(0, 33, 126, 0.95)' }}>
-      {/* Background with same color as navbar */}
-      <div className="absolute inset-0">
-        <img 
-          src="/hero/footer-image.png" 
-          alt="SAISA Environmental Services Background" 
-          className="w-full h-full object-cover"
-        />
-        {/* Subtle overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/10"></div>
-      </div>
-      
+    <footer className="relative text-white" style={{ backgroundColor: '#113188' }}>
       <div className="container-custom relative z-10">
         {/* Main Footer Content */}
         <div className="py-16">
@@ -106,12 +83,12 @@ const Footer: React.FC = () => {
               transition={{ duration: 0.6 }}
               className="lg:col-span-2"
             >
-              {/* Logo in green */}
+              {/* Logo */}
               <div className="mb-6">
                 <img 
                   src="/logos/Logo.png" 
                   alt="SAISA Logo" 
-                  className="w-24 h-24 lg:w-28 lg:h-28 object-contain filter brightness-0 invert"
+                  className="w-24 h-24 lg:w-28 lg:h-28 object-contain"
                   style={{ filter: 'brightness(0) saturate(100%) invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%)' }}
                 />
               </div>
@@ -143,14 +120,14 @@ const Footer: React.FC = () => {
                 {currentContent.quickLinks}
               </h4>
               <ul className="space-y-3">
-                {navigationItems.slice(1, -1).map((item) => (
+                {quickLinks.map((item) => (
                   <li key={item.id}>
-                    <button
-                      onClick={() => handleNavigation(item.href)}
+                    <a
+                      href={item.href}
                       className="text-white hover:text-gray-200 transition-colors duration-200 text-sm font-semibold"
                     >
-                      {item.label[language]}
-                    </button>
+                      {item.label}
+                    </a>
                   </li>
                 ))}
               </ul>
@@ -179,7 +156,7 @@ const Footer: React.FC = () => {
                       whileTap={{ scale: 0.95 }}
                       className="w-10 h-10 bg-white/20 hover:bg-white/30 flex items-center justify-center transition-all duration-300 rounded-full"
                     >
-                      <span className="text-lg">{getSocialIcon(social.icon)}</span>
+                      {getSocialIcon(social.icon)}
                     </motion.a>
                   ))}
                 </div>
@@ -229,9 +206,7 @@ const Footer: React.FC = () => {
                 {language === 'es' ? 'Fundada en' : 'Founded in'} {companyInfo.founded}
               </span>
               <span>•</span>
-              <span>
-                {language === 'es' ? 'Paraguay' : 'Paraguay'}
-              </span>
+              <span>Paraguay</span>
             </div>
           </div>
         </motion.div>

@@ -26,24 +26,37 @@ const Header: React.FC = () => {
     const styleElement = document.createElement('style')
     styleElement.innerHTML = `
       .header-shadow-overlay {
-        background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%);
+        background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 100%);
         pointer-events: none;
         z-index: -1;
       }
       
       .text-shadow {
-        text-shadow: 0px 1px 2px rgba(0,0,0,0.5);
+        text-shadow: 0px 1px 3px rgba(0,0,0,0.8);
       }
 
       .eco-glass {
-        background: rgba(16, 185, 129, 0.1);
+        background: rgba(16, 185, 129, 0.15);
         backdrop-filter: blur(10px);
-        border: 1px solid rgba(16, 185, 129, 0.2);
+        border: 1px solid rgba(16, 185, 129, 0.3);
       }
 
       .eco-glass-hover {
-        background: rgba(16, 185, 129, 0.2);
-        border: 1px solid rgba(16, 185, 129, 0.3);
+        background: rgba(16, 185, 129, 0.25);
+        border: 1px solid rgba(16, 185, 129, 0.4);
+      }
+
+      .header-transparent {
+        background: transparent;
+        backdrop-filter: none;
+        border-bottom: none;
+      }
+
+      .header-scrolled {
+        background: rgba(17, 49, 136, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
       }
     `
     // Append the style element to the head
@@ -56,11 +69,13 @@ const Header: React.FC = () => {
   }, [])
 
   const scrollToSection = (href: string) => {
+    console.log('Navigating to:', href) // Debug log
     if (href === '#home') {
       navigateTo('home')
     } else if (href === '#contact') {
       navigateTo('contact')
     } else if (href === '#about') {
+      console.log('Navigating to about page') // Debug log
       navigateTo('about')
     } else if (href === '#services') {
       navigateTo('services')
@@ -81,17 +96,13 @@ const Header: React.FC = () => {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'shadow-lg'
-          : ''
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled ? 'header-scrolled' : 'header-transparent'
       }`}
-      style={{
-        backgroundColor: isScrolled ? 'rgba(0, 33, 126, 0.95)' : 'rgba(0, 33, 126, 0.9)',
-        backdropFilter: 'blur(10px)'
-      }}
     >
+      {/* Subtle shadow overlay when transparent for better text readability */}
       {!isScrolled && <div className="absolute inset-0 header-shadow-overlay"></div>}
+      
       <div className="container-custom">
         <div className="flex items-center h-20">
           {/* Logo */}
@@ -115,7 +126,11 @@ const Header: React.FC = () => {
                 key={item.id}
                 whileHover={{ y: -2 }}
                 onClick={() => scrollToSection(item.href)}
-                className="text-white hover:text-blue-200 font-medium transition-colors duration-200 text-shadow"
+                className={`font-medium transition-all duration-300 text-shadow ${
+                  isScrolled 
+                    ? 'text-white hover:text-blue-200' 
+                    : 'text-white hover:text-emerald-200'
+                }`}
               >
                 {item.label[language]}
               </motion.button>
@@ -140,7 +155,11 @@ const Header: React.FC = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 hover:bg-[#001a65] transition-colors duration-200 rounded-lg"
+              className={`lg:hidden p-2 transition-all duration-300 rounded-lg ${
+                isScrolled 
+                  ? 'hover:bg-[#001a65]' 
+                  : 'hover:bg-white/10'
+              }`}
             >
               {isOpen ? (
                 <X className="w-6 h-6 text-white" />
@@ -160,7 +179,7 @@ const Header: React.FC = () => {
               exit={{ opacity: 0, height: 0 }}
               className="lg:hidden border-t border-white/20"
               style={{
-                backgroundColor: 'rgba(0, 33, 126, 0.95)',
+                backgroundColor: isScrolled ? 'rgba(17, 49, 136, 0.95)' : 'rgba(0, 0, 0, 0.8)',
                 backdropFilter: 'blur(10px)'
               }}
             >
@@ -170,7 +189,11 @@ const Header: React.FC = () => {
                     key={item.id}
                     whileHover={{ x: 10 }}
                     onClick={() => scrollToSection(item.href)}
-                    className="block w-full text-left px-4 py-3 text-white hover:text-blue-200 hover:bg-[#001a65] transition-all duration-200 font-medium"
+                    className={`block w-full text-left px-4 py-3 transition-all duration-200 font-medium ${
+                      isScrolled 
+                        ? 'text-white hover:text-blue-200 hover:bg-[#001a65]' 
+                        : 'text-white hover:text-emerald-200 hover:bg-white/10'
+                    }`}
                   >
                     {item.label[language]}
                   </motion.button>
