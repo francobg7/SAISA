@@ -1,111 +1,118 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Card } from '../../components/ui'
 import { useLanguage } from '../../contexts/LanguageContext'
-import { projects } from '../../data/companyData'
 
 const ProyectosPage: React.FC = () => {
   const { language } = useLanguage()
+  const [selectedObjective, setSelectedObjective] = useState(0)
 
-  const [projectsRef, projectsInView] = useInView({
+  const [introRef, introInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1
+  })
+
+  const [objectivesRef, objectivesInView] = useInView({
     triggerOnce: true,
     threshold: 0.1
   })
 
   const content = {
     es: {
-      pageTitle: 'Nuestros Proyectos',
-      pageSubtitle: 'Descubre cómo hemos transformado desafíos ambientales en oportunidades de valor sostenible en toda Latinoamérica.',
-      projectsTitle: 'Proyectos Destacados',
-      projectsSubtitle: 'Cada proyecto representa nuestro compromiso con la innovación ambiental y la creación de valor sostenible.',
-      impact: {
-        title: 'Impacto Medible',
-        subtitle: 'Nuestros proyectos generan resultados tangibles en múltiples dimensiones.',
-        metrics: [
-          { label: 'Reducción de CO2', value: '15,000+ toneladas/año' },
-          { label: 'Agua Tratada', value: '2.5M+ litros/día' },
-          { label: 'Residuos Valorizados', value: '85%+ eficiencia' },
-          { label: 'Retorno de Inversión', value: '3-5 años' }
-        ]
+      hero: {
+        title: 'Nuestros Proyectos',
+        subtitle: 'Soluciones ambientales sostenibles que generan impacto real en la sociedad, la economía y el medio ambiente'
       },
-      categories: {
-        title: 'Categorías de Proyectos',
-        subtitle: 'Especializaciones que abarcan todo el espectro de la sostenibilidad ambiental.',
+      introduction: {
+        title: 'SAISA: Innovación Ambiental',
+        description: 'SAISA es una empresa pionera en la innovación y aplicación de tecnologías sostenibles, bajas en carbono y orientadas a la economía circular. Ofrecemos soluciones ambientales integrales que combinan ciencia, ingeniería y compromiso con el planeta.',
+        subtitle: 'A través de alianzas estratégicas, transformamos fuentes de contaminación en activos ambientales con valor de mercado, creando oportunidades reales para regenerar ecosistemas y revitalizar comunidades.'
+      },
+      transition: {
+        quote: 'Transformamos fuentes de contaminación en activos ambientales con valor de mercado, creando oportunidades reales para regenerar ecosistemas y revitalizar comunidades.'
+      },
+      objectives: {
+        title: 'Nuestros Objetivos Estratégicos',
+        subtitle: 'Hacia un futuro más sostenible e innovador',
         items: [
           {
-            title: 'Gestión de Residuos',
-            description: 'Soluciones integrales para residuos industriales y urbanos',
-            icon: '♻️'
+            title: 'Crecimiento',
+            items: [
+              'Expandir la presencia regional en LATAM en 3–5 años',
+              '40% sector privado / 60% sector público',
+              'Incrementar facturación con nuevas líneas sostenibles'
+            ]
           },
           {
-            title: 'Tratamiento de Aguas',
-            description: 'Tecnologías avanzadas para purificación y reutilización',
-            icon: '💧'
+            title: 'Posicionamiento',
+            items: [
+              'Consolidar la marca SAISA como referente en sostenibilidad',
+              'Obtener certificaciones internacionales (ISO 14001, B Corp)',
+              'Participar en redes de innovación verde'
+            ]
           },
           {
-            title: 'Calidad del Aire',
-            description: 'Monitoreo y control de emisiones contaminantes',
-            icon: '🌬️'
-          },
-          {
-            title: 'Energía Renovable',
-            description: 'Sistemas de generación limpia y eficiente',
-            icon: '⚡'
+            title: 'Penetración',
+            items: [
+              'Alianzas estratégicas con grandes empresas e instituciones',
+              'Proyectos piloto con resultados medibles',
+              'Modelos de negocio flexibles (servicios, PPP, leasing tecnológico)'
+            ]
           }
         ]
       },
       cta: {
-        title: '¿Tienes un proyecto ambiental en mente?',
-        subtitle: 'Conversemos sobre cómo podemos ayudarte a hacerlo realidad.',
-        button: 'Discutir Proyecto'
+        title: 'Construyamos juntos un futuro más sostenible',
+        button: 'Contáctanos'
       }
     },
     en: {
-      pageTitle: 'Our Projects',
-      pageSubtitle: 'Discover how we have transformed environmental challenges into sustainable value opportunities across Latin America.',
-      projectsTitle: 'Featured Projects',
-      projectsSubtitle: 'Each project represents our commitment to environmental innovation and sustainable value creation.',
-      impact: {
-        title: 'Measurable Impact',
-        subtitle: 'Our projects generate tangible results in multiple dimensions.',
-        metrics: [
-          { label: 'CO2 Reduction', value: '15,000+ tons/year' },
-          { label: 'Water Treated', value: '2.5M+ liters/day' },
-          { label: 'Waste Valorized', value: '85%+ efficiency' },
-          { label: 'Return on Investment', value: '3-5 years' }
-        ]
+      hero: {
+        title: 'Our Projects',
+        subtitle: 'Sustainable environmental solutions that generate real impact on society, economy and the environment'
       },
-      categories: {
-        title: 'Project Categories',
-        subtitle: 'Specializations covering the entire spectrum of environmental sustainability.',
+      introduction: {
+        title: 'SAISA: Environmental Innovation',
+        description: 'SAISA is a pioneering company in innovation and application of sustainable technologies, low-carbon and oriented towards the circular economy. We offer comprehensive environmental solutions that combine science, engineering and commitment to the planet.',
+        subtitle: 'Through strategic alliances, we transform sources of pollution into environmental assets with market value, creating real opportunities to regenerate ecosystems and revitalize communities.'
+      },
+      transition: {
+        quote: 'We transform sources of pollution into environmental assets with market value, creating real opportunities to regenerate ecosystems and revitalize communities.'
+      },
+      objectives: {
+        title: 'Our Strategic Objectives',
+        subtitle: 'Towards a more sustainable and innovative future',
         items: [
           {
-            title: 'Waste Management',
-            description: 'Comprehensive solutions for industrial and urban waste',
-            icon: '♻️'
+            title: 'Growth',
+            items: [
+              'Expand regional presence in LATAM in 3–5 years',
+              '40% private sector / 60% public sector',
+              'Increase revenue with new sustainable lines'
+            ]
           },
           {
-            title: 'Water Treatment',
-            description: 'Advanced technologies for purification and reuse',
-            icon: '💧'
+            title: 'Positioning',
+            items: [
+              'Consolidate SAISA brand as a reference in sustainability',
+              'Obtain international certifications (ISO 14001, B Corp)',
+              'Participate in green innovation networks'
+            ]
           },
           {
-            title: 'Air Quality',
-            description: 'Monitoring and control of pollutant emissions',
-            icon: '🌬️'
-          },
-          {
-            title: 'Renewable Energy',
-            description: 'Clean and efficient generation systems',
-            icon: '⚡'
+            title: 'Penetration',
+            items: [
+              'Strategic alliances with large companies and institutions',
+              'Pilot projects with measurable results',
+              'Flexible business models (services, PPP, technology leasing)'
+            ]
           }
         ]
       },
       cta: {
-        title: 'Have an environmental project in mind?',
-        subtitle: 'Let\'s talk about how we can help you make it a reality.',
-        button: 'Discuss Project'
+        title: 'Let\'s build a more sustainable future together',
+        button: 'Contact Us'
       }
     }
   }
@@ -119,162 +126,207 @@ const ProyectosPage: React.FC = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
-      className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50"
+      className="min-h-screen"
     >
       {/* Hero Section */}
-      <div className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
+      <div 
+        className="relative min-h-[80vh] flex items-center justify-center bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url(/public/Proyectos/proyecto01.jpg)',
+          backgroundSize: '100%',
+          backgroundPosition: 'center 60%'
+        }}
+      >
+        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl">
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl md:text-6xl font-bold text-gray-900 mb-6"
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6"
           >
-            {currentContent.pageTitle}
+            {currentContent.hero.title}
           </motion.h1>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-lg md:text-xl lg:text-2xl text-white/90 leading-relaxed"
           >
-            {currentContent.pageSubtitle}
+            {currentContent.hero.subtitle}
           </motion.p>
         </div>
       </div>
 
-      {/* Projects Section */}
-      <div className="px-4 sm:px-6 lg:px-8 mb-16" ref={projectsRef}>
+      {/* Introduction Section */}
+      <div className="py-20 px-4 sm:px-6 lg:px-8 bg-white" ref={introRef}>
         <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={introInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{ color: '#4fd929' }}>
+                {currentContent.introduction.title}
+              </h2>
+              <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+                {currentContent.introduction.description}
+              </p>
+              <div className="p-6 rounded-lg border-l-4" style={{ backgroundColor: '#f2f2f2', borderLeftColor: '#8ed91e' }}>
+                <p className="text-gray-700 font-medium leading-relaxed">
+                  {currentContent.introduction.subtitle}
+                </p>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={introInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative"
+            >
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <img 
+                  src="/public/Proyectos/eco-solutions.jpg" 
+                  alt="SAISA Environmental Solutions"
+                  className="w-full h-96 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#4fd929]/20 to-transparent"></div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
+      {/* Transition Video Section */}
+      <div className="relative py-32 overflow-hidden">
+        {/* Background Video */}
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="/public/Proyectos/videobackground.webm" type="video/webm" />
+          Your browser does not support the video tag.
+        </video>
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+        {/* Content */}
+        <div className="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <motion.blockquote
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight"
+          >
+            "{currentContent.transition.quote}"
+          </motion.blockquote>
+        </div>
+      </div>
+
+      {/* Objectives Section - Minimalist & Professional */}
+      <div 
+        className="relative py-24 px-4 sm:px-6 lg:px-8 bg-cover bg-center bg-fixed" 
+        style={{
+          backgroundImage: 'url(/public/Proyectos/proyecto03.jpg)'
+        }}
+        ref={objectivesRef}
+      >
+        <div className="max-w-6xl mx-auto">
+          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={projectsInView ? { opacity: 1, y: 0 } : {}}
+            animate={objectivesInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-20"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              {currentContent.projectsTitle}
+            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4 tracking-tight">
+              {currentContent.objectives.title}
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              {currentContent.projectsSubtitle}
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto font-light">
+              {currentContent.objectives.subtitle}
             </p>
           </motion.div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <Card key={project.id} animate delay={index * 0.1}>
-                <div className="text-center">
-                  <div className="w-full h-48 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-lg mb-6 flex items-center justify-center">
-                    <span className="text-6xl">🌱</span>
+
+          {/* Objectives Grid */}
+          <div className="grid lg:grid-cols-3 gap-8">
+            {currentContent.objectives.items.map((objective, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                animate={objectivesInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="group"
+              >
+                {/* Clean Card Design */}
+                <div className="bg-white border border-gray-200 rounded-lg p-8 hover:border-green-300 hover:shadow-lg transition-all duration-300">
+                  
+                  {/* Simple Icon */}
+                  <div className="mb-6">
+                    <div className="w-12 h-12 rounded-lg bg-green-50 flex items-center justify-center mb-4">
+                      {index === 0 ? (
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-green-600">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.306a11.95 11.95 0 015.814-5.518l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.94" />
+                        </svg>
+                      ) : index === 1 ? (
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-green-600">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                        </svg>
+                      ) : (
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-green-600">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                        </svg>
+                      )}
+                    </div>
+                    
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                      {objective.title}
+                    </h3>
+                    
+                    <div className="w-12 h-0.5 bg-green-500"></div>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                    {project.title[language]}
-                  </h3>
-                  <p className="text-gray-600 mb-4 text-sm">
-                    {project.description[language]}
-                  </p>
-                  <div className="space-y-2 mb-4">
-                    <div className="text-xs text-gray-500">
-                      <strong>Categoría:</strong> {project.category[language]}
-                    </div>
-                    <div className="text-xs text-gray-500">
-                      <strong>Año:</strong> {project.year}
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-2 gap-2 text-xs">
-                    <div className="bg-primary-50 p-2 rounded">
-                      <div className="font-semibold text-primary-700">Impacto</div>
-                      <div className="text-gray-600">{project.stats.impact}</div>
-                    </div>
-                    <div className="bg-secondary-50 p-2 rounded">
-                      <div className="font-semibold text-secondary-700">Duración</div>
-                      <div className="text-gray-600">{project.stats.duration}</div>
-                    </div>
+
+                  {/* Clean List */}
+                  <div className="space-y-3">
+                    {objective.items.map((item, itemIndex) => (
+                      <motion.div 
+                        key={itemIndex}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={objectivesInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.4, delay: (index * 0.1) + (itemIndex * 0.05) + 0.3 }}
+                        className="flex items-start space-x-3"
+                      >
+                        <div className="w-1.5 h-1.5 rounded-full bg-green-500 mt-2 flex-shrink-0"></div>
+                        <p className="text-gray-700 text-sm leading-relaxed">
+                          {item}
+                        </p>
+                      </motion.div>
+                    ))}
                   </div>
                 </div>
-              </Card>
+              </motion.div>
             ))}
           </div>
+
+          {/* Simple Footer */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={objectivesInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="mt-16 text-center"
+          >
+            <div className="inline-flex items-center space-x-2 text-sm text-gray-500">
+              <div className="w-2 h-2 rounded-full bg-green-500"></div>
+              <span>Estrategia Corporativa 2030</span>
+            </div>
+          </motion.div>
         </div>
       </div>
 
-      {/* Impact Section */}
-      <div className="px-4 sm:px-6 lg:px-8 mb-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              {currentContent.impact.title}
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              {currentContent.impact.subtitle}
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {currentContent.impact.metrics.map((metric, index) => (
-              <Card key={index} animate delay={index * 0.1}>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-600 mb-2">
-                    {metric.value}
-                  </div>
-                  <p className="text-gray-600">{metric.label}</p>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </div>
 
-      {/* Categories Section */}
-      <div className="px-4 sm:px-6 lg:px-8 mb-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              {currentContent.categories.title}
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              {currentContent.categories.subtitle}
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {currentContent.categories.items.map((category, index) => (
-              <Card key={index} animate delay={index * 0.1}>
-                <div className="text-center">
-                  <div className="text-4xl mb-4">{category.icon}</div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                    {category.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm">
-                    {category.description}
-                  </p>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* CTA Section */}
-      <div className="px-4 sm:px-6 lg:px-8 mb-16">
-        <div className="max-w-4xl mx-auto">
-          <Card className="text-center p-12 bg-gradient-to-r from-primary-600 to-secondary-600 text-white">
-            <h2 className="text-3xl font-bold mb-4">
-              {currentContent.cta.title}
-            </h2>
-            <p className="text-lg mb-8 opacity-90">
-              {currentContent.cta.subtitle}
-            </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-white text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-            >
-              {currentContent.cta.button}
-            </motion.button>
-          </Card>
-        </div>
-      </div>
     </motion.main>
   )
 }
