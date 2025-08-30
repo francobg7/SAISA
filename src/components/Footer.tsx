@@ -20,13 +20,7 @@ const Footer: React.FC = () => {
       alliances: 'Alianzas',
       followUs: 'Síguenos',
       allRightsReserved: 'Todos los derechos reservados',
-      backToTop: 'Volver arriba',
-      newsletter: {
-        title: 'Mantente Informado',
-        description: 'Suscríbete a nuestro boletín para recibir las últimas noticias sobre sostenibilidad',
-        placeholder: 'Tu correo electrónico',
-        subscribe: 'Suscribirse'
-      }
+      backToTop: 'Volver arriba'
     },
     en: {
       quickLinks: 'Quick Links',
@@ -36,13 +30,7 @@ const Footer: React.FC = () => {
       alliances: 'Alliances',
       followUs: 'Follow Us',
       allRightsReserved: 'All rights reserved',
-      backToTop: 'Back to top',
-      newsletter: {
-        title: 'Stay Informed',
-        description: 'Subscribe to our newsletter to receive the latest sustainability news',
-        placeholder: 'Your email address',
-        subscribe: 'Subscribe'
-      }
+      backToTop: 'Back to top'
     }
   }
 
@@ -133,57 +121,29 @@ const Footer: React.FC = () => {
               </ul>
             </motion.div>
 
-            {/* Social & Newsletter */}
+            {/* Social Links */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="space-y-8"
             >
-              {/* Social Links */}
-              <div>
-                <h4 className="text-lg font-semibold mb-6 text-white">
-                  {currentContent.followUs}
-                </h4>
-                <div className="flex space-x-4">
-                  {socialLinks.map((social) => (
-                    <motion.a
-                      key={social.name}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-10 h-10 bg-white/20 hover:bg-white/30 flex items-center justify-center transition-all duration-300 rounded-full"
-                    >
-                      {getSocialIcon(social.icon)}
-                    </motion.a>
-                  ))}
-                </div>
-              </div>
-
-              {/* Newsletter */}
-              <div>
-                <h4 className="text-lg font-semibold mb-4 text-white">
-                  {currentContent.newsletter.title}
-                </h4>
-                <p className="text-white text-sm mb-4 font-semibold">
-                  {currentContent.newsletter.description}
-                </p>
-                <div className="flex">
-                  <input
-                    type="email"
-                    placeholder={currentContent.newsletter.placeholder}
-                    className="flex-1 px-4 py-2 bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent rounded-l-lg"
-                  />
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
+              <h4 className="text-lg font-semibold mb-6 text-white">
+                {currentContent.followUs}
+              </h4>
+              <div className="flex space-x-4">
+                {socialLinks.map((social) => (
+                  <motion.a
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-4 py-2 bg-white text-gray-900 hover:bg-gray-100 transition-colors duration-200 font-semibold rounded-r-lg"
+                    className="w-10 h-10 bg-white/20 hover:bg-white/30 flex items-center justify-center transition-all duration-300 rounded-full"
                   >
-                    {currentContent.newsletter.subscribe}
-                  </motion.button>
-                </div>
+                    {getSocialIcon(social.icon)}
+                  </motion.a>
+                ))}
               </div>
             </motion.div>
           </div>

@@ -300,17 +300,7 @@ const NosotrosPage: React.FC = () => {
         </div>
         
         <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-8"
-          >
-            <div className="inline-flex items-center space-x-2 bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 mb-6 shadow-lg">
-              <Leaf className="w-5 h-5 text-emerald-600" />
-              <span className="text-sm font-semibold text-emerald-700">Innovación Ambiental</span>
-            </div>
-          </motion.div>
+
           
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
