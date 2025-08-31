@@ -2,9 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { 
-  Users, 
   Target, 
-  Award, 
   Globe, 
   Leaf, 
   Zap, 

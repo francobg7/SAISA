@@ -23,15 +23,19 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   const [pageHistory, setPageHistory] = useState<Page[]>(['home'])
 
   const navigateTo = (page: Page) => {
-    setPageHistory(prev => [...prev, page])
-    setCurrentPage(page)
+    // Solo navegar si es una página diferente
+    if (page !== currentPage) {
+      setPageHistory(prev => [...prev, page])
+      setCurrentPage(page)
+    }
   }
 
   const goBack = () => {
     if (pageHistory.length > 1) {
       const newHistory = pageHistory.slice(0, -1)
+      const previousPage = newHistory[newHistory.length - 1]
       setPageHistory(newHistory)
-      setCurrentPage(newHistory[newHistory.length - 1])
+      setCurrentPage(previousPage)
     }
   }
 
