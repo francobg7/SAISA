@@ -1,4 +1,4 @@
-import { CompanyInfo, Service, Project, Alliance, NavigationItem, SocialLink } from '../types'
+import { CompanyInfo, Project, Alliance, NavigationItem, SocialLink } from '../types'
 
 export const companyInfo: CompanyInfo = {
   name: 'SAISA – Servicios Ambientales Integrales S.A.',
@@ -24,7 +24,6 @@ export const companyInfo: CompanyInfo = {
 export const navigationItems: NavigationItem[] = [
   { id: 'home', label: { es: 'Inicio', en: 'Home' }, href: '#home' },
   { id: 'about', label: { es: 'Nosotros', en: 'About' }, href: '#about' },
-  { id: 'services', label: { es: 'Servicios', en: 'Services' }, href: '#services' },
   { id: 'projects', label: { es: 'Proyectos', en: 'Projects' }, href: '#projects' },
   { id: 'alliances', label: { es: 'Alianzas', en: 'Alliances' }, href: '#alliances' },
   { id: 'contact', label: { es: 'Contacto', en: 'Contact' }, href: '#contact' }
@@ -37,116 +36,7 @@ export const socialLinks: SocialLink[] = [
   { name: 'Instagram', url: 'https://instagram.com/saisa', icon: 'instagram' }
 ]
 
-export const services: Service[] = [
-  {
-    id: 'waste-management',
-    title: {
-      es: 'Gestión Integral de Residuos',
-      en: 'Integrated Waste Management'
-    },
-    description: {
-      es: 'Soluciones completas para la gestión, tratamiento y valorización de residuos industriales y urbanos.',
-      en: 'Complete solutions for the management, treatment and valorization of industrial and urban waste.'
-    },
-    icon: 'recycle',
-    features: {
-      es: [
-        'Clasificación y separación inteligente',
-        'Tratamiento biológico avanzado',
-        'Valorización energética',
-        'Reducción de huella de carbono'
-      ],
-      en: [
-        'Smart classification and separation',
-        'Advanced biological treatment',
-        'Energy valorization',
-        'Carbon footprint reduction'
-      ]
-    },
-    color: 'primary'
-  },
-  {
-    id: 'water-treatment',
-    title: {
-      es: 'Tratamiento de Aguas',
-      en: 'Water Treatment'
-    },
-    description: {
-      es: 'Tecnologías innovadoras para el tratamiento y reutilización de aguas residuales y contaminadas.',
-      en: 'Innovative technologies for the treatment and reuse of wastewater and contaminated water.'
-    },
-    icon: 'droplets',
-    features: {
-      es: [
-        'Filtración avanzada',
-        'Desinfección UV',
-        'Reutilización industrial',
-        'Monitoreo en tiempo real'
-      ],
-      en: [
-        'Advanced filtration',
-        'UV disinfection',
-        'Industrial reuse',
-        'Real-time monitoring'
-      ]
-    },
-    color: 'secondary'
-  },
-  {
-    id: 'air-quality',
-    title: {
-      es: 'Calidad del Aire',
-      en: 'Air Quality'
-    },
-    description: {
-      es: 'Sistemas de monitoreo y control de emisiones atmosféricas para industrias y ciudades.',
-      en: 'Air emission monitoring and control systems for industries and cities.'
-    },
-    icon: 'wind',
-    features: {
-      es: [
-        'Monitoreo continuo',
-        'Filtros HEPA avanzados',
-        'Reducción de partículas',
-        'Cumplimiento normativo'
-      ],
-      en: [
-        'Continuous monitoring',
-        'Advanced HEPA filters',
-        'Particle reduction',
-        'Regulatory compliance'
-      ]
-    },
-    color: 'accent'
-  },
-  {
-    id: 'circular-economy',
-    title: {
-      es: 'Economía Circular',
-      en: 'Circular Economy'
-    },
-    description: {
-      es: 'Implementación de modelos de negocio circulares y desarrollo de cadenas de valor sostenibles.',
-      en: 'Implementation of circular business models and development of sustainable value chains.'
-    },
-    icon: 'refresh-cw',
-    features: {
-      es: [
-        'Diseño de productos circulares',
-        'Recuperación de materiales',
-        'Nuevos modelos de negocio',
-        'Certificaciones ambientales'
-      ],
-      en: [
-        'Circular product design',
-        'Material recovery',
-        'New business models',
-        'Environmental certifications'
-      ]
-    },
-    color: 'primary'
-  }
-]
+
 
 export const projects: Project[] = [
   {

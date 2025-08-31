@@ -4,7 +4,6 @@ interface ContactFormData {
   name: string
   email: string
   company: string
-  service: string
   message: string
 }
 
@@ -22,7 +21,6 @@ export const useContactForm = (): UseContactFormReturn => {
     name: '',
     email: '',
     company: '',
-    service: '',
     message: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -61,7 +59,6 @@ export const useContactForm = (): UseContactFormReturn => {
       name: '',
       email: '',
       company: '',
-      service: '',
       message: ''
     })
     setIsSubmitted(false)

@@ -1,10 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Send, CheckCircle } from 'lucide-react'
-import { Button, Input, Textarea, Select } from '../ui'
+import { Button, Input, Textarea } from '../ui'
 import { useLanguage } from '../../contexts/LanguageContext'
 import { useContactForm } from '../../hooks/useContactForm'
-import { services } from '../../data/companyData'
+
 
 const ContactForm: React.FC = () => {
   const { language } = useLanguage()
@@ -25,7 +25,6 @@ const ContactForm: React.FC = () => {
         name: 'Nombre Completo',
         email: 'Correo Electrónico',
         company: 'Empresa',
-        service: 'Servicio de Interés',
         message: 'Mensaje',
         submit: 'Enviar Mensaje'
       },
@@ -35,7 +34,7 @@ const ContactForm: React.FC = () => {
         company: 'Nombre de tu empresa',
         message: 'Cuéntanos sobre tu proyecto o consulta...'
       },
-      servicePlaceholder: 'Seleccionar servicio',
+
       sending: 'Enviando...'
     },
     en: {
@@ -46,7 +45,6 @@ const ContactForm: React.FC = () => {
         name: 'Full Name',
         email: 'Email Address',
         company: 'Company',
-        service: 'Service of Interest',
         message: 'Message',
         submit: 'Send Message'
       },
@@ -56,16 +54,12 @@ const ContactForm: React.FC = () => {
         company: 'Your company name',
         message: 'Tell us about your project or inquiry...'
       },
-      servicePlaceholder: 'Select service',
+
       sending: 'Sending...'
     }
   }
 
   const currentContent = content[language]
-  const serviceOptions = services.map(service => ({
-    value: service.title[language],
-    label: service.title[language]
-  }))
 
   if (isSubmitted) {
     return (
@@ -109,25 +103,14 @@ const ContactForm: React.FC = () => {
         />
       </div>
 
-      <div className="grid md:grid-cols-2 gap-6">
-        <Input
-          id="company"
-          name="company"
-          label={currentContent.formLabels.company}
-          value={formData.company}
-          onChange={handleInputChange}
-          placeholder={currentContent.placeholders.company}
-        />
-        <Select
-          id="service"
-          name="service"
-          label={currentContent.formLabels.service}
-          value={formData.service}
-          onChange={handleInputChange}
-          options={serviceOptions}
-          placeholder={currentContent.servicePlaceholder}
-        />
-      </div>
+      <Input
+        id="company"
+        name="company"
+        label={currentContent.formLabels.company}
+        value={formData.company}
+        onChange={handleInputChange}
+        placeholder={currentContent.placeholders.company}
+      />
 
       <Textarea
         id="message"

@@ -8,9 +8,9 @@ const WhatsAppButton: React.FC = () => {
   const { language } = useLanguage()
 
   const handleWhatsAppClick = () => {
-    const message = language === 'es'
-      ? 'Hola, me interesa conocer más sobre los servicios de SAISA'
-      : 'Hello, I am interested in learning more about SAISA services'
+          const message = language === 'es'
+        ? 'Hola, me interesa conocer más sobre los proyectos de SAISA'
+        : 'Hello, I am interested in learning more about SAISA projects'
     
     const whatsappUrl = `https://wa.me/${companyInfo.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, '_blank')

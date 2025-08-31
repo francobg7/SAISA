@@ -75,8 +75,6 @@ const Header: React.FC = () => {
       navigateTo('contact')
     } else if (href === '#about') {
       navigateTo('about')
-    } else if (href === '#services') {
-      navigateTo('services')
     } else if (href === '#projects') {
       navigateTo('projects')
     } else if (href === '#alliances') {

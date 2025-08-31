@@ -1,6 +1,5 @@
 export { default as HomePage } from './home'
 export { default as Nosotros } from './nosotros'
-export { default as ServiciosPage } from './servicios'
 export { default as ProyectosPage } from './proyectos'
 export { default as AlianzasPage } from './alianzas'
 export { default as ContactoPage } from './contacto' 

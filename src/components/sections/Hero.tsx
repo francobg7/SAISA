@@ -137,11 +137,11 @@ const Hero: React.FC = () => {
                 whileTap={{ scale: 0.98 }}
                 className="group relative px-10 py-5 bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600 text-white font-bold text-lg rounded-2xl shadow-2xl transition-all duration-500 overflow-hidden"
                 onClick={() => {
-                  // Navegar a la página de servicios
-                  window.location.hash = '#services'
+                  // Navegar a la página de proyectos
+                  window.location.hash = '#projects'
                   // O usar el contexto de navegación si está disponible
                   if (typeof window !== 'undefined' && window.dispatchEvent) {
-                    window.dispatchEvent(new CustomEvent('navigate', { detail: 'services' }))
+                    window.dispatchEvent(new CustomEvent('navigate', { detail: 'projects' }))
                   }
                 }}
               >
@@ -154,7 +154,7 @@ const Hero: React.FC = () => {
                 {/* Button content */}
                 <div className="relative flex items-center justify-center gap-3">
                   <div className="w-2 h-2 bg-white rounded-full animate-pulse group-hover:scale-150 transition-transform duration-300" />
-                  {language === 'es' ? 'Conocer Servicios' : 'Discover Services'}
+                  {language === 'es' ? 'Conocer Proyectos' : 'Discover Projects'}
                   <motion.div
                     animate={{ x: [0, 4, 0] }}
                     transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
