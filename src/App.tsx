@@ -24,10 +24,8 @@ function AppContent() {
   }
 
   const renderPage = () => {
-    console.log('Current page:', currentPage) // Debug log
     switch (currentPage) {
       case 'about':
-        console.log('Rendering Nosotros component') // Debug log
         return <Nosotros />
       case 'services':
         return <ServiciosPage />
