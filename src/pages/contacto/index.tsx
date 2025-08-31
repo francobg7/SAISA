@@ -1,16 +1,10 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
 import { MapPin, Calendar, Building, Globe } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
-import L from 'leaflet'
-
-// Import Leaflet CSS
-import 'leaflet/dist/leaflet.css'
 
 const ContactoPage: React.FC = () => {
   const { language } = useLanguage()
-  const mapRef = useRef<HTMLDivElement>(null)
-  const mapInstanceRef = useRef<L.Map | null>(null)
 
   const content = {
     es: {
@@ -54,33 +48,6 @@ const ContactoPage: React.FC = () => {
   }
 
   const currentContent = content[language]
-
-  useEffect(() => {
-    if (mapRef.current && !mapInstanceRef.current) {
-      // Initialize map
-      const map = L.map(mapRef.current).setView([-25.2637, -57.5759], 13) // Asunción coordinates
-      
-      // Add OpenStreetMap tiles
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
-      }).addTo(map)
-
-      // Add marker for SAISA location
-      const marker = L.marker([-25.2637, -57.5759]).addTo(map)
-      marker.bindPopup('<b>SAISA</b><br>Servicios Ambientales Integrales S.A.<br>R.I 4 Curupayty 639')
-
-      // Store map instance
-      mapInstanceRef.current = map
-
-      // Cleanup function
-      return () => {
-        if (mapInstanceRef.current) {
-          mapInstanceRef.current.remove()
-          mapInstanceRef.current = null
-        }
-      }
-    }
-  }, [])
 
   return (
     <motion.main
@@ -224,32 +191,7 @@ const ContactoPage: React.FC = () => {
               </div>
             </motion.div>
 
-            {/* Map Section */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="space-y-6"
-            >
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                  {currentContent.map.title}
-                </h3>
-                <p className="text-gray-600">
-                  {currentContent.map.subtitle}
-                </p>
-              </div>
 
-              {/* Map Container */}
-              <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-6 shadow-xl border border-white/30">
-                <div 
-                  ref={mapRef}
-                  className="w-full h-96 rounded-2xl overflow-hidden"
-                  style={{ minHeight: '400px' }}
-                ></div>
-              </div>
-            </motion.div>
           </div>
         </div>
       </div>

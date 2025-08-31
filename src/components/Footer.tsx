@@ -58,7 +58,6 @@ const Footer: React.FC = () => {
   ]
 
   return (
-<<<<<<< HEAD
     <footer className="relative text-white" style={{ backgroundColor: 'rgba(0, 33, 126, 0.95)' }}>
       {/* Background with same color as navbar */}
       <div className="absolute inset-0">
@@ -66,9 +65,6 @@ const Footer: React.FC = () => {
         <div className="absolute inset-0 bg-black/10"></div>
       </div>
       
-=======
-    <footer className="relative text-white" style={{ backgroundColor: '#113188' }}>
->>>>>>> andres
       <div className="container-custom relative z-10">
         {/* Main Footer Content */}
         <div className="py-16">
@@ -81,20 +77,12 @@ const Footer: React.FC = () => {
               transition={{ duration: 0.6 }}
               className="lg:col-span-2"
             >
-<<<<<<< HEAD
               {/* Logo in green */}
-=======
-              {/* Logo */}
->>>>>>> andres
               <div className="mb-6">
                 <img 
                   src="/logos/Logo.png" 
                   alt="SAISA Logo" 
-<<<<<<< HEAD
-                  className="w-24 h-24 lg:w-28 lg:h-28 object-contain filter brightness-0 invert"
-=======
                   className="w-24 h-24 lg:w-28 lg:h-28 object-contain"
->>>>>>> andres
                   style={{ filter: 'brightness(0) saturate(100%) invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%)' }}
                 />
               </div>
