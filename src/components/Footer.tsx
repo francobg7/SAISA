@@ -2,12 +2,10 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Mail, MapPin, Phone, ArrowUp, Linkedin, Facebook, Twitter, Instagram } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
-import { useNavigation } from '../contexts/NavigationContext'
-import { companyInfo, navigationItems, socialLinks } from '../data/companyData'
+import { companyInfo, socialLinks } from '../data/companyData'
 
 const Footer: React.FC = () => {
   const { language } = useLanguage()
-  const { navigateTo } = useNavigation()
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1
@@ -15,34 +13,24 @@ const Footer: React.FC = () => {
 
   const content = {
     es: {
-      description: 'Empresa pionera en innovación y aplicación de tecnologías sostenibles, bajas en carbono y orientadas a la economía circular.',
       quickLinks: 'Enlaces Rápidos',
       services: 'Servicios',
-      contact: 'Contacto',
+      about: 'Nosotros',
+      projects: 'Proyectos',
+      alliances: 'Alianzas',
       followUs: 'Síguenos',
       allRightsReserved: 'Todos los derechos reservados',
-      backToTop: 'Volver arriba',
-      newsletter: {
-        title: 'Mantente Informado',
-        description: 'Suscríbete a nuestro boletín para recibir las últimas noticias sobre sostenibilidad',
-        placeholder: 'Tu correo electrónico',
-        subscribe: 'Suscribirse'
-      }
+      backToTop: 'Volver arriba'
     },
     en: {
-      description: 'Pioneering company in innovation and application of sustainable technologies, low-carbon and oriented towards the circular economy.',
       quickLinks: 'Quick Links',
       services: 'Services',
-      contact: 'Contact',
+      about: 'About',
+      projects: 'Projects',
+      alliances: 'Alliances',
       followUs: 'Follow Us',
       allRightsReserved: 'All rights reserved',
-      backToTop: 'Back to top',
-      newsletter: {
-        title: 'Stay Informed',
-        description: 'Subscribe to our newsletter to receive the latest sustainability news',
-        placeholder: 'Your email address',
-        subscribe: 'Subscribe'
-      }
+      backToTop: 'Back to top'
     }
   }
 
@@ -62,26 +50,15 @@ const Footer: React.FC = () => {
     return iconMap[iconName] || <Linkedin className="w-5 h-5" />
   }
 
-  const handleNavigation = (href: string) => {
-    if (href === '#contact') {
-      navigateTo('contact')
-    } else if (href === '#about') {
-      navigateTo('about')
-    } else if (href === '#services') {
-      navigateTo('services')
-    } else if (href === '#projects') {
-      navigateTo('projects')
-    } else if (href === '#alliances') {
-      navigateTo('alliances')
-    } else {
-      const element = document.querySelector(href)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-      }
-    }
-  }
+  const quickLinks = [
+    { id: 'about', label: currentContent.about, href: '/nosotros' },
+    { id: 'services', label: currentContent.services, href: '/servicios' },
+    { id: 'projects', label: currentContent.projects, href: '/proyectos' },
+    { id: 'alliances', label: currentContent.alliances, href: '/alianzas' }
+  ]
 
   return (
+<<<<<<< HEAD
     <footer className="relative text-white" style={{ backgroundColor: 'rgba(0, 33, 126, 0.95)' }}>
       {/* Background with same color as navbar */}
       <div className="absolute inset-0">
@@ -89,6 +66,9 @@ const Footer: React.FC = () => {
         <div className="absolute inset-0 bg-black/10"></div>
       </div>
       
+=======
+    <footer className="relative text-white" style={{ backgroundColor: '#113188' }}>
+>>>>>>> andres
       <div className="container-custom relative z-10">
         {/* Main Footer Content */}
         <div className="py-16">
@@ -101,12 +81,20 @@ const Footer: React.FC = () => {
               transition={{ duration: 0.6 }}
               className="lg:col-span-2"
             >
+<<<<<<< HEAD
               {/* Logo in green */}
+=======
+              {/* Logo */}
+>>>>>>> andres
               <div className="mb-6">
                 <img 
                   src="/logos/Logo.png" 
                   alt="SAISA Logo" 
+<<<<<<< HEAD
                   className="w-24 h-24 lg:w-28 lg:h-28 object-contain filter brightness-0 invert"
+=======
+                  className="w-24 h-24 lg:w-28 lg:h-28 object-contain"
+>>>>>>> andres
                   style={{ filter: 'brightness(0) saturate(100%) invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%)' }}
                 />
               </div>
@@ -138,70 +126,42 @@ const Footer: React.FC = () => {
                 {currentContent.quickLinks}
               </h4>
               <ul className="space-y-3">
-                {navigationItems.slice(1, -1).map((item) => (
+                {quickLinks.map((item) => (
                   <li key={item.id}>
-                    <button
-                      onClick={() => handleNavigation(item.href)}
+                    <a
+                      href={item.href}
                       className="text-white hover:text-gray-200 transition-colors duration-200 text-sm font-semibold"
                     >
-                      {item.label[language]}
-                    </button>
+                      {item.label}
+                    </a>
                   </li>
                 ))}
               </ul>
             </motion.div>
 
-            {/* Social & Newsletter */}
+            {/* Social Links */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="space-y-8"
             >
-              {/* Social Links */}
-              <div>
-                <h4 className="text-lg font-semibold mb-6 text-white">
-                  {currentContent.followUs}
-                </h4>
-                <div className="flex space-x-4">
-                  {socialLinks.map((social) => (
-                    <motion.a
-                      key={social.name}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-10 h-10 bg-white/20 hover:bg-white/30 flex items-center justify-center transition-all duration-300 rounded-full"
-                    >
-                      <span className="text-lg">{getSocialIcon(social.icon)}</span>
-                    </motion.a>
-                  ))}
-                </div>
-              </div>
-
-              {/* Newsletter */}
-              <div>
-                <h4 className="text-lg font-semibold mb-4 text-white">
-                  {currentContent.newsletter.title}
-                </h4>
-                <p className="text-white text-sm mb-4 font-semibold">
-                  {currentContent.newsletter.description}
-                </p>
-                <div className="flex">
-                  <input
-                    type="email"
-                    placeholder={currentContent.newsletter.placeholder}
-                    className="flex-1 px-4 py-2 bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent rounded-l-lg"
-                  />
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
+              <h4 className="text-lg font-semibold mb-6 text-white">
+                {currentContent.followUs}
+              </h4>
+              <div className="flex space-x-4">
+                {socialLinks.map((social) => (
+                  <motion.a
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-4 py-2 bg-white text-gray-900 hover:bg-gray-100 transition-colors duration-200 font-semibold rounded-r-lg"
+                    className="w-10 h-10 bg-white/20 hover:bg-white/30 flex items-center justify-center transition-all duration-300 rounded-full"
                   >
-                    {currentContent.newsletter.subscribe}
-                  </motion.button>
-                </div>
+                    {getSocialIcon(social.icon)}
+                  </motion.a>
+                ))}
               </div>
             </motion.div>
           </div>
@@ -224,9 +184,7 @@ const Footer: React.FC = () => {
                 {language === 'es' ? 'Fundada en' : 'Founded in'} {companyInfo.founded}
               </span>
               <span>•</span>
-              <span>
-                {language === 'es' ? 'Paraguay' : 'Paraguay'}
-              </span>
+              <span>Paraguay</span>
             </div>
           </div>
         </motion.div>

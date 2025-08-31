@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Header from './components/Header'
 import { 
   HomePage, 
-  NosotrosPage, 
+  Nosotros, 
   ServiciosPage, 
   ProyectosPage, 
   AlianzasPage, 
@@ -26,7 +26,7 @@ function AppContent() {
   const renderPage = () => {
     switch (currentPage) {
       case 'about':
-        return <NosotrosPage />
+        return <Nosotros />
       case 'services':
         return <ServiciosPage />
       case 'projects':

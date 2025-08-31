@@ -1,75 +1,86 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-
-import { Building2, Users, Globe } from 'lucide-react'
-import { Card } from '../../components/ui'
-import ContactForm from '../../components/forms/ContactForm'
-import ContactInfo from '../../components/forms/ContactInfo'
+import { MapPin, Calendar, Building, Globe } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
+import L from 'leaflet'
+
+// Import Leaflet CSS
+import 'leaflet/dist/leaflet.css'
 
 const ContactoPage: React.FC = () => {
   const { language } = useLanguage()
-
-
+  const mapRef = useRef<HTMLDivElement>(null)
+  const mapInstanceRef = useRef<L.Map | null>(null)
 
   const content = {
     es: {
-      pageTitle: 'Contáctanos',
-      pageSubtitle: 'Estamos aquí para ayudarte a transformar tu impacto ambiental. ¡Conversemos sobre tus necesidades!',
-      sendMessage: 'Enviar Mensaje',
-      getInTouch: 'Ponte en Contacto',
-      readyToHelp: 'Estamos listos para ayudarte a alcanzar tus objetivos de sostenibilidad',
-      backToHome: 'Volver al Inicio',
-      whyChooseUs: '¿Por qué elegir SAISA?',
-      whyChooseUsDescription: 'Somos líderes en innovación ambiental con soluciones probadas y resultados medibles.',
-      features: [
-        {
-          icon: Building2,
-          title: 'Experiencia Comprobada',
-          description: 'Más de 15 proyectos exitosos en Latinoamérica'
-        },
-        {
-          icon: Users,
-          title: 'Equipo Especializado',
-          description: 'Profesionales con más de 10 años en el sector ambiental'
-        },
-        {
-          icon: Globe,
-          title: 'Alcance Internacional',
-          description: 'Presencia en 4 países con alianzas estratégicas'
-        }
-      ]
+      pageTitle: 'Contacto',
+      pageSubtitle: 'Información de contacto y ubicación de SAISA',
+      companyInfo: {
+        title: 'Información de la Empresa',
+        legalName: 'Nombre legal',
+        legalNameValue: 'SAISA - Servicios Ambientales Integrales S.A',
+        commercialName: 'Nombre comercial',
+        commercialNameValue: 'SAISA',
+        foundationYear: 'Año de fundación',
+        foundationYearValue: '26 de mayo de 2022',
+        location: 'Ubicación',
+        locationValue: 'R.I 4 Curupayty 639, Paraguay'
+      },
+      map: {
+        title: 'Nuestra Ubicación',
+        subtitle: 'Encuéntranos en el corazón de Paraguay'
+      }
     },
     en: {
-      pageTitle: 'Contact Us',
-      pageSubtitle: 'We are here to help you transform your environmental impact. Let\'s talk about your needs!',
-      sendMessage: 'Send Message',
-      getInTouch: 'Get in Touch',
-      readyToHelp: 'We are ready to help you achieve your sustainability goals',
-      backToHome: 'Back to Home',
-      whyChooseUs: 'Why Choose SAISA?',
-      whyChooseUsDescription: 'We are leaders in environmental innovation with proven solutions and measurable results.',
-      features: [
-        {
-          icon: Building2,
-          title: 'Proven Experience',
-          description: 'More than 15 successful projects in Latin America'
-        },
-        {
-          icon: Users,
-          title: 'Specialized Team',
-          description: 'Professionals with more than 10 years in the environmental sector'
-        },
-        {
-          icon: Globe,
-          title: 'International Reach',
-          description: 'Presence in 4 countries with strategic alliances'
-        }
-      ]
+      pageTitle: 'Contact',
+      pageSubtitle: 'SAISA contact information and location',
+      companyInfo: {
+        title: 'Company Information',
+        legalName: 'Legal name',
+        legalNameValue: 'SAISA - Servicios Ambientales Integrales S.A',
+        commercialName: 'Commercial name',
+        commercialNameValue: 'SAISA',
+        foundationYear: 'Foundation year',
+        foundationYearValue: 'May 26, 2022',
+        location: 'Location',
+        locationValue: 'R.I 4 Curupayty 639, Paraguay'
+      },
+      map: {
+        title: 'Our Location',
+        subtitle: 'Find us in the heart of Paraguay'
+      }
     }
   }
 
   const currentContent = content[language]
+
+  useEffect(() => {
+    if (mapRef.current && !mapInstanceRef.current) {
+      // Initialize map
+      const map = L.map(mapRef.current).setView([-25.2637, -57.5759], 13) // Asunción coordinates
+      
+      // Add OpenStreetMap tiles
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(map)
+
+      // Add marker for SAISA location
+      const marker = L.marker([-25.2637, -57.5759]).addTo(map)
+      marker.bindPopup('<b>SAISA</b><br>Servicios Ambientales Integrales S.A.<br>R.I 4 Curupayty 639')
+
+      // Store map instance
+      mapInstanceRef.current = map
+
+      // Cleanup function
+      return () => {
+        if (mapInstanceRef.current) {
+          mapInstanceRef.current.remove()
+          mapInstanceRef.current = null
+        }
+      }
+    }
+  }, [])
 
   return (
     <motion.main
@@ -78,75 +89,167 @@ const ContactoPage: React.FC = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
-      className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50"
+      className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50"
     >
-      {/* Hero Section */}
-      <div className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
+      {/* Hero Section - Same design as Nosotros */}
+      <div 
+        className="relative min-h-[65vh] flex items-center justify-center bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url(/hero/contacto-hero.jpg)',
+          backgroundSize: '100%',
+          backgroundPosition: 'center 60%'
+        }}
+      >
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/40"></div>
+        
+        {/* Organic Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-emerald-200/30 to-green-200/30 rounded-full opacity-60 blur-3xl"></div>
+          <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-br from-teal-200/30 to-cyan-200/30 rounded-full opacity-60 blur-3xl"></div>
+          <div className="absolute bottom-20 left-1/4 w-20 h-20 bg-gradient-to-br from-green-200/30 to-emerald-200/30 rounded-full opacity-60 blur-3xl"></div>
+        </div>
+        
+        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl">
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl md:text-6xl font-bold text-gray-900 mb-6"
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8"
           >
             {currentContent.pageTitle}
           </motion.h1>
+          
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-lg md:text-xl lg:text-2xl text-white/90 leading-relaxed max-w-4xl mx-auto"
           >
             {currentContent.pageSubtitle}
           </motion.p>
         </div>
       </div>
 
-      {/* Contact Info Section */}
-      <div className="px-4 sm:px-6 lg:px-8 mb-16">
+      {/* Company Information Section */}
+      <div className="px-4 sm:px-6 lg:px-8 py-20">
         <div className="max-w-7xl mx-auto">
-          <ContactInfo />
-        </div>
-      </div>
-
-      {/* Contact Form Section */}
-      <div className="px-4 sm:px-6 lg:px-8 mb-16">
-        <div className="max-w-4xl mx-auto">
-          <Card className="p-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-              {currentContent.sendMessage}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              {currentContent.companyInfo.title}
             </h2>
-            <ContactForm />
-          </Card>
-        </div>
-      </div>
+          </motion.div>
 
-      {/* Why Choose Us Section */}
-      <div className="px-4 sm:px-6 lg:px-8 mb-16">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              {currentContent.whyChooseUs}
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              {currentContent.whyChooseUsDescription}
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {currentContent.features.map((feature, index) => (
-              <Card key={index} animate delay={index * 0.2}>
-                <div className="w-16 h-16 bg-primary-100 text-primary-600 flex items-center justify-center mx-auto mb-6 rounded-full">
-                  <feature.icon className="w-8 h-8" />
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Company Info Cards */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              {/* Legal Name */}
+              <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/30 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-emerald-100 to-green-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <Building className="w-6 h-6 text-emerald-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-gray-700 mb-2">
+                      {currentContent.companyInfo.legalName}
+                    </h3>
+                    <p className="text-gray-900 text-lg font-medium">
+                      {currentContent.companyInfo.legalNameValue}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3 text-center">
-                  {feature.title}
+              </div>
+
+              {/* Commercial Name */}
+              <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/30 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-teal-100 to-cyan-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <Globe className="w-6 h-6 text-teal-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-gray-700 mb-2">
+                      {currentContent.companyInfo.commercialName}
+                    </h3>
+                    <p className="text-gray-900 text-lg font-medium">
+                      {currentContent.companyInfo.commercialNameValue}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Foundation Year */}
+              <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/30 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <Calendar className="w-6 h-6 text-green-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-gray-700 mb-2">
+                      {currentContent.companyInfo.foundationYear}
+                    </h3>
+                    <p className="text-gray-900 text-lg font-medium">
+                      {currentContent.companyInfo.foundationYearValue}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Location */}
+              <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/30 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-gray-700 mb-2">
+                      {currentContent.companyInfo.location}
+                    </h3>
+                    <p className="text-gray-900 text-lg font-medium">
+                      {currentContent.companyInfo.locationValue}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Map Section */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                  {currentContent.map.title}
                 </h3>
-                <p className="text-gray-600 text-center">
-                  {feature.description}
+                <p className="text-gray-600">
+                  {currentContent.map.subtitle}
                 </p>
-              </Card>
-            ))}
+              </div>
+
+              {/* Map Container */}
+              <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-6 shadow-xl border border-white/30">
+                <div 
+                  ref={mapRef}
+                  className="w-full h-96 rounded-2xl overflow-hidden"
+                  style={{ minHeight: '400px' }}
+                ></div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>

@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://saisa.com.py/sitemap.xml
+
+# Disallow admin areas (si las tienes en el futuro)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Crawl delay (opcional)
+Crawl-delay: 1
