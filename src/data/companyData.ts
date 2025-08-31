@@ -1,4 +1,4 @@
-import { CompanyInfo, Project, Alliance, NavigationItem, SocialLink } from '../types'
+import { CompanyInfo, Project, NavigationItem, SocialLink } from '../types'
 
 export const companyInfo: CompanyInfo = {
   name: 'SAISA – Servicios Ambientales Integrales S.A.',
@@ -25,7 +25,6 @@ export const navigationItems: NavigationItem[] = [
   { id: 'home', label: { es: 'Inicio', en: 'Home' }, href: '#home' },
   { id: 'about', label: { es: 'Nosotros', en: 'About' }, href: '#about' },
   { id: 'projects', label: { es: 'Proyectos', en: 'Projects' }, href: '#projects' },
-  { id: 'alliances', label: { es: 'Alianzas', en: 'Alliances' }, href: '#alliances' },
   { id: 'contact', label: { es: 'Contacto', en: 'Contact' }, href: '#contact' }
 ]
 
@@ -146,45 +145,4 @@ export const projects: Project[] = [
   }
 ]
 
-export const alliances: Alliance[] = [
-  {
-    id: 'minambiente-paraguay',
-    name: 'Ministerio del Ambiente - Paraguay',
-    logo: '/images/alliances/minambiente.png',
-    description: {
-      es: 'Alianza estratégica para el desarrollo de políticas ambientales y proyectos de sostenibilidad.',
-      en: 'Strategic alliance for the development of environmental policies and sustainability projects.'
-    },
-    type: 'government'
-  },
-  {
-    id: 'universidad-nacional',
-    name: 'Universidad Nacional de Asunción',
-    logo: '/images/alliances/una.png',
-    description: {
-      es: 'Colaboración en investigación y desarrollo de tecnologías ambientales innovadoras.',
-      en: 'Collaboration in research and development of innovative environmental technologies.'
-    },
-    type: 'academic'
-  },
-  {
-    id: 'wwf-paraguay',
-    name: 'WWF Paraguay',
-    logo: '/images/alliances/wwf.png',
-    description: {
-      es: 'Partnership para la conservación de la biodiversidad y desarrollo sostenible.',
-      en: 'Partnership for biodiversity conservation and sustainable development.'
-    },
-    type: 'ngo'
-  },
-  {
-    id: 'banco-mundial',
-    name: 'Banco Mundial',
-    logo: '/images/alliances/world-bank.png',
-    description: {
-      es: 'Financiamiento para proyectos de infraestructura verde y sostenibilidad.',
-      en: 'Financing for green infrastructure and sustainability projects.'
-    },
-    type: 'government'
-  }
-]
+

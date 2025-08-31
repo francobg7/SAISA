@@ -73,7 +73,7 @@ const ProyectosPage: React.FC = () => {
       introduction: {
         title: 'SAISA: Environmental Innovation',
         description: 'SAISA is a pioneering company in innovation and application of sustainable technologies, low-carbon and oriented towards the circular economy. We offer comprehensive environmental solutions that combine science, engineering and commitment to the planet.',
-        subtitle: 'Through strategic alliances, we transform sources of pollution into environmental assets with market value, creating real opportunities to regenerate ecosystems and revitalize communities.'
+        subtitle: 'We transform sources of pollution into environmental assets with market value, creating real opportunities to regenerate ecosystems and revitalize communities.'
       },
       transition: {
         quote: 'We transform sources of pollution into environmental assets with market value, creating real opportunities to regenerate ecosystems and revitalize communities.'
@@ -101,7 +101,7 @@ const ProyectosPage: React.FC = () => {
           {
             title: 'Penetration',
             items: [
-              'Strategic alliances with large companies and institutions',
+              'Partnerships with large companies and institutions',
               'Pilot projects with measurable results',
               'Flexible business models (services, PPP, technology leasing)'
             ]

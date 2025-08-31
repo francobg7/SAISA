@@ -5,18 +5,21 @@ import {
   HomePage, 
   Nosotros, 
   ProyectosPage, 
-  AlianzasPage, 
   ContactoPage
 } from './pages'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
 import LanguageContext from './contexts/LanguageContext'
 import { NavigationProvider, useNavigation } from './contexts/NavigationContext'
+import { useScrollToTop } from './hooks/useScrollToTop'
 import { Language } from './types'
 
 function AppContent() {
   const { currentPage } = useNavigation()
   const [language, setLanguage] = useState<Language>('es')
+  
+  // Usar el hook de scroll para manejar el scroll hacia arriba
+  useScrollToTop([currentPage])
 
   const toggleLanguage = () => {
     setLanguage(language === 'es' ? 'en' : 'es')
@@ -28,9 +31,8 @@ function AppContent() {
         return <Nosotros />
       case 'proyectos':
         return <ProyectosPage />
-      case 'alianzas':
-        return <AlianzasPage />
-      case 'contacto':
+
+      case 'contact':
         return <ContactoPage />
       default:
         return <HomePage />

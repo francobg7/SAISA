@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
       quickLinks: 'Enlaces Rápidos',
       about: 'Nosotros',
       projects: 'Proyectos',
-      alliances: 'Alianzas',
+
       followUs: 'Síguenos',
       allRightsReserved: 'Todos los derechos reservados',
       backToTop: 'Volver arriba'
@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
       quickLinks: 'Quick Links',
       about: 'About',
       projects: 'Projects',
-      alliances: 'Alliances',
+
       followUs: 'Follow Us',
       allRightsReserved: 'All rights reserved',
       backToTop: 'Back to top'
@@ -51,9 +51,15 @@ const Footer: React.FC = () => {
   }
 
   const quickLinks = [
+<<<<<<< HEAD
     { id: 'about', label: currentContent.about, page: 'nosotros' as const },
     { id: 'projects', label: currentContent.projects, page: 'proyectos' as const },
     { id: 'alliances', label: currentContent.alliances, page: 'alianzas' as const }
+=======
+    { id: 'about', label: currentContent.about, href: '/nosotros' },
+    { id: 'projects', label: currentContent.projects, href: '/proyectos' },
+
+>>>>>>> andres
   ]
 
   const handleQuickLinkClick = (page: 'nosotros' | 'proyectos' | 'alianzas') => {
