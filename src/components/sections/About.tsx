@@ -108,7 +108,7 @@ const About: React.FC = () => {
 
                 {/* Learn More Button */}
                 <motion.button
-                  onClick={() => navigateTo('about')}
+                  onClick={() => navigateTo('nosotros')}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="inline-flex items-center justify-between w-full p-6 bg-gradient-to-r from-primary-50 to-secondary-50 hover:from-primary-100 hover:to-secondary-100 border border-primary-200 rounded-2xl transition-all duration-300 group cursor-pointer"

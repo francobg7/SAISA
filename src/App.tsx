@@ -24,13 +24,13 @@ function AppContent() {
 
   const renderPage = () => {
     switch (currentPage) {
-      case 'about':
+      case 'nosotros':
         return <Nosotros />
-      case 'projects':
+      case 'proyectos':
         return <ProyectosPage />
-      case 'alliances':
+      case 'alianzas':
         return <AlianzasPage />
-      case 'contact':
+      case 'contacto':
         return <ContactoPage />
       default:
         return <HomePage />

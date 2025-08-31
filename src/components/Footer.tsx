@@ -2,10 +2,12 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Mail, MapPin, Phone, ArrowUp, Linkedin, Facebook, Twitter, Instagram } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
+import { useNavigation } from '../contexts/NavigationContext'
 import { companyInfo, socialLinks } from '../data/companyData'
 
 const Footer: React.FC = () => {
   const { language } = useLanguage()
+  const { navigateTo } = useNavigation()
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1
@@ -49,10 +51,20 @@ const Footer: React.FC = () => {
   }
 
   const quickLinks = [
-    { id: 'about', label: currentContent.about, href: '/nosotros' },
-    { id: 'projects', label: currentContent.projects, href: '/proyectos' },
-    { id: 'alliances', label: currentContent.alliances, href: '/alianzas' }
+    { id: 'about', label: currentContent.about, page: 'nosotros' as const },
+    { id: 'projects', label: currentContent.projects, page: 'proyectos' as const },
+    { id: 'alliances', label: currentContent.alliances, page: 'alianzas' as const }
   ]
+
+  const handleQuickLinkClick = (page: 'nosotros' | 'proyectos' | 'alianzas') => {
+    navigateTo(page)
+  }
+
+  const handleAddressClick = () => {
+    const address = encodeURIComponent('R.I 4 Curupayty 639, Paraguay')
+    const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${address}`
+    window.open(googleMapsUrl, '_blank')
+  }
 
   return (
     <footer className="relative text-white" style={{ backgroundColor: 'rgba(0, 33, 126, 0.95)' }}>
@@ -88,7 +100,13 @@ const Footer: React.FC = () => {
               <div className="space-y-3">
                 <div className="flex items-center space-x-3 text-white">
                   <MapPin className="w-4 h-4 text-white" />
-                  <span className="text-sm font-semibold">{companyInfo.location}</span>
+                  <button
+                    onClick={handleAddressClick}
+                    className="text-sm font-semibold hover:text-gray-200 transition-colors duration-200 bg-transparent border-none cursor-pointer text-left hover:underline"
+                    title={language === 'es' ? 'Haz clic para ver en Google Maps' : 'Click to view on Google Maps'}
+                  >
+                    {companyInfo.location}
+                  </button>
                 </div>
                 <div className="flex items-center space-x-3 text-white">
                   <Mail className="w-4 h-4 text-white" />
@@ -113,12 +131,12 @@ const Footer: React.FC = () => {
               <ul className="space-y-3">
                 {quickLinks.map((item) => (
                   <li key={item.id}>
-                    <a
-                      href={item.href}
-                      className="text-white hover:text-gray-200 transition-colors duration-200 text-sm font-semibold"
+                    <button
+                      onClick={() => handleQuickLinkClick(item.page)}
+                      className="text-white hover:text-gray-200 transition-colors duration-200 text-sm font-semibold bg-transparent border-none cursor-pointer text-left w-full"
                     >
                       {item.label}
-                    </a>
+                    </button>
                   </li>
                 ))}
               </ul>

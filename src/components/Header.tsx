@@ -72,13 +72,13 @@ const Header: React.FC = () => {
     if (href === '#home') {
       navigateTo('home')
     } else if (href === '#contact') {
-      navigateTo('contact')
+      navigateTo('contacto')
     } else if (href === '#about') {
-      navigateTo('about')
+      navigateTo('nosotros')
     } else if (href === '#projects') {
-      navigateTo('projects')
+      navigateTo('proyectos')
     } else if (href === '#alliances') {
-      navigateTo('alliances')
+      navigateTo('alianzas')
     } else {
       const element = document.querySelector(href)
       if (element) {
