@@ -14,7 +14,6 @@ const Footer: React.FC = () => {
   const content = {
     es: {
       quickLinks: 'Enlaces Rápidos',
-      services: 'Servicios',
       about: 'Nosotros',
       projects: 'Proyectos',
       alliances: 'Alianzas',
@@ -24,7 +23,6 @@ const Footer: React.FC = () => {
     },
     en: {
       quickLinks: 'Quick Links',
-      services: 'Services',
       about: 'About',
       projects: 'Projects',
       alliances: 'Alliances',
@@ -52,7 +50,6 @@ const Footer: React.FC = () => {
 
   const quickLinks = [
     { id: 'about', label: currentContent.about, href: '/nosotros' },
-    { id: 'services', label: currentContent.services, href: '/servicios' },
     { id: 'projects', label: currentContent.projects, href: '/proyectos' },
     { id: 'alliances', label: currentContent.alliances, href: '/alianzas' }
   ]

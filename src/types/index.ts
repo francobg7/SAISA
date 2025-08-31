@@ -1,22 +1,6 @@
 export type Language = 'es' | 'en'
 
-export interface Service {
-  id: string
-  title: {
-    es: string
-    en: string
-  }
-  description: {
-    es: string
-    en: string
-  }
-  icon: string
-  features: {
-    es: string[]
-    en: string[]
-  }
-  color: string
-}
+
 
 export interface Project {
   id: string
@@ -70,7 +54,6 @@ export interface ContactForm {
   email: string
   company: string
   message: string
-  service: string
 }
 
 export interface NavigationItem {

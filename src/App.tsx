@@ -4,10 +4,9 @@ import Header from './components/Header'
 import { 
   HomePage, 
   Nosotros, 
-  ServiciosPage, 
   ProyectosPage, 
   AlianzasPage, 
-  ContactoPage 
+  ContactoPage
 } from './pages'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
@@ -27,8 +26,6 @@ function AppContent() {
     switch (currentPage) {
       case 'about':
         return <Nosotros />
-      case 'services':
-        return <ServiciosPage />
       case 'projects':
         return <ProyectosPage />
       case 'alliances':
