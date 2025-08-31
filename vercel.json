@@ -62,11 +62,6 @@
   "env": {
     "NODE_ENV": "production"
   },
-  "functions": {
-    "app/api/**/*.ts": {
-      "maxDuration": 10
-    }
-  },
   "regions": ["gru1"],
   "cleanUrls": true
 }
