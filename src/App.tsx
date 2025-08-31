@@ -5,7 +5,6 @@ import {
   HomePage, 
   Nosotros, 
   ProyectosPage, 
-  AlianzasPage, 
   ContactoPage
 } from './pages'
 import Footer from './components/Footer'
@@ -28,8 +27,7 @@ function AppContent() {
         return <Nosotros />
       case 'projects':
         return <ProyectosPage />
-      case 'alliances':
-        return <AlianzasPage />
+
       case 'contact':
         return <ContactoPage />
       default:

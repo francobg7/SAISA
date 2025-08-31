@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Hero, About, Projects, Alliances, Objetivos, SEO } from '../../components'
+import { Hero, About, Projects, Objetivos, SEO } from '../../components'
 
 const HomePage: React.FC = () => {
   return (
@@ -22,7 +22,7 @@ const HomePage: React.FC = () => {
         <Objetivos />
         <About />
         <Projects />
-        <Alliances />
+
       </motion.main>
     </>
   )

@@ -216,23 +216,6 @@ const Objetivos: React.FC = () => {
 
   return (
     <section className="relative h-screen overflow-hidden bg-black">
-      {/* Contador de posición */}
-      <div className="absolute top-8 right-8 z-20 bg-black/50 backdrop-blur-sm rounded-full px-4 py-2 text-white">
-        <span className="text-sm font-medium">
-          {currentSector + 1} / {sectores.length}
-        </span>
-      </div>
-
-      {/* Indicador de progreso superior */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-white/20 z-20">
-        <motion.div
-          className="h-full bg-gradient-to-r from-emerald-400 to-blue-500"
-          initial={{ width: 0 }}
-          animate={{ width: `${((currentSector + 1) / sectores.length) * 100}%` }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-        />
-      </div>
-
       {/* Navegación principal */}
       <div className="absolute top-1/2 left-8 z-20 transform -translate-y-1/2">
         <button
@@ -275,17 +258,6 @@ const Objetivos: React.FC = () => {
             aria-label={`${currentContent.goToSector} ${index + 1}`}
           />
         ))}
-      </div>
-
-      {/* Indicador de teclas */}
-      <div className="absolute bottom-8 right-8 z-20 bg-black/50 backdrop-blur-sm rounded-lg px-3 py-2 text-white/70 text-xs">
-        <div className="flex items-center space-x-2">
-          <span>← →</span>
-          <span>{currentContent.navigate}</span>
-          <span className="mx-2">|</span>
-          <span>1-5</span>
-          <span>{currentContent.skip}</span>
-        </div>
       </div>
 
       {/* Contenido principal */}

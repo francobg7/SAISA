@@ -77,8 +77,7 @@ const Header: React.FC = () => {
       navigateTo('about')
     } else if (href === '#projects') {
       navigateTo('projects')
-    } else if (href === '#alliances') {
-      navigateTo('alliances')
+
     } else {
       const element = document.querySelector(href)
       if (element) {

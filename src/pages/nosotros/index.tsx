@@ -40,10 +40,6 @@ const NosotrosPage: React.FC = () => {
     triggerOnce: true,
     threshold: 0.1
   })
-  const [statsRef, statsInView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1
-  })
   const [impactRef, impactInView] = useInView({
     triggerOnce: true,
     threshold: 0.1
@@ -112,14 +108,6 @@ const NosotrosPage: React.FC = () => {
           }
         ]
       },
-      stats: {
-        title: 'Nuestros Números',
-        subtitle: 'El impacto de nuestro trabajo en números',
-        projects: 'Proyectos Completados',
-        countries: 'Países',
-        years: 'Años de Experiencia',
-        impact: 'Impacto Ambiental'
-      },
       impact: {
         title: 'Nuestro Impacto Ambiental',
         subtitle: 'Transformando el presente, preservando el futuro',
@@ -161,7 +149,7 @@ const NosotrosPage: React.FC = () => {
       companyDescription: companyInfo.description.en,
       vision: {
         title: 'Our Vision',
-        description: 'To be the Latin American reference in environmental innovation, inspiring and leading change towards a cleaner continent, innovating and developing sustainable technologies and strengthening alliances to build a prosperous, low-carbon future.',
+        description: 'To be the Latin American reference in environmental innovation, inspiring and leading change towards a cleaner continent, innovating and developing sustainable technologies to build a prosperous, low-carbon future.',
         image: '/img/vision.jpg'
       },
       mission: {
@@ -217,14 +205,6 @@ const NosotrosPage: React.FC = () => {
           }
         ]
       },
-      stats: {
-        title: 'Our Numbers',
-        subtitle: 'The impact of our work in numbers',
-        projects: 'Completed Projects',
-        countries: 'Countries',
-        years: 'Years of Experience',
-        impact: 'Environmental Impact'
-      },
       impact: {
         title: 'Our Environmental Impact',
         subtitle: 'Transforming the present, preserving the future',
@@ -263,13 +243,6 @@ const NosotrosPage: React.FC = () => {
   }
 
   const currentContent = content[language]
-
-  const stats = [
-    { number: '15+', label: currentContent.stats.projects, icon: Award },
-    { number: '4', label: currentContent.stats.countries, icon: Globe },
-    { number: '10+', label: currentContent.stats.years, icon: Users },
-    { number: '100%', label: currentContent.stats.impact, icon: Leaf }
-  ]
 
   return (
     <motion.main
@@ -549,53 +522,6 @@ const NosotrosPage: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* Stats Section - Eco Modern */}
-      <div className="px-4 sm:px-6 lg:px-8 mb-24" ref={statsRef}>
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={statsInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 mb-6 shadow-lg">
-              <Award className="w-5 h-5 text-emerald-600" />
-              <span className="text-sm font-semibold text-emerald-700">Logros Destacados</span>
-            </div>
-            <h2 className="text-5xl font-bold text-gray-900 mb-6">
-              {currentContent.stats.title}
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {currentContent.stats.subtitle}
-            </p>
-          </motion.div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={statsInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/30 text-center hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                  <div className="w-20 h-20 bg-gradient-to-br from-emerald-100 to-green-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-500">
-                    <stat.icon className="w-10 h-10 text-emerald-600" />
-                  </div>
-                  <div className="text-4xl font-bold text-emerald-600 mb-2">
-                    {stat.number}
-                  </div>
-                  <p className="text-gray-600 text-lg">{stat.label}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      
-
 
     </motion.main>
   )

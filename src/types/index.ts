@@ -38,16 +38,7 @@ export interface Project {
   technologies: string[]
 }
 
-export interface Alliance {
-  id: string
-  name: string
-  logo: string
-  description: {
-    es: string
-    en: string
-  }
-  type: 'government' | 'private' | 'ngo' | 'academic'
-}
+
 
 export interface ContactForm {
   name: string

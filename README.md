@@ -31,7 +31,7 @@ src/
 │   ├── About.tsx       # Información de la empresa
 │   ├── Services.tsx    # Servicios ofrecidos
 │   ├── Projects.tsx    # Proyectos realizados
-│   ├── Alliances.tsx   # Alianzas estratégicas
+
 │   ├── Contact.tsx     # Formulario de contacto
 │   ├── Footer.tsx      # Pie de página
 │   └── WhatsAppButton.tsx # Botón flotante WhatsApp
