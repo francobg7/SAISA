@@ -18,6 +18,7 @@ const Footer: React.FC = () => {
       quickLinks: 'Enlaces Rápidos',
       about: 'Nosotros',
       projects: 'Proyectos',
+      contact: 'Contacto',
       followUs: 'Síguenos',
       allRightsReserved: 'Todos los derechos reservados',
       backToTop: 'Volver arriba'
@@ -26,6 +27,7 @@ const Footer: React.FC = () => {
       quickLinks: 'Quick Links',
       about: 'About',
       projects: 'Projects',
+      contact: 'Contact',
       followUs: 'Follow Us',
       allRightsReserved: 'All rights reserved',
       backToTop: 'Back to top'
@@ -48,12 +50,13 @@ const Footer: React.FC = () => {
     return iconMap[iconName] || <Linkedin className="w-5 h-5" />
   }
 
-  const quickLinks: Array<{ id: string; label: string; page: 'nosotros' | 'proyectos' }> = [
+  const quickLinks: Array<{ id: string; label: string; page: 'nosotros' | 'proyectos' | 'contacto' }> = [
     { id: 'about', label: currentContent.about, page: 'nosotros' },
-    { id: 'projects', label: currentContent.projects, page: 'proyectos' }
+    { id: 'projects', label: currentContent.projects, page: 'proyectos' },
+    { id: 'contact', label: currentContent.contact, page: 'contacto' }
   ]
 
-  const handleQuickLinkClick = (page: 'nosotros' | 'proyectos') => {
+  const handleQuickLinkClick = (page: 'nosotros' | 'proyectos' | 'contacto') => {
     navigateTo(page)
   }
 
