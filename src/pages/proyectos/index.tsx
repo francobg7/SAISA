@@ -130,7 +130,7 @@ const ProyectosPage: React.FC = () => {
       <div 
         className="relative min-h-[65vh] flex items-center justify-center bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: 'url(/public/Proyectos/proyecto01.jpg)',
+          backgroundImage: 'url(/Proyectos/proyecto01.jpg)',
           backgroundSize: '100%',
           backgroundPosition: 'center 60%'
         }}
@@ -184,7 +184,7 @@ const ProyectosPage: React.FC = () => {
             >
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img 
-                  src="/public/Proyectos/eco-solutions.jpg" 
+                  src="/Proyectos/eco-solutions.jpg" 
                   alt="SAISA Environmental Solutions"
                   className="w-full h-96 object-cover"
                 />
@@ -205,7 +205,7 @@ const ProyectosPage: React.FC = () => {
           muted
           playsInline
         >
-          <source src="/public/Proyectos/videobackground.webm" type="video/webm" />
+          <source src="/Proyectos/videobackground.webm" type="video/webm" />
           Your browser does not support the video tag.
         </video>
         {/* Dark overlay */}
@@ -228,7 +228,7 @@ const ProyectosPage: React.FC = () => {
       <div 
         className="relative py-24 px-4 sm:px-6 lg:px-8 bg-cover bg-center bg-fixed" 
         style={{
-          backgroundImage: 'url(/public/Proyectos/proyecto03.jpg)'
+          backgroundImage: 'url(/Proyectos/proyecto03.jpg)'
         }}
         ref={objectivesRef}
       >
