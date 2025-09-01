@@ -48,7 +48,7 @@ export const projects: Project[] = [
       es: 'Proyecto piloto para la gestión integrada de residuos industriales en el área metropolitana de Asunción.',
       en: 'Pilot project for integrated industrial waste management in the metropolitan area of Asunción.'
     },
-    image: '/images/projects/industrial-waste.jpg',
+    image: '/Proyectos/proyecto01.jpg',
     category: {
       es: 'Gestión de Residuos',
       en: 'Waste Management'
@@ -83,7 +83,7 @@ export const projects: Project[] = [
       es: 'Sistema de tratamiento y reutilización de aguas residuales para riego agrícola en Mendoza.',
       en: 'Wastewater treatment and reuse system for agricultural irrigation in Mendoza.'
     },
-    image: '/images/projects/water-reuse.jpg',
+    image: '/Proyectos/proyecto02.jpg',
     category: {
       es: 'Tratamiento de Aguas',
       en: 'Water Treatment'
@@ -118,7 +118,7 @@ export const projects: Project[] = [
       es: 'Red de sensores para el monitoreo de calidad del aire en Santiago de Chile.',
       en: 'Sensor network for air quality monitoring in Santiago de Chile.'
     },
-    image: '/images/projects/air-quality.jpg',
+    image: '/Proyectos/proyecto03.jpg',
     category: {
       es: 'Calidad del Aire',
       en: 'Air Quality'
