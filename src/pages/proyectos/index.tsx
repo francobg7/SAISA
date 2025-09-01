@@ -51,7 +51,7 @@ const ProyectosPage: React.FC = () => {
             ]
           },
           {
-            title: 'Penetración',
+            title: 'Extrategia de expansión',
             items: [
               'Alianzas estratégicas con grandes empresas e instituciones',
               'Proyectos piloto con resultados medibles',
