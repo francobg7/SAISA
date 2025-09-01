@@ -7,6 +7,19 @@ import L from 'leaflet'
 // Import Leaflet CSS
 import 'leaflet/dist/leaflet.css'
 
+// Fix Leaflet icon issues for Vercel deployment
+delete (L.Icon.Default.prototype as any)._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconUrl: '/images/leaflet/marker-icon.png',
+  iconRetinaUrl: '/images/leaflet/marker-icon-2x.png',
+  shadowUrl: '/images/leaflet/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  tooltipAnchor: [16, -28],
+  shadowSize: [41, 41]
+});
+
 const ContactoPage: React.FC = () => {
   const { language } = useLanguage()
   const mapRef = useRef<HTMLDivElement>(null)
@@ -257,4 +270,4 @@ const ContactoPage: React.FC = () => {
   )
 }
 
-export default ContactoPage 
+export default ContactoPage
