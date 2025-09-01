@@ -31,8 +31,7 @@ function AppContent() {
         return <Nosotros />
       case 'proyectos':
         return <ProyectosPage />
-
-      case 'contact':
+      case 'contacto':
         return <ContactoPage />
       default:
         return <HomePage />

@@ -22,7 +22,6 @@ const HomePage: React.FC = () => {
         <Objetivos />
         <About />
         <Projects />
-
       </motion.main>
     </>
   )
